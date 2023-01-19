@@ -10,6 +10,12 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
+      title: 'Resume/CV',
+      name: 'resume',
+      description: 'Upload your most recent resume here.',
+      type: 'file',
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',
@@ -24,6 +30,9 @@ export default defineType({
             },
             {
               type: 'page',
+            },
+            {
+              type: 'post',
             },
             {
               type: 'project',
@@ -59,6 +68,36 @@ export default defineType({
           },
         }),
       ],
+    }),
+    defineField({
+      name: 'linkedin',
+      title: 'LinkedIn URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'instagram',
+      title: 'Instagram URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'facebook',
+      title: 'Facebook URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'pinterest',
+      title: 'Pinterest URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'youtube',
+      title: 'Youtube URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'tiktok',
+      title: 'TikTok URL',
+      type: 'url',
     }),
     defineField({
       name: 'ogImage',

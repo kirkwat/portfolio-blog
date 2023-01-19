@@ -5,6 +5,13 @@ export const homePageQuery = groq`
     _id,
     footer,
     overview,
+    showcasePosts[]->{
+      _type,
+      coverImage, 
+      overview, 
+      "slug": slug.current,
+      title, 
+    }, 
     showcaseProjects[]->{
       _type,
       coverImage,
@@ -30,6 +37,50 @@ export const pagesBySlugQuery = groq`
     "slug": slug.current,
   }
 `
+export const postsQuery = groq`
+  {"posts": *[_type == "post"] | order(_createdAt desc)
+    {
+      _type,
+      _id,
+      content,
+      overview,
+      coverImage,
+      date,
+      "slug": slug.current,
+      title,
+    }
+  }
+`
+
+export const postsBySlugQuery = groq`
+  *[_type == "post" && slug.current == $slug][0] {
+    _id,
+    content,
+    overview,
+    coverImage,
+    date,
+    slug,
+    title,
+  }
+`
+
+export const projectsQuery = groq`
+  {"projects": *[_type == "project"] | order(_createdAt desc)
+    {
+      _type,
+      _id,
+      client, 
+      coverImage,
+      description,
+      duration, 
+      overview,
+      site, 
+      "slug": slug.current,
+      tags,
+      title,
+    }
+  }
+`
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
@@ -48,6 +99,10 @@ export const projectBySlugQuery = groq`
 
 export const projectPaths = groq`
   *[_type == "project" && slug.current != null].slug.current
+`
+
+export const postPaths = groq`
+  *[_type == "post" && slug.current != null].slug.current
 `
 
 export const pagePaths = groq`

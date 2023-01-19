@@ -17,6 +17,14 @@ export interface MilestoneItem {
   title?: string
 }
 
+export interface ShowcasePost {
+  _type: string
+  coverImage?: Image
+  overview?: PortableTextBlock[]
+  slug?: string
+  title?: string
+}
+
 export interface ShowcaseProject {
   _type: string
   coverImage?: Image
@@ -31,6 +39,7 @@ export interface ShowcaseProject {
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
+  showcasePosts?: ShowcasePost[]
   showcaseProjects?: ShowcaseProject[]
   title?: string
 }
@@ -41,6 +50,21 @@ export interface PagePayload {
   overview?: PortableTextBlock[]
   title?: string
   slug?: string
+}
+
+export interface PostPayload {
+  _type?: string
+  title?: string
+  name?: string
+  slug?: string
+  content?: PortableTextBlock[]
+  overview?: PortableTextBlock[]
+  coverImage?: Image
+  date?: string
+}
+
+export interface PostsPayload {
+  posts: PostPayload[]
 }
 
 export interface ProjectPayload {
@@ -56,6 +80,11 @@ export interface ProjectPayload {
   slug: string
   tags?: string[]
   title?: string
+  _type: string
+}
+
+export interface ProjectsPayload {
+  projects: ProjectPayload[]
 }
 
 export interface SettingsPayload {

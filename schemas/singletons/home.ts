@@ -17,6 +17,14 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'avatar',
+      description: 'This is your avatar for your personal website.',
+      title: 'Avatar',
+      type: 'image',
+      options: { hotspot: true },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'overview',
       description:
         'Used both for the <meta> description tag for SEO, and the personal website subheader.',
@@ -59,6 +67,19 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'showcasePosts',
+      title: 'Showcase posts',
+      description:
+        'These are the posts that will appear first on your landing page.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'post' }],
+        }),
+      ],
+    }),
+    defineField({
       name: 'showcaseProjects',
       title: 'Showcase projects',
       description:
@@ -70,6 +91,36 @@ export default defineType({
           to: [{ type: 'project' }],
         }),
       ],
+    }),
+    defineField({
+      name: 'linkedin',
+      title: 'LinkedIn URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'instagram',
+      title: 'Instagram URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'facebook',
+      title: 'Facebook URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'pinterest',
+      title: 'Pinterest URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'youtube',
+      title: 'Youtube URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'tiktok',
+      title: 'TikTok URL',
+      type: 'url',
     }),
   ],
   preview: {
