@@ -16,7 +16,7 @@ const PreviewPostPage = lazy(() => import('components/pages/post/PostPreview'))
 interface PageProps {
   post: PostPayload
   settings?: SettingsPayload
-  title?: string
+  homePageTitle?: string
   preview: boolean
   token: string | null
 }
@@ -30,35 +30,36 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { title, post, preview, token } = props
+  const { homePageTitle, settings, post, preview, token } = props
 
   if (preview) {
     return (
       <PreviewSuspense
         fallback={
           <PostPage
-            loading
-            preview
+            homePageTitle={homePageTitle}
+            preview={preview}
+            settings={settings}
             post={post}
-            title={title}
           />
         }
       >
         <PreviewPostPage
           token={token}
           post={post}
-          title={title}
-          />
+          settings={settings}
+          homePageTitle={homePageTitle}
+        />
       </PreviewSuspense>
     )
   }
 
   return (
     <PostPage
-      loading
-      preview
+      homePageTitle={homePageTitle}
+      preview={preview}
+      settings={settings}
       post={post}
-      title={title}
     />
   )
 }
@@ -76,7 +77,6 @@ export const getStaticProps: GetStaticProps<
     getSettings({ token }),
     getPostBySlug({ token, slug: params.slug }),
     getHomePageTitle({ token }),
-
   ])
 
   if (!post) {

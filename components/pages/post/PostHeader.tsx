@@ -9,7 +9,7 @@ export default function PostHeader(
   const { title, coverImage, date, slug } = props
   return (
     <>
-      <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
+      <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-5xl md:leading-none lg:text-6xl">
         {title}
       </h1>
       <div className="mb-8 sm:mx-0 md:mb-16">
@@ -17,7 +17,7 @@ export default function PostHeader(
       </div>
       <div className="mx-auto max-w-2xl">
         <div className="mb-6 text-lg">
-        <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
+          <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
         </div>
       </div>
     </>

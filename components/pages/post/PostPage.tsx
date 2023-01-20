@@ -1,59 +1,44 @@
-import * as demo from 'lib/demo.data'
+import { PortableText } from '@portabletext/react'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
-import type { PostPayload } from 'types'
+import type { PostPayload, SettingsPayload } from 'types'
 
-import BlogHeader from './BlogHeader'
-import Layout from './BlogLayout'
-import PostBody from './PostBody'
+import Layout from '../../shared/Layout'
 import PostHeader from './PostHeader'
 import PostPageHead from './PostPageHead'
 
 export interface PostPageProps {
+  post: PostPayload | undefined
+  settings: SettingsPayload | undefined
+  homePageTitle: string | undefined
   preview?: boolean
-  loading?: boolean
-  post: PostPayload
-  title: string | undefined
-
 }
 
-const NO_POSTS: PostPayload[] = []
+export default function PostPage({
+  post,
+  settings,
+  homePageTitle,
+  preview,
+}: PostPageProps) {
+  const { coverImage, content, overview, date, title } = post || {}
 
-export default function PostPage(props: PostPageProps) {
-  const { preview, loading, post, title } = props
-
-  const slug = post?.slug
-
-  if (!slug && !preview) {
+  if (!post?.slug && !preview) {
     notFound()
   }
 
   return (
     <>
       <Head>
-        <PostPageHead post={post} title={title}/>
+        <PostPageHead post={post} title={homePageTitle} />
       </Head>
 
-      <Layout preview={preview} loading={loading}>
-        <div className="container mx-auto px-5">
-          <BlogHeader title={title} level={2} />
-          {preview && !post ? (
-            <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
-              Loading...
-            </h1>
-          ) : (
-            <>
-              <article>
-                <PostHeader
-                  title={post.title}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                />
-                <PostBody content={post.content} />
-              </article>
-            </>
-          )}
-        </div>
+      <Layout settings={settings} preview={preview}>
+        <article className="container mx-auto px-5">
+          <PostHeader title={title} coverImage={coverImage} date={date} />
+          <div className={`portableText mx-auto max-w-2xl`}>
+            <PortableText value={content} />
+          </div>
+        </article>
       </Layout>
     </>
   )

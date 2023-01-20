@@ -1,12 +1,13 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Header } from 'components/shared/Header'
-import ImageBox from 'components/shared/ImageBox'
-import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
+import { CustomPortableText } from '../../shared/CustomPortableText'
+import { Header } from '../../shared/Header'
+import ImageBox from '../../shared/ImageBox'
 import Layout from '../../shared/Layout'
+import ScrollUp from '../../shared/ScrollUp'
 import ProjectPageHead from './ProjectPageHead'
 
 export interface ProjectPageProps {
@@ -37,6 +38,10 @@ export default function ProjectPage({
   const startYear = new Date(duration?.start).getFullYear()
   const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
 
+  if (!project?.slug && !preview) {
+    notFound()
+  }
+
   return (
     <>
       <Head>
@@ -44,8 +49,7 @@ export default function ProjectPage({
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <div>
-          <div className="mb-20 space-y-6">
+          <article className="mb-20 space-y-6">
             {/* Header */}
             <Header title={title} description={overview} />
 
@@ -113,9 +117,8 @@ export default function ProjectPage({
             )}
             {/* Workaround: scroll to top on route change */}
             <ScrollUp />
-          </div>
+          </article>
           <div className="absolute left-0 w-screen border-t" />
-        </div>
       </Layout>
     </>
   )
