@@ -16,7 +16,7 @@ export interface ProjectPageProps {
   preview?: boolean
 }
 
-export function ProjectPage({
+export default function ProjectPage({
   project,
   settings,
   homePageTitle,

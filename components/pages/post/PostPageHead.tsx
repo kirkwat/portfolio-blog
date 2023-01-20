@@ -3,20 +3,20 @@ import { SiteMeta } from 'components/global/SiteMeta'
 import { PostPayload } from 'types'
 
 export interface PostPageHeadProps {
-  project: PostPayload | undefined
+  post: PostPayload | undefined
   title: string | undefined
 }
 
-export default function ProjectPageHead({
-  project,
+export default function PostPageHead({
+  post,
   title,
-}: ProjectPageHeadProps) {
+}: PostPageHeadProps) {
   return (
     <SiteMeta
       baseTitle={title}
-      description={project?.overview ? toPlainText(project.overview) : ''}
-      image={project?.coverImage}
-      title={project?.title}
+      description={post?.overview ? toPlainText(post.overview) : ''}
+      image={post?.coverImage}
+      title={post?.title}
     />
   )
 }

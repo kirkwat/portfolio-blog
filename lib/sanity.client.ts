@@ -4,8 +4,8 @@ import {
   homePageTitleQuery,
   pagePaths,
   pagesBySlugQuery,
+  postBySlugQuery,
   postPaths,
-  postsBySlugQuery,
   postsQuery,
   projectBySlugQuery,
   projectPaths,
@@ -65,7 +65,7 @@ export async function getPostBySlug({
   slug: string
   token?: string
 }): Promise<PostPayload | undefined> {
-  return await sanityClient(token)?.fetch(postsBySlugQuery, { slug })
+  return await sanityClient(token)?.fetch(postBySlugQuery, { slug })
 }
 
 export async function getProjectBySlug({

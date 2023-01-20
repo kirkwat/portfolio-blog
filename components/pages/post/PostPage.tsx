@@ -1,29 +1,26 @@
-import BlogHeader from 'components/BlogHeader'
-import Layout from 'components/BlogLayout'
-import MoreStories from 'components/MoreStories'
-import PostBody from 'components/PostBody'
-import PostHeader from 'components/PostHeader'
-import PostPageHead from 'components/PostPageHead'
-import PostTitle from 'components/PostTitle'
-import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
-import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
+import type { PostPayload } from 'types'
+
+import BlogHeader from './BlogHeader'
+import Layout from './BlogLayout'
+import PostBody from './PostBody'
+import PostHeader from './PostHeader'
+import PostPageHead from './PostPageHead'
 
 export interface PostPageProps {
   preview?: boolean
   loading?: boolean
-  post: Post
-  morePosts: Post[]
-  settings: Settings
+  post: PostPayload
+  title: string | undefined
+
 }
 
-const NO_POSTS: Post[] = []
+const NO_POSTS: PostPayload[] = []
 
 export default function PostPage(props: PostPageProps) {
-  const { preview, loading, morePosts = NO_POSTS, post, settings } = props
-  const { title = demo.title } = settings || {}
+  const { preview, loading, post, title } = props
 
   const slug = post?.slug
 
@@ -34,14 +31,16 @@ export default function PostPage(props: PostPageProps) {
   return (
     <>
       <Head>
-        <PostPageHead settings={settings} post={post} />
+        <PostPageHead post={post} title={title}/>
       </Head>
 
       <Layout preview={preview} loading={loading}>
-        <div className='container mx-auto px-5'>
+        <div className="container mx-auto px-5">
           <BlogHeader title={title} level={2} />
           {preview && !post ? (
-            <PostTitle>Loading…</PostTitle>
+            <h1 className="mb-12 text-center text-6xl font-bold leading-tight tracking-tighter md:text-left md:text-7xl md:leading-none lg:text-8xl">
+              Loading...
+            </h1>
           ) : (
             <>
               <article>
@@ -49,12 +48,9 @@ export default function PostPage(props: PostPageProps) {
                   title={post.title}
                   coverImage={post.coverImage}
                   date={post.date}
-                  author={post.author}
                 />
                 <PostBody content={post.content} />
               </article>
-              <SectionSeparator />
-              {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
             </>
           )}
         </div>

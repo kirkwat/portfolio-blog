@@ -1,5 +1,5 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
-import { ProjectPage } from 'components/pages/project/ProjectPage'
+import ProjectPage from 'components/pages/project/ProjectPage'
 import { PreviewWrapper } from 'components/preview/PreviewWrapper'
 import {
   getHomePageTitle,
