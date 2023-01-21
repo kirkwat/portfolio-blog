@@ -38,17 +38,15 @@ export const pagesBySlugQuery = groq`
   }
 `
 export const postsQuery = groq`
-  {"posts": *[_type == "post"] | order(_createdAt desc)
-    {
-      _type,
-      _id,
-      content,
-      overview,
-      coverImage,
-      date,
-      "slug": slug.current,
-      title,
-    }
+  *[_type == "post"] | order(_createdAt desc) {
+    _type,
+    _id,
+    content,
+    overview,
+    coverImage,
+    date,
+    "slug": slug.current,
+    title,
   }
 `
 
@@ -65,20 +63,18 @@ export const postBySlugQuery = groq`
 `
 
 export const projectsQuery = groq`
-  {"projects": *[_type == "project"] | order(_createdAt desc)
-    {
-      _type,
-      _id,
-      client, 
-      coverImage,
-      description,
-      duration, 
-      overview,
-      site, 
-      "slug": slug.current,
-      tags,
-      title,
-    }
+  *[_type == "project"] | order(_createdAt desc) {
+    _type,
+    _id,
+    client, 
+    coverImage,
+    description,
+    duration, 
+    overview,
+    site, 
+    "slug": slug.current,
+    tags,
+    title,
   }
 `
 

@@ -30,13 +30,13 @@ export function Navbar({ menuItems }: NavbarProps) {
           )
         })}
       <Link
-        href="posts"
+        href="/posts"
         className="text-lg text-white hover:text-gray-300 md:text-xl"
       >
         Blog
       </Link>
       <Link
-        href="projects"
+        href="/projects"
         className="text-lg text-white hover:text-gray-300 md:text-xl"
       >
         Projects

@@ -83,10 +83,6 @@ export interface ProjectPayload {
   _type: string
 }
 
-export interface ProjectsPayload {
-  projects: ProjectPayload[]
-}
-
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
