@@ -1,9 +1,9 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import ImageBox from 'components/shared/ImageBox'
-import type { ShowcasePost } from 'types'
+import type { PostPayload } from 'types'
 
 interface PostsProps {
-  post: ShowcasePost
+  post: PostPayload
   odd: number
 }
 
@@ -30,7 +30,7 @@ export function PostListItem(props: PostsProps) {
   )
 }
 
-function TextBox({ post }: { post: ShowcasePost }) {
+function TextBox({ post }: { post: PostPayload }) {
   return (
     <div className="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
       <div>

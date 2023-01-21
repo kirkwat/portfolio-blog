@@ -7,10 +7,7 @@ export interface PostPageHeadProps {
   title: string | undefined
 }
 
-export default function PostPageHead({
-  post,
-  title,
-}: PostPageHeadProps) {
+export default function PostPageHead({ post, title }: PostPageHeadProps) {
   return (
     <SiteMeta
       baseTitle={title}

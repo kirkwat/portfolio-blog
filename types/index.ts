@@ -63,10 +63,6 @@ export interface PostPayload {
   date?: string
 }
 
-export interface PostsPayload {
-  posts: PostPayload[]
-}
-
 export interface ProjectPayload {
   client?: string
   coverImage?: Image

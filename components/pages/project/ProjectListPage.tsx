@@ -5,7 +5,6 @@ import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import ProjectSlugRoute from 'pages/[slug]'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
 import { ProjectListItem } from './ProjectListItem'
@@ -21,7 +20,6 @@ export function ProjectListPage({
   settings,
   preview,
 }: ProjectListPageProps) {
-
   return (
     <Layout settings={settings} preview={preview}>
       <div className="space-y-20">
