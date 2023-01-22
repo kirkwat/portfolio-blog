@@ -1,8 +1,8 @@
-import { PortableText } from '@portabletext/react'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 import type { PostPayload, SettingsPayload } from 'types'
 
+import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
 import PostHeader from './PostHeader'
 import PostPageHead from './PostPageHead'
@@ -33,10 +33,10 @@ export default function PostPage({
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <article className="container mx-auto px-5">
+        <article className="mx-auto mb-6  max-w-3xl">
           <PostHeader title={title} coverImage={coverImage} date={date} />
-          <div className={`portableText mx-auto max-w-2xl`}>
-            <PortableText value={content} />
+          <div className="portableText">
+            <CustomPortableText value={content} />
           </div>
         </article>
       </Layout>

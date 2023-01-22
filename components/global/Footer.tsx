@@ -3,7 +3,7 @@ import { PortableTextBlock } from 'sanity'
 
 export function Footer({ footer }: { footer: PortableTextBlock[] }) {
   return (
-    <footer className="bottom-0 w-full bg-black py-6 text-center md:py-10">
+    <footer className="bottom-0 w-full bg-black py-5 text-center md:py-10">
       {footer && (
         <CustomPortableText
           paragraphClasses="text-md text-white"
