@@ -1,3 +1,4 @@
+import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 import type { PostPayload, SettingsPayload } from 'types'
@@ -20,7 +21,7 @@ export default function PostPage({
   homePageTitle,
   preview,
 }: PostPageProps) {
-  const { coverImage, content, overview, date, title } = post || {}
+  const { coverImage, content, tags, date, title } = post || {}
 
   if (!post?.slug && !preview) {
     notFound()
@@ -34,10 +35,12 @@ export default function PostPage({
 
       <Layout settings={settings} preview={preview}>
         <article className="mx-auto mb-6  max-w-3xl">
-          <PostHeader title={title} coverImage={coverImage} date={date} />
+          <PostHeader title={title} coverImage={coverImage} date={date} tags={tags} />
           <div className="portableText">
             <CustomPortableText value={content} />
           </div>
+          {/* Workaround: scroll to top on route change */}
+          <ScrollUp />
         </article>
       </Layout>
     </>

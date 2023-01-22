@@ -20,8 +20,9 @@ export interface MilestoneItem {
 export interface ShowcasePost {
   _type: string
   coverImage?: Image
-  overview?: PortableTextBlock[]
+  excerpt?: string
   slug?: string
+  tags?: string[]
   title?: string
 }
 
@@ -57,8 +58,9 @@ export interface PostPayload {
   title?: string
   name?: string
   slug?: string
+  tags?: string[]
   content?: PortableTextBlock[]
-  overview?: PortableTextBlock[]
+  excerpt?: string
   coverImage?: Image
   date?: string
 }

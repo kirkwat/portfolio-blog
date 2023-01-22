@@ -42,10 +42,11 @@ export const postsQuery = groq`
     _type,
     _id,
     content,
-    overview,
+    excerpt,
     coverImage,
     date,
     "slug": slug.current,
+    tags,
     title,
   }
 `
@@ -54,10 +55,11 @@ export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     _id,
     content,
-    overview,
+    excerpt,
     coverImage,
     date,
     slug,
+    tags,
     title,
   }
 `

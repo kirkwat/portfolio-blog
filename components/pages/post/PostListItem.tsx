@@ -40,7 +40,7 @@ function TextBox({ post }: { post: PostPayload }) {
         </div>
         {/* Overview  */}
         <div className="font-serif text-gray-500">
-          <CustomPortableText value={post.overview} />
+          {post.excerpt}
         </div>
       </div>
     </div>

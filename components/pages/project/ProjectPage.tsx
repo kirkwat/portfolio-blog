@@ -49,11 +49,11 @@ export default function ProjectPage({
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <article className="mb-20 space-y-6">
+        <article className="mx-auto mb-6  max-w-3xl portableText">
           {/* Header */}
-          <Header title={title} description={overview} />
+          <Header centered title={title} description={overview} />
 
-          <div className="rounded-md border">
+          <div className="mb-5 rounded-md border md:mb-6">
             {/* Image  */}
             <ImageBox
               image={coverImage}
@@ -111,14 +111,12 @@ export default function ProjectPage({
           {/* Description */}
           {description && (
             <CustomPortableText
-              paragraphClasses="font-serif max-w-3xl text-xl text-gray-600"
               value={description}
             />
           )}
           {/* Workaround: scroll to top on route change */}
           <ScrollUp />
         </article>
-        <div className="absolute left-0 w-screen border-t" />
       </Layout>
     </>
   )
