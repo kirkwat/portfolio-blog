@@ -8,8 +8,9 @@ export const homePageQuery = groq`
     showcasePosts[]->{
       _type,
       coverImage, 
-      overview, 
+      excerpt, 
       "slug": slug.current,
+      date,
       title, 
     }, 
     showcaseProjects[]->{

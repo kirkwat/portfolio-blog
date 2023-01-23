@@ -23,6 +23,7 @@ export interface ShowcasePost {
   excerpt?: string
   slug?: string
   tags?: string[]
+  date?: string
   title?: string
 }
 

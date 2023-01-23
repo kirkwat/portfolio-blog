@@ -1,12 +1,13 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import ImageBox from 'components/shared/ImageBox'
-import type { PostPayload } from 'types'
+import { format, parseISO } from 'date-fns'
+import type { PostPayload, ShowcasePost } from 'types'
 
-interface PostsProps {
-  post: PostPayload
+import ImageBox from '../../shared/ImageBox'
+
+interface PostCardProps {
+  post: PostPayload | ShowcasePost
 }
 
-export function PostListItem(props: PostsProps) {
+export function PostListCard(props: PostCardProps) {
   const { post } = props
 
   return (
@@ -19,11 +20,19 @@ export function PostListItem(props: PostsProps) {
         />
       </div>
       <div className="relative mt-1 flex w-full flex-col justify-between p-3 xl:mt-0">
-        {/* Title */}
-        <div className="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">
-          {post.title}
+        <div className="mb-2 flex flex-row justify-between">
+          {/* Title */}
+          <div className="text-xl font-extrabold tracking-tight md:text-2xl">
+            {post.title}
+          </div>
+          {/* Date */}
+          <div className="text-center text-lg md:text-right">
+            <time dateTime={post?.date}>
+              {format(parseISO(post?.date), 'LLLL	d, yyyy')}
+            </time>
+          </div>
         </div>
-        {/* Overview  */}
+        {/* Excerpt  */}
         <div className="font-serif text-gray-500">{post.excerpt}</div>
       </div>
       {/* Tags */}

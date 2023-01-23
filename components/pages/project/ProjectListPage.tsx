@@ -7,7 +7,7 @@ import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
-import { ProjectListItem } from './ProjectListItem'
+import { ProjectListCard } from './ProjectListCard'
 
 export interface ProjectListPageProps {
   projects?: ProjectPayload[]
@@ -22,12 +22,12 @@ export function ProjectListPage({
 }: ProjectListPageProps) {
   return (
     <Layout settings={settings} preview={preview}>
-      <div className="space-y-20">
+      <div className="mb-20 space-y-10">
         {/* Header */}
-        <Header centered title="Project List" />
-        {/* Showcase projects */}
+        <Header centered title="Projects" />
+        {/* List projects */}
         {projects && projects.length > 0 && (
-          <div className="mx-auto max-w-[100rem] rounded-md border">
+          <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, key) => {
               const href = resolveHref(project._type, project.slug)
               if (!href) {
@@ -35,7 +35,7 @@ export function ProjectListPage({
               }
               return (
                 <Link key={key} href={href}>
-                  <ProjectListItem project={project} odd={key % 2} />
+                  <ProjectListCard project={project} />
                 </Link>
               )
             })}

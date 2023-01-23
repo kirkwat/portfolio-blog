@@ -1,4 +1,3 @@
-import { ProjectListItem } from 'components/pages/home/ProjectListItem'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -8,8 +7,9 @@ import Link from 'next/link'
 import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
+import { PostListCard } from '../post/PostListCard'
+import { ProjectListCard } from '../project/ProjectListCard'
 import HomePageHead from './HomePageHead'
-import { PostListItem } from './PostListItem'
 
 export interface HomePageProps {
   settings?: SettingsPayload
@@ -32,13 +32,13 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <div className="space-y-20">
+        <div className="mb-20 space-y-10">
           {/* Header */}
           {title && <Header centered title={title} description={overview} />}
           {/* Showcase projects */}
-          <div className="text-2xl font-bold">My Top Projects</div>
+          <div className="text-center text-2xl font-bold">My Top Projects</div>
           {showcaseProjects && showcaseProjects.length > 0 && (
-            <div className="mx-auto max-w-[100rem] rounded-md border">
+            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
               {showcaseProjects.map((project, key) => {
                 const href = resolveHref(project._type, project.slug)
                 if (!href) {
@@ -46,16 +46,18 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 }
                 return (
                   <Link key={key} href={href}>
-                    <ProjectListItem project={project} odd={key % 2} />
+                    <ProjectListCard project={project} />
                   </Link>
                 )
               })}
             </div>
           )}
           {/* Showcase posts */}
-          <div className="text-2xl font-bold">My Top Blog Posts</div>
+          <div className="text-center text-2xl font-bold">
+            My Top Blog Posts
+          </div>
           {showcasePosts && showcasePosts.length > 0 && (
-            <div className="mx-auto max-w-[100rem] rounded-md border">
+            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
               {showcasePosts.map((post, key) => {
                 const href = resolveHref(post._type, post.slug)
                 if (!href) {
@@ -63,7 +65,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 }
                 return (
                   <Link key={key} href={href}>
-                    <PostListItem post={post} odd={key % 2} />
+                    <PostListCard post={post} />
                   </Link>
                 )
               })}

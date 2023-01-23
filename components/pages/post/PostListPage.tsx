@@ -7,7 +7,7 @@ import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import type { PostPayload, SettingsPayload } from 'types'
 
-import { PostListItem } from './PostListItem'
+import { PostListCard } from './PostListCard'
 
 export interface PostListPageProps {
   posts?: PostPayload[]
@@ -21,7 +21,7 @@ export function PostListPage({ posts, settings, preview }: PostListPageProps) {
       <div className="mb-20 space-y-10">
         {/* Header */}
         <Header centered title="Blogs" />
-        {/* Showcase posts */}
+        {/* List posts */}
         {posts && posts.length > 0 && (
           <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, key) => {
@@ -31,7 +31,7 @@ export function PostListPage({ posts, settings, preview }: PostListPageProps) {
               }
               return (
                 <Link key={key} href={href}>
-                  <PostListItem post={post} />
+                  <PostListCard post={post} />
                 </Link>
               )
             })}
