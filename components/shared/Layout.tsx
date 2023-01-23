@@ -20,10 +20,12 @@ export default function Layout({
   preview,
 }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-black">
+    <div className="flex h-screen flex-col justify-between bg-white text-black">
       {preview && <PreviewBanner />}
       <Navbar menuItems={settings?.menuItems} />
-      <main className="container mx-auto mt-10 px-4 md:mt-16">{children}</main>
+      <main className="container mx-auto mb-auto mt-10 px-4 md:mt-16">
+        {children}
+      </main>
       <Footer footer={settings?.footer} />
     </div>
   )

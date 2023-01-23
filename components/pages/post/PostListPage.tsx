@@ -18,12 +18,12 @@ export interface PostListPageProps {
 export function PostListPage({ posts, settings, preview }: PostListPageProps) {
   return (
     <Layout settings={settings} preview={preview}>
-      <div className="space-y-20">
+      <div className="mb-20 space-y-10">
         {/* Header */}
-        <Header centered title="Blog Post List" />
+        <Header centered title="Blogs" />
         {/* Showcase posts */}
         {posts && posts.length > 0 && (
-          <div className="mx-auto max-w-[100rem] rounded-md border">
+          <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, key) => {
               const href = resolveHref(post._type, post.slug)
               if (!href) {
@@ -31,7 +31,7 @@ export function PostListPage({ posts, settings, preview }: PostListPageProps) {
               }
               return (
                 <Link key={key} href={href}>
-                  <PostListItem post={post} odd={key % 2} />
+                  <PostListItem post={post} />
                 </Link>
               )
             })}

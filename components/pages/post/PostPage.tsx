@@ -35,7 +35,12 @@ export default function PostPage({
 
       <Layout settings={settings} preview={preview}>
         <article className="mx-auto mb-6  max-w-3xl">
-          <PostHeader title={title} coverImage={coverImage} date={date} tags={tags} />
+          <PostHeader
+            title={title}
+            coverImage={coverImage}
+            date={date}
+            tags={tags}
+          />
           <div className="portableText">
             <CustomPortableText value={content} />
           </div>

@@ -49,7 +49,7 @@ export default function ProjectPage({
       </Head>
 
       <Layout settings={settings} preview={preview}>
-        <article className="mx-auto mb-6  max-w-3xl portableText">
+        <article className="portableText mx-auto  mb-6 max-w-3xl">
           {/* Header */}
           <Header centered title={title} description={overview} />
 
@@ -109,11 +109,7 @@ export default function ProjectPage({
           </div>
 
           {/* Description */}
-          {description && (
-            <CustomPortableText
-              value={description}
-            />
-          )}
+          {description && <CustomPortableText value={description} />}
           {/* Workaround: scroll to top on route change */}
           <ScrollUp />
         </article>
