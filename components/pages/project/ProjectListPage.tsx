@@ -5,12 +5,12 @@ import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import type { ProjectPayload, SettingsPayload } from 'types'
+import type { SettingsPayload, ShowcaseProject } from 'types'
 
 import { ProjectListCard } from './ProjectListCard'
 
 export interface ProjectListPageProps {
-  projects?: ProjectPayload[]
+  projects?: ShowcaseProject[]
   settings?: SettingsPayload
   preview?: boolean
 }

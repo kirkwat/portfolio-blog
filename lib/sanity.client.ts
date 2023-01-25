@@ -19,6 +19,8 @@ import type {
   PostPayload,
   ProjectPayload,
   SettingsPayload,
+  ShowcasePost,
+  ShowcaseProject,
 } from 'types'
 
 /**
@@ -80,7 +82,7 @@ export async function getPosts({
   token,
 }: {
   token?: string
-}): Promise<PostPayload[] | undefined> {
+}): Promise<ShowcasePost[] | undefined> {
   return await sanityClient(token)?.fetch(postsQuery)
 }
 
@@ -88,7 +90,7 @@ export async function getProjects({
   token,
 }: {
   token?: string
-}): Promise<ProjectPayload[] | undefined> {
+}): Promise<ShowcaseProject[] | undefined> {
   return await sanityClient(token)?.fetch(projectsQuery)
 }
 

@@ -5,12 +5,12 @@ import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import type { PostPayload, SettingsPayload } from 'types'
+import type { SettingsPayload, ShowcasePost } from 'types'
 
 import { PostListCard } from './PostListCard'
 
 export interface PostListPageProps {
-  posts?: PostPayload[]
+  posts?: ShowcasePost[]
   settings?: SettingsPayload
   preview?: boolean
 }

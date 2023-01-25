@@ -1,10 +1,10 @@
 import { PostListPage } from 'components/pages/post/PostListPage'
 import { getPosts, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { PostPayload, SettingsPayload } from 'types'
+import { SettingsPayload, ShowcasePost } from 'types'
 
 interface PageProps {
-  posts: PostPayload[]
+  posts: ShowcasePost[]
   settings: SettingsPayload
   preview: boolean
   token: string | null

@@ -39,7 +39,7 @@ export interface ShowcaseProject {
 // Page payloads
 
 export interface HomePagePayload {
-  footer?: PortableTextBlock[]
+  avatar?: Image
   overview?: PortableTextBlock[]
   showcasePosts?: ShowcasePost[]
   showcaseProjects?: ShowcaseProject[]
@@ -55,9 +55,7 @@ export interface PagePayload {
 }
 
 export interface PostPayload {
-  _type?: string
   title?: string
-  name?: string
   slug?: string
   tags?: string[]
   content?: PortableTextBlock[]
@@ -79,12 +77,17 @@ export interface ProjectPayload {
   slug: string
   tags?: string[]
   title?: string
-  _type: string
 }
 
+//TODO add support for resume file
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
   ogImage?: Image
-  title?: string
+  linkedin?: string
+  instagram?: string
+  facebook?: string
+  pinterest?: string
+  youtube?: string
+  tiktok?: string
 }

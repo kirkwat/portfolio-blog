@@ -11,7 +11,7 @@ export default function PostPageHead({ post, title }: PostPageHeadProps) {
   return (
     <SiteMeta
       baseTitle={title}
-      description={post?.overview ? toPlainText(post.overview) : ''}
+      description={post?.excerpt ? post.excerpt : ''}
       image={post?.coverImage}
       title={post?.title}
     />
