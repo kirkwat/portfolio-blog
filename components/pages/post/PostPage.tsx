@@ -1,63 +1,52 @@
-import BlogHeader from 'components/BlogHeader'
-import Layout from 'components/BlogLayout'
-import MoreStories from 'components/MoreStories'
-import PostBody from 'components/PostBody'
-import PostHeader from 'components/PostHeader'
-import PostPageHead from 'components/PostPageHead'
-import PostTitle from 'components/PostTitle'
-import SectionSeparator from 'components/SectionSeparator'
-import * as demo from 'lib/demo.data'
-import type { Post, Settings } from 'lib/sanity.queries'
+import ScrollUp from 'components/shared/ScrollUp'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
+import type { PostPayload, SettingsPayload } from 'types'
+
+import { CustomPortableText } from '../../shared/CustomPortableText'
+import Layout from '../../shared/Layout'
+import PostHeader from './PostHeader'
+import PostPageHead from './PostPageHead'
 
 export interface PostPageProps {
+  post: PostPayload | undefined
+  settings: SettingsPayload | undefined
+  homePageTitle: string | undefined
   preview?: boolean
-  loading?: boolean
-  post: Post
-  morePosts: Post[]
-  settings: Settings
 }
 
-const NO_POSTS: Post[] = []
+export default function PostPage({
+  post,
+  settings,
+  homePageTitle,
+  preview,
+}: PostPageProps) {
+  const { coverImage, content, tags, date, title } = post || {}
 
-export default function PostPage(props: PostPageProps) {
-  const { preview, loading, morePosts = NO_POSTS, post, settings } = props
-  const { title = demo.title } = settings || {}
-
-  const slug = post?.slug
-
-  if (!slug && !preview) {
+  if (!post?.slug && !preview) {
     notFound()
   }
 
   return (
     <>
       <Head>
-        <PostPageHead settings={settings} post={post} />
+        <PostPageHead post={post} title={homePageTitle} />
       </Head>
 
-      <Layout preview={preview} loading={loading}>
-        <div className='container mx-auto px-5'>
-          <BlogHeader title={title} level={2} />
-          {preview && !post ? (
-            <PostTitle>Loading…</PostTitle>
-          ) : (
-            <>
-              <article>
-                <PostHeader
-                  title={post.title}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                  author={post.author}
-                />
-                <PostBody content={post.content} />
-              </article>
-              <SectionSeparator />
-              {morePosts?.length > 0 && <MoreStories posts={morePosts} />}
-            </>
-          )}
-        </div>
+      <Layout settings={settings} preview={preview}>
+        <article className="mx-auto mb-6  max-w-3xl">
+          <PostHeader
+            title={title}
+            coverImage={coverImage}
+            date={date}
+            tags={tags}
+          />
+          <div className="portableText">
+            <CustomPortableText value={content} />
+          </div>
+          {/* Workaround: scroll to top on route change */}
+          <ScrollUp />
+        </article>
       </Layout>
     </>
   )

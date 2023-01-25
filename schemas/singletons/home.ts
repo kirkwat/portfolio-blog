@@ -92,36 +92,6 @@ export default defineType({
         }),
       ],
     }),
-    defineField({
-      name: 'linkedin',
-      title: 'LinkedIn URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'instagram',
-      title: 'Instagram URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'facebook',
-      title: 'Facebook URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'pinterest',
-      title: 'Pinterest URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'youtube',
-      title: 'Youtube URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'tiktok',
-      title: 'TikTok URL',
-      type: 'url',
-    }),
   ],
   preview: {
     select: {

@@ -20,8 +20,10 @@ export interface MilestoneItem {
 export interface ShowcasePost {
   _type: string
   coverImage?: Image
-  overview?: PortableTextBlock[]
+  excerpt?: string
   slug?: string
+  tags?: string[]
+  date?: string
   title?: string
 }
 
@@ -37,7 +39,7 @@ export interface ShowcaseProject {
 // Page payloads
 
 export interface HomePagePayload {
-  footer?: PortableTextBlock[]
+  avatar?: Image
   overview?: PortableTextBlock[]
   showcasePosts?: ShowcasePost[]
   showcaseProjects?: ShowcaseProject[]
@@ -53,18 +55,13 @@ export interface PagePayload {
 }
 
 export interface PostPayload {
-  _type?: string
   title?: string
-  name?: string
   slug?: string
+  tags?: string[]
   content?: PortableTextBlock[]
-  overview?: PortableTextBlock[]
+  excerpt?: string
   coverImage?: Image
   date?: string
-}
-
-export interface PostsPayload {
-  posts: PostPayload[]
 }
 
 export interface ProjectPayload {
@@ -80,15 +77,17 @@ export interface ProjectPayload {
   slug: string
   tags?: string[]
   title?: string
-  _type: string
 }
 
-export interface ProjectsPayload {
-  projects: ProjectPayload[]
-}
-
+//TODO add support for resume file
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
   ogImage?: Image
+  linkedin?: string
+  instagram?: string
+  facebook?: string
+  pinterest?: string
+  youtube?: string
+  tiktok?: string
 }

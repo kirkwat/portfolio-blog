@@ -2,7 +2,8 @@ import { usePreview } from 'lib/sanity.preview'
 import { projectBySlugQuery } from 'lib/sanity.queries'
 import type { ProjectPayload } from 'types'
 
-import { ProjectPage, ProjectPageProps } from './ProjectPage'
+import ProjectPage from './ProjectPage'
+import { ProjectPageProps } from './ProjectPage'
 
 export default function ProjectPreview({
   token,

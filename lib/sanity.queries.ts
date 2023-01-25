@@ -2,14 +2,15 @@ import { groq } from 'next-sanity'
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
-    _id,
-    footer,
+    avatar,
     overview,
     showcasePosts[]->{
       _type,
       coverImage, 
-      overview, 
+      excerpt, 
       "slug": slug.current,
+      date,
+      tags,
       title, 
     }, 
     showcaseProjects[]->{
@@ -38,53 +39,42 @@ export const pagesBySlugQuery = groq`
   }
 `
 export const postsQuery = groq`
-  {"posts": *[_type == "post"] | order(_createdAt desc)
-    {
-      _type,
-      _id,
-      content,
-      overview,
-      coverImage,
-      date,
-      "slug": slug.current,
-      title,
-    }
+  *[_type == "post"] | order(_createdAt desc) {
+    _type,
+    excerpt,
+    coverImage,
+    date,
+    "slug": slug.current,
+    tags,
+    title,
   }
 `
 
-export const postsBySlugQuery = groq`
+export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
-    _id,
     content,
-    overview,
+    excerpt,
     coverImage,
     date,
-    slug,
+    "slug": slug.current,
+    tags,
     title,
   }
 `
 
 export const projectsQuery = groq`
-  {"projects": *[_type == "project"] | order(_createdAt desc)
-    {
-      _type,
-      _id,
-      client, 
-      coverImage,
-      description,
-      duration, 
-      overview,
-      site, 
-      "slug": slug.current,
-      tags,
-      title,
-    }
+  *[_type == "project"] | order(_createdAt desc) {
+    _type,
+    coverImage,
+    overview,
+    "slug": slug.current,
+    tags,
+    title,
   }
 `
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
-    _id,
     client,
     coverImage,
     description,
@@ -109,6 +99,7 @@ export const pagePaths = groq`
   *[_type == "page" && slug.current != null].slug.current
 `
 
+//TODO add support for resume file
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
@@ -118,5 +109,11 @@ export const settingsQuery = groq`
       title
     },
     ogImage,
+    linkedin,
+    instagram,
+    facebook,
+    pinterest,
+    youtube,
+    tiktok
   }
 `

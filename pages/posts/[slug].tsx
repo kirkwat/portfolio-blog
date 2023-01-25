@@ -1,23 +1,20 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
-import ProjectPage from 'components/pages/project/ProjectPage'
-import { PreviewWrapper } from 'components/preview/PreviewWrapper'
+import PostPage from 'components/pages/post/PostPage'
 import {
   getHomePageTitle,
-  getProjectBySlug,
-  getProjectPaths,
+  getPostBySlug,
+  getPostPaths,
   getSettings,
 } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { ProjectPayload, SettingsPayload } from 'types'
+import { PostPayload, SettingsPayload } from 'types'
 
-const ProjectPreview = lazy(
-  () => import('components/pages/project/ProjectPreview')
-)
+const PreviewPostPage = lazy(() => import('components/pages/post/PostPreview'))
 
 interface PageProps {
-  project?: ProjectPayload
+  post: PostPayload
   settings?: SettingsPayload
   homePageTitle?: string
   preview: boolean
@@ -33,25 +30,23 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { homePageTitle, settings, project, preview, token } = props
+  const { homePageTitle, settings, post, preview, token } = props
 
   if (preview) {
     return (
       <PreviewSuspense
         fallback={
-          <PreviewWrapper>
-            <ProjectPage
-              homePageTitle={homePageTitle}
-              project={project}
-              settings={settings}
-              preview={preview}
-            />
-          </PreviewWrapper>
+          <PostPage
+            homePageTitle={homePageTitle}
+            preview={preview}
+            settings={settings}
+            post={post}
+          />
         }
       >
-        <ProjectPreview
+        <PreviewPostPage
           token={token}
-          project={project}
+          post={post}
           settings={settings}
           homePageTitle={homePageTitle}
         />
@@ -60,11 +55,11 @@ export default function ProjectSlugRoute(props: PageProps) {
   }
 
   return (
-    <ProjectPage
+    <PostPage
       homePageTitle={homePageTitle}
-      project={project}
-      settings={settings}
       preview={preview}
+      settings={settings}
+      post={post}
     />
   )
 }
@@ -78,13 +73,13 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, project, homePageTitle] = await Promise.all([
+  const [settings, post, homePageTitle] = await Promise.all([
     getSettings({ token }),
-    getProjectBySlug({ token, slug: params.slug }),
+    getPostBySlug({ token, slug: params.slug }),
     getHomePageTitle({ token }),
   ])
 
-  if (!project) {
+  if (!post) {
     return {
       notFound: true,
     }
@@ -92,9 +87,9 @@ export const getStaticProps: GetStaticProps<
 
   return {
     props: {
-      project,
+      post,
       settings,
-      homePageTitle,
+      title: homePageTitle,
       preview,
       token: previewData.token ?? null,
     },
@@ -102,10 +97,10 @@ export const getStaticProps: GetStaticProps<
 }
 
 export const getStaticPaths = async () => {
-  const paths = await getProjectPaths()
+  const paths = await getPostPaths()
 
   return {
-    paths: paths?.map((slug) => resolveHref('project', slug)) || [],
+    paths: paths?.map((slug) => resolveHref('post', slug)) || [],
     fallback: false,
   }
 }

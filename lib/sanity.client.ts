@@ -4,8 +4,8 @@ import {
   homePageTitleQuery,
   pagePaths,
   pagesBySlugQuery,
+  postBySlugQuery,
   postPaths,
-  postsBySlugQuery,
   postsQuery,
   projectBySlugQuery,
   projectPaths,
@@ -17,10 +17,10 @@ import type {
   HomePagePayload,
   PagePayload,
   PostPayload,
-  PostsPayload,
   ProjectPayload,
-  ProjectsPayload,
   SettingsPayload,
+  ShowcasePost,
+  ShowcaseProject,
 } from 'types'
 
 /**
@@ -65,7 +65,7 @@ export async function getPostBySlug({
   slug: string
   token?: string
 }): Promise<PostPayload | undefined> {
-  return await sanityClient(token)?.fetch(postsBySlugQuery, { slug })
+  return await sanityClient(token)?.fetch(postBySlugQuery, { slug })
 }
 
 export async function getProjectBySlug({
@@ -82,7 +82,7 @@ export async function getPosts({
   token,
 }: {
   token?: string
-}): Promise<PostsPayload | undefined> {
+}): Promise<ShowcasePost[] | undefined> {
   return await sanityClient(token)?.fetch(postsQuery)
 }
 
@@ -90,7 +90,7 @@ export async function getProjects({
   token,
 }: {
   token?: string
-}): Promise<ProjectsPayload | undefined> {
+}): Promise<ShowcaseProject[] | undefined> {
   return await sanityClient(token)?.fetch(projectsQuery)
 }
 
