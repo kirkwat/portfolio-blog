@@ -12,9 +12,31 @@ export default defineType({
     defineField({
       name: 'title',
       description: 'This field is the title of your personal website.',
-      title: 'Title',
+      title: 'Name and Title',
       type: 'string',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'role',
+      description: 'This field is your current role (student, designer, etc).',
+      title: 'Role',
+      type: 'string',
+    }),
+    defineField({
+      name: 'school',
+      description: 'This field is your current school or company.',
+      title: 'School/Company',
+      type: 'string',
+    }),
+    defineField({
+      name: 'school_link',
+      description: 'This field is a link for your current school or company.',
+      title: 'School/Company Link',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     }),
     defineField({
       name: 'avatar',
@@ -65,6 +87,26 @@ export default defineType({
         }),
       ],
       validation: (rule) => rule.max(155).required(),
+    }),
+    defineField({
+      title: 'Interests',
+      name: 'interests',
+      description: 'List any career interests you may have.',
+      type: 'array',
+      of: [defineArrayMember({ type: 'string' })],
+    }),
+    defineField({
+      name: 'degrees',
+      title: 'Degrees',
+      description:
+        'These are your degrees that you have completed or are working towards.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'degree' }],
+        }),
+      ],
     }),
     defineField({
       name: 'showcasePosts',

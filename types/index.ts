@@ -17,6 +17,12 @@ export interface MilestoneItem {
   title?: string
 }
 
+export interface DegreeItem {
+  major?: string
+  college?: string
+  year?: number
+}
+
 export interface ShowcasePost {
   _type: string
   coverImage?: Image
@@ -44,6 +50,11 @@ export interface HomePagePayload {
   showcasePosts?: ShowcasePost[]
   showcaseProjects?: ShowcaseProject[]
   title?: string
+  role?: string
+  school?: string
+  school_link?: string
+  interests?: string[]
+  degrees?: DegreeItem[]
 }
 
 export interface PagePayload {
