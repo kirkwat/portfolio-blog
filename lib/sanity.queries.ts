@@ -22,6 +22,11 @@ export const homePageQuery = groq`
       title,
     },
     title,
+    role,
+    school,
+    school_link,
+    interests,
+    degrees
   }
 `
 
@@ -114,6 +119,7 @@ export const settingsQuery = groq`
     facebook,
     pinterest,
     youtube,
-    tiktok
+    tiktok,
+    twitter
   }
 `

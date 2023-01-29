@@ -101,4 +101,5 @@ export interface SettingsPayload {
   pinterest?: string
   youtube?: string
   tiktok?: string
+  twitter?: string
 }

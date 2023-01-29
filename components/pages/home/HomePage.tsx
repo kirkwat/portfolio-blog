@@ -19,8 +19,6 @@ export interface HomePageProps {
 
 export function HomePage({ page, settings, preview }: HomePageProps) {
   const {
-    overview,
-    avatar,
     showcasePosts,
     showcaseProjects,
     title = 'Personal website',
@@ -35,14 +33,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       <Layout settings={settings} preview={preview}>
         <div className="mb-20 space-y-10">
           {/* Header */}
-          {title && (
-            <HomeHeader
-              centered
-              avatar={avatar}
-              title={title}
-              description={overview}
-            />
-          )}
+          {title && <HomeHeader page={page} settings={settings} />}
           {/* Showcase projects */}
           <div className="text-center text-2xl font-bold">My Top Projects</div>
           {showcaseProjects && showcaseProjects.length > 0 && (

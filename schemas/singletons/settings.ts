@@ -21,7 +21,7 @@ export default defineType({
       description: 'Links displayed on the header of your site.',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           title: 'Reference',
           type: 'reference',
           to: [
@@ -38,7 +38,7 @@ export default defineType({
               type: 'project',
             },
           ],
-        },
+        }),
       ],
     }),
     defineField({
@@ -88,8 +88,8 @@ export default defineType({
         }),
     }),
     defineField({
-      name: 'facebook',
-      title: 'Facebook URL',
+      name: 'tiktok',
+      title: 'TikTok URL',
       type: 'url',
       validation: (Rule) =>
         Rule.uri({
@@ -106,6 +106,15 @@ export default defineType({
         }),
     }),
     defineField({
+      name: 'twitter',
+      title: 'Twitter URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    }),
+    defineField({
       name: 'youtube',
       title: 'Youtube URL',
       type: 'url',
@@ -115,8 +124,8 @@ export default defineType({
         }),
     }),
     defineField({
-      name: 'tiktok',
-      title: 'TikTok URL',
+      name: 'facebook',
+      title: 'Facebook URL',
       type: 'url',
       validation: (Rule) =>
         Rule.uri({

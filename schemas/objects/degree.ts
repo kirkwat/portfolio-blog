@@ -28,7 +28,10 @@ export default defineType({
   preview: {
     select: {
       major: 'major',
-      year: 'year',
+      college: 'college',
+    },
+    prepare({ major, college }) {
+      return { major, subtitle: college }
     },
   },
 })

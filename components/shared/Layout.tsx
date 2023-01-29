@@ -26,7 +26,7 @@ export default function Layout({
       <main className="container mx-auto mb-auto mt-10 px-4 md:mt-16">
         {children}
       </main>
-      <Footer footer={settings?.footer} />
+      {settings && <Footer settings={settings} />}
     </div>
   )
 }
