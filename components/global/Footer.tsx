@@ -13,9 +13,12 @@ export function Footer({ settings }: { settings: SettingsPayload }) {
         />
       )}
       <Socials settings={settings} footer />
-      <div className="flex justify-center">
-        <a href="https://github.com/kirkwat/portfolio-blog">
-          <FaGithub size="2rem" color="white" />
+      <div className="icons flex justify-center">
+        <a
+          href="https://github.com/kirkwat/portfolio-blog"
+          className="w-5 duration-100 hover:scale-125"
+        >
+          <FaGithub size="auto" color="white" />
         </a>
       </div>
     </footer>

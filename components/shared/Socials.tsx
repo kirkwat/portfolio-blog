@@ -20,46 +20,81 @@ export function Socials({ settings, footer = false }: SocialsProps) {
     settings ?? {}
 
   return (
-    <div className="flex justify-center">
+    <div className="icons flex justify-center">
       <IconContext.Provider
         value={
           footer
-            ? { size: '2rem', color: 'white' }
-            : { size: '2.5rem', color: 'black' }
+            ? { size: 'auto', color: 'white' }
+            : { size: 'auto', color: 'rgb(37 99 235)' }
         }
       >
         {linkedin && linkedin.length > 0 && (
-          <a href={linkedin} className={footer ? 'mx-2' : 'mx-1'}>
-            <FaLinkedin />
+          <a
+            href={linkedin}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
+            <FaLinkedin className="heart-icon" />
           </a>
         )}
         {instagram && instagram.length > 0 && (
-          <a href={instagram} className={footer ? 'mx-2' : 'mx-1'}>
+          <a
+            href={instagram}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
             <FaInstagram />
           </a>
         )}
         {tiktok && tiktok.length > 0 && (
-          <a href={instagram} className={footer ? 'mx-2' : 'mx-1'}>
+          <a
+            href={instagram}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
             <FaTiktok />
           </a>
         )}
         {pinterest && pinterest.length > 0 && (
-          <a href={instagram} className={footer ? 'mx-2' : 'mx-1'}>
+          <a
+            href={instagram}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
             <FaPinterest />
           </a>
         )}
         {twitter && twitter.length > 0 && (
-          <a href={instagram} className={footer ? 'mx-2' : 'mx-1'}>
+          <a
+            href={instagram}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
             <FaTwitter />
           </a>
         )}
         {youtube && youtube.length > 0 && (
-          <a href={instagram} className={footer ? 'mx-2' : 'mx-1'}>
+          <a
+            href={instagram}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
             <FaYoutube />
           </a>
         )}
         {facebook && facebook.length > 0 && (
-          <a href={instagram} className={footer ? 'mx-2' : 'mx-1'}>
+          <a
+            href={instagram}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
             <FaFacebook />
           </a>
         )}

@@ -34,42 +34,48 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <div className="mb-20 space-y-10">
           {/* Header */}
           {title && <HomeHeader page={page} settings={settings} />}
-          {/* Showcase projects */}
-          <div className="text-center text-2xl font-bold">My Top Projects</div>
-          {showcaseProjects && showcaseProjects.length > 0 && (
-            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {showcaseProjects.map((project, key) => {
-                const href = resolveHref(project._type, project.slug)
-                if (!href) {
-                  return null
-                }
-                return (
-                  <Link key={key} href={href}>
-                    <ProjectListCard project={project} />
-                  </Link>
-                )
-              })}
+          <section className="bg-gray-100">
+            {/* Showcase projects */}
+            <div className="text-center text-4xl font-bold lg:text-5xl">
+              My Top Projects
             </div>
-          )}
-          {/* Showcase posts */}
-          <div className="text-center text-2xl font-bold">
-            My Top Blog Posts
-          </div>
-          {showcasePosts && showcasePosts.length > 0 && (
-            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {showcasePosts.map((post, key) => {
-                const href = resolveHref(post._type, post.slug)
-                if (!href) {
-                  return null
-                }
-                return (
-                  <Link key={key} href={href}>
-                    <PostListCard post={post} />
-                  </Link>
-                )
-              })}
+            {showcaseProjects && showcaseProjects.length > 0 && (
+              <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {showcaseProjects.map((project, key) => {
+                  const href = resolveHref(project._type, project.slug)
+                  if (!href) {
+                    return null
+                  }
+                  return (
+                    <Link key={key} href={href}>
+                      <ProjectListCard project={project} />
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </section>
+          <section>
+            {/* Showcase posts */}
+            <div className="text-center text-4xl font-bold lg:text-5xl">
+              My Top Blog Posts
             </div>
-          )}
+            {showcasePosts && showcasePosts.length > 0 && (
+              <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {showcasePosts.map((post, key) => {
+                  const href = resolveHref(post._type, post.slug)
+                  if (!href) {
+                    return null
+                  }
+                  return (
+                    <Link key={key} href={href}>
+                      <PostListCard post={post} />
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </section>
 
           {/* Workaround: scroll to top on route change */}
           <ScrollUp />
