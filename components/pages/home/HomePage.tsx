@@ -30,13 +30,13 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <HomePageHead page={page} settings={settings} />
       </Head>
 
-      <Layout settings={settings} preview={preview}>
-        <div className="mb-20 space-y-10">
-          {/* Header */}
-          {title && <HomeHeader page={page} settings={settings} />}
-          <section className="bg-gray-100">
+      <Layout settings={settings} preview={preview} home={true}>
+        {/* Header */}
+        {title && <HomeHeader page={page} settings={settings} />}
+        <section className="bg-gray-50 pt-6 pb-7 lg:pt-24 lg:pb-32">
+          <div className="container mx-auto px-4">
             {/* Showcase projects */}
-            <div className="text-center text-4xl font-bold lg:text-5xl">
+            <div className="pb-5 text-center text-4xl font-bold lg:text-5xl">
               My Top Projects
             </div>
             {showcaseProjects && showcaseProjects.length > 0 && (
@@ -54,10 +54,12 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 })}
               </div>
             )}
-          </section>
-          <section>
+          </div>
+        </section>
+        <section className="pt-6 pb-7 lg:pt-24 lg:pb-32">
+          <div className="container mx-auto px-4">
             {/* Showcase posts */}
-            <div className="text-center text-4xl font-bold lg:text-5xl">
+            <div className="pb-5 text-center text-4xl font-bold lg:text-5xl">
               My Top Blog Posts
             </div>
             {showcasePosts && showcasePosts.length > 0 && (
@@ -75,11 +77,11 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                 })}
               </div>
             )}
-          </section>
+          </div>
+        </section>
 
-          {/* Workaround: scroll to top on route change */}
-          <ScrollUp />
-        </div>
+        {/* Workaround: scroll to top on route change */}
+        <ScrollUp />
       </Layout>
     </>
   )

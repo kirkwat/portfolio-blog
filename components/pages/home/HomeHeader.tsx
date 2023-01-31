@@ -26,7 +26,7 @@ export function HomeHeader({ page, settings }: HeaderProps) {
 
   return (
     <>
-      <div className="grid grid-cols-6 xl:px-10">
+      <div className="grid grid-cols-6 px-5 pt-3 pb-5 lg:pt-24 lg:pb-32 xl:px-10">
         <div className="col-span-6 py-4 lg:col-span-2 lg:row-span-2 lg:pr-4 lg:pl-0">
           <ImageBox
             image={avatar}
