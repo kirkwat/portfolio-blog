@@ -22,7 +22,7 @@ export function ProjectListPage({
 }: ProjectListPageProps) {
   return (
     <Layout settings={settings} preview={preview}>
-      <div className="mb-20 space-y-10">
+      <div className="pb-7 lg:pb-32">
         {/* Header */}
         <Header centered title="Projects" />
         {/* List projects */}

@@ -28,8 +28,8 @@ export default function Layout({
       <main
         className={
           home
-            ? 'mb-auto mt-10 md:mt-16'
-            : 'container mx-auto mb-auto mt-10 px-4 md:mt-16'
+            ? 'mb-auto mt-24 md:mt-32'
+            : 'container mx-auto mb-auto mt-28 px-4 md:mt-40'
         }
       >
         {children}

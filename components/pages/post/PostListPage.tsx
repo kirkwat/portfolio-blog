@@ -18,7 +18,7 @@ export interface PostListPageProps {
 export function PostListPage({ posts, settings, preview }: PostListPageProps) {
   return (
     <Layout settings={settings} preview={preview}>
-      <div className="mb-20 space-y-10">
+      <div className="pb-7 lg:pb-32">
         {/* Header */}
         <Header centered title="Blogs" />
         {/* List posts */}

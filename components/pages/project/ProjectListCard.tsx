@@ -33,7 +33,7 @@ export function ProjectListCard(props: ProjectCardProps) {
         />
       </div>
       {/* Tags */}
-      <div className="absolute top-0 ml-4 mt-4 flex flex-row gap-x-2">
+      <div className="absolute top-0 mx-4 mt-4 flex flex-row flex-wrap gap-2">
         {project.tags?.map((tag, key) => (
           <div
             className="rounded-full bg-white px-3 py-0.5 text-sm font-medium lowercase opacity-70 md:text-lg"
