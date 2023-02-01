@@ -5,9 +5,11 @@ import {
   pagePaths,
   pagesBySlugQuery,
   postBySlugQuery,
+  postListPageQuery,
   postPaths,
   postsQuery,
   projectBySlugQuery,
+  projectListPageQuery,
   projectPaths,
   projectsQuery,
   settingsQuery,
@@ -16,7 +18,9 @@ import { createClient } from 'next-sanity'
 import type {
   HomePagePayload,
   PagePayload,
+  PostListPagePayload,
   PostPayload,
+  ProjectListPagePayload,
   ProjectPayload,
   SettingsPayload,
   ShowcasePost,
@@ -38,6 +42,22 @@ export async function getHomePage({
   token?: string
 }): Promise<HomePagePayload | undefined> {
   return await sanityClient(token)?.fetch(homePageQuery)
+}
+
+export async function getPostListPage({
+  token,
+}: {
+  token?: string
+}): Promise<PostListPagePayload | undefined> {
+  return await sanityClient(token)?.fetch(postListPageQuery)
+}
+
+export async function getProjectListPage({
+  token,
+}: {
+  token?: string
+}): Promise<ProjectListPagePayload | undefined> {
+  return await sanityClient(token)?.fetch(projectListPageQuery)
 }
 
 export async function getHomePageTitle({

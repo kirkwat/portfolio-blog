@@ -13,10 +13,13 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import page from 'schemas/documents/page'
 import post from 'schemas/documents/post'
 import project from 'schemas/documents/project'
+import degree from 'schemas/objects/degree'
 import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
 import home from 'schemas/singletons/home'
+import postList from 'schemas/singletons/postList'
+import projectList from 'schemas/singletons/projectList'
 import settings from 'schemas/singletons/settings'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Zamira's Website"
@@ -39,6 +42,8 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      postList,
+      projectList,
       // Documents
       duration,
       page,
@@ -47,11 +52,12 @@ export default defineConfig({
       // Objects
       milestone,
       timeline,
+      degree,
     ],
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, settings, postList, projectList]),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),

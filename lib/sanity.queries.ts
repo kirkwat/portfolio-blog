@@ -22,11 +22,34 @@ export const homePageQuery = groq`
       title,
     },
     title,
+    role,
+    school,
+    school_link,
+    interests,
+    degrees,
+    postTitle,
+    postSubtitle,
+    projectTitle,
+    projectSubtitle,
   }
 `
 
 export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
+`
+
+export const postListPageQuery = groq`
+  *[_type == "postList"][0]{
+    pageTitle,
+    subtitle,
+  }
+`
+
+export const projectListPageQuery = groq`
+  *[_type == "projectList"][0]{
+    pageTitle,
+    subtitle,
+  }
 `
 
 export const pagesBySlugQuery = groq`
@@ -114,6 +137,7 @@ export const settingsQuery = groq`
     facebook,
     pinterest,
     youtube,
-    tiktok
+    tiktok,
+    twitter
   }
 `

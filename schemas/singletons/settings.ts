@@ -21,12 +21,18 @@ export default defineType({
       description: 'Links displayed on the header of your site.',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           title: 'Reference',
           type: 'reference',
           to: [
             {
               type: 'home',
+            },
+            {
+              type: 'postList',
+            },
+            {
+              type: 'projectList',
             },
             {
               type: 'page',
@@ -38,7 +44,7 @@ export default defineType({
               type: 'project',
             },
           ],
-        },
+        }),
       ],
     }),
     defineField({
@@ -73,31 +79,64 @@ export default defineType({
       name: 'linkedin',
       title: 'LinkedIn URL',
       type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     }),
     defineField({
       name: 'instagram',
       title: 'Instagram URL',
       type: 'url',
-    }),
-    defineField({
-      name: 'facebook',
-      title: 'Facebook URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'pinterest',
-      title: 'Pinterest URL',
-      type: 'url',
-    }),
-    defineField({
-      name: 'youtube',
-      title: 'Youtube URL',
-      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     }),
     defineField({
       name: 'tiktok',
       title: 'TikTok URL',
       type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    }),
+    defineField({
+      name: 'pinterest',
+      title: 'Pinterest URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    }),
+    defineField({
+      name: 'twitter',
+      title: 'Twitter URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    }),
+    defineField({
+      name: 'youtube',
+      title: 'Youtube URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    }),
+    defineField({
+      name: 'facebook',
+      title: 'Facebook URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
     }),
     defineField({
       name: 'ogImage',
@@ -112,7 +151,7 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: 'Menu Items',
+        title: 'Settings',
       }
     },
   },

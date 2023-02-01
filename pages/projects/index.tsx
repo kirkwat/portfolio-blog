@@ -1,11 +1,12 @@
 import { ProjectListPage } from 'components/pages/project/ProjectListPage'
-import { getProjects, getSettings } from 'lib/sanity.client'
+import { getProjectListPage, getProjects, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { SettingsPayload, ShowcaseProject } from 'types'
+import { ProjectListPagePayload, SettingsPayload, ShowcaseProject } from 'types'
 
 interface PageProps {
   projects: ShowcaseProject[]
   settings: SettingsPayload
+  projectListPage: ProjectListPagePayload
   preview: boolean
   token: string | null
 }
@@ -19,9 +20,15 @@ interface PreviewData {
 }
 
 export default function ProjectsPage(props: PageProps) {
-  const { projects, settings, token } = props
+  const { projects, settings, projectListPage, token } = props
 
-  return <ProjectListPage projects={projects} settings={settings} />
+  return (
+    <ProjectListPage
+      projects={projects}
+      settings={settings}
+      projectListPage={projectListPage}
+    />
+  )
 }
 
 export const getStaticProps: GetStaticProps<
@@ -32,15 +39,17 @@ export const getStaticProps: GetStaticProps<
   const { preview = false, previewData = {} } = ctx
 
   const token = previewData.token
-  const [settings, projects = []] = await Promise.all([
+  const [settings, projects = [], projectListPage] = await Promise.all([
     getSettings({ token }),
     getProjects({ token }),
+    getProjectListPage({ token }),
   ])
 
   return {
     props: {
       projects,
       settings,
+      projectListPage,
       preview,
       token: previewData.token ?? null,
     },
