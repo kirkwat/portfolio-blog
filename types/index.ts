@@ -55,6 +55,10 @@ export interface HomePagePayload {
   school_link?: string
   interests?: string[]
   degrees?: DegreeItem[]
+  postTitle?: string
+  postSubtitle?: string
+  projectTitle?: string
+  projectSubtitle?: string
 }
 
 export interface PagePayload {

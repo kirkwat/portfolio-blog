@@ -22,6 +22,10 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
     showcasePosts,
     showcaseProjects,
     title = 'Personal website',
+    postTitle = 'Blogs',
+    postSubtitle = 'My latest blogs',
+    projectTitle = 'Projects',
+    projectSubtitle = 'My latest projects',
   } = page ?? {}
 
   return (
@@ -32,35 +36,15 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
 
       <Layout settings={settings} preview={preview} home={true}>
         {/* Header */}
-        {title && <HomeHeader page={page} settings={settings} />}
+        <HomeHeader page={page} settings={settings} />
         <section className="bg-gray-50 pt-6 pb-7 lg:pt-24 lg:pb-32">
           <div className="container mx-auto px-4">
-            {/* Showcase projects */}
-            <div className="pb-5 text-center text-4xl font-bold lg:text-5xl">
-              My Top Projects
-            </div>
-            {showcaseProjects && showcaseProjects.length > 0 && (
-              <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
-                {showcaseProjects.map((project, key) => {
-                  const href = resolveHref(project._type, project.slug)
-                  if (!href) {
-                    return null
-                  }
-                  return (
-                    <Link key={key} href={href}>
-                      <ProjectListCard project={project} />
-                    </Link>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        </section>
-        <section className="pt-6 pb-7 lg:pt-24 lg:pb-32">
-          <div className="container mx-auto px-4">
             {/* Showcase posts */}
-            <div className="pb-5 text-center text-4xl font-bold lg:text-5xl">
-              My Top Blog Posts
+            <div className="pb-3 text-center text-4xl font-bold lg:text-5xl">
+              {postTitle}
+            </div>
+            <div className="pb-5 text-center text-xl lg:pb-6 lg:text-2xl">
+              {postSubtitle}
             </div>
             {showcasePosts && showcasePosts.length > 0 && (
               <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -70,8 +54,46 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                     return null
                   }
                   return (
-                    <Link key={key} href={href}>
+                    <Link
+                      key={key}
+                      href={href}
+                      className={
+                        showcasePosts.length === 1 ? 'lg:col-start-2' : ''
+                      }
+                    >
                       <PostListCard post={post} />
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        </section>
+        <section className="pt-6 pb-7 lg:pt-24 lg:pb-32">
+          <div className="container mx-auto px-4">
+            {/* Showcase projects */}
+            <div className="pb-3 text-center text-4xl font-bold lg:text-5xl">
+              {projectTitle}
+            </div>
+            <div className="pb-5 text-center text-xl lg:pb-6 lg:text-2xl">
+              {projectSubtitle}
+            </div>
+            {showcaseProjects && showcaseProjects.length > 0 && (
+              <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {showcaseProjects.map((project, key) => {
+                  const href = resolveHref(project._type, project.slug)
+                  if (!href) {
+                    return null
+                  }
+                  return (
+                    <Link
+                      key={key}
+                      href={href}
+                      className={
+                        showcaseProjects.length === 1 ? 'lg:col-start-2' : ''
+                      }
+                    >
+                      <ProjectListCard project={project} />
                     </Link>
                   )
                 })}

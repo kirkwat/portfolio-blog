@@ -110,6 +110,19 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'postTitle',
+      description: 'This field is the title of the Featured Posts section.',
+      title: 'Post Section Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'postSubtitle',
+      description: 'This field is the subtitle of the Featured Posts section.',
+      title: 'Post Section Subtitle',
+      type: 'string',
+    }),
+    defineField({
       name: 'showcasePosts',
       title: 'Showcase posts',
       description:
@@ -121,6 +134,20 @@ export default defineType({
           to: [{ type: 'post' }],
         }),
       ],
+    }),
+    defineField({
+      name: 'projectTitle',
+      description: 'This field is the title of the Featured Projects section.',
+      title: 'Project Section Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'projectSubtitle',
+      description:
+        'This field is the subtitle of the Featured Projects section.',
+      title: 'Project Section Subtitle',
+      type: 'string',
     }),
     defineField({
       name: 'showcaseProjects',

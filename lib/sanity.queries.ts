@@ -26,7 +26,11 @@ export const homePageQuery = groq`
     school,
     school_link,
     interests,
-    degrees
+    degrees,
+    postTitle,
+    postSubtitle,
+    projectTitle,
+    projectSubtitle,
   }
 `
 

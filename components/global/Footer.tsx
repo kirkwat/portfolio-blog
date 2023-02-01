@@ -5,7 +5,7 @@ import { SettingsPayload } from 'types'
 
 export function Footer({ settings }: { settings: SettingsPayload }) {
   return (
-    <footer className="bottom-0 grid w-full grid-cols-1 gap-4 bg-black py-5 text-center md:py-10">
+    <footer className="bottom-0 grid w-full grid-cols-1 gap-4 bg-black py-5 text-center">
       {settings.footer && (
         <CustomPortableText
           paragraphClasses="text-md text-white"

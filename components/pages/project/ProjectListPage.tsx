@@ -34,7 +34,11 @@ export function ProjectListPage({
                 return null
               }
               return (
-                <Link key={key} href={href}>
+                <Link
+                  key={key}
+                  href={href}
+                  className={projects.length === 1 ? 'lg:col-start-2' : ''}
+                >
                   <ProjectListCard project={project} />
                 </Link>
               )

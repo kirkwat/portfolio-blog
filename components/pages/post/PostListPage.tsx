@@ -30,7 +30,11 @@ export function PostListPage({ posts, settings, preview }: PostListPageProps) {
                 return null
               }
               return (
-                <Link key={key} href={href}>
+                <Link
+                  key={key}
+                  href={href}
+                  className={posts.length === 1 ? 'lg:col-start-2' : ''}
+                >
                   <PostListCard post={post} />
                 </Link>
               )
