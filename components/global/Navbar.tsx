@@ -15,21 +15,25 @@ export function Navbar({ menuItems }: NavbarProps) {
     setIsOpen(!isOpen)
   }
 
+  const home = menuItems.filter((item) => item._type === 'home')
+  const links = menuItems.filter((item) => item._type !== 'home')
+
   return (
     <>
       <nav className="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 bg-black py-3 px-4 shadow-lg md:justify-start md:py-4 md:px-12">
-        {menuItems &&
-          menuItems.map((menuItem, key) => {
+        {home &&
+          home.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
+
             if (!href) {
               return null
             }
             return (
               <Link
                 key={key}
-                className={`text-2xl text-white hover:opacity-80 md:text-3xl ${
-                  menuItem?._type === 'home' ? 'font-bold' : ''
-                }`}
+                className={
+                  'text-2xl font-bold text-white hover:opacity-80 md:text-3xl'
+                }
                 href={href}
               >
                 {menuItem.title}
@@ -54,18 +58,25 @@ export function Navbar({ menuItems }: NavbarProps) {
           }`}
         >
           <div className="md:flex-grow">
-            <Link
-              href="/posts"
-              className="text-md mt-4 mr-4 block uppercase text-white hover:opacity-80 md:mt-0 md:inline-block md:text-lg"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/projects"
-              className="text-md mt-4 mb-2 mr-4 block uppercase text-white hover:opacity-80 md:mt-0 md:mb-0 md:inline-block md:text-lg"
-            >
-              Projects
-            </Link>
+            {links &&
+              links.map((menuItem, key) => {
+                const href = resolveHref(menuItem?._type, menuItem?.slug)
+
+                if (!href) {
+                  return null
+                }
+                return (
+                  <Link
+                    key={key}
+                    className={
+                      'text-md mt-4 mb-2 mr-4 block uppercase text-white hover:opacity-80 md:mt-0 md:mb-0 md:inline-block md:text-lg'
+                    }
+                    href={href}
+                  >
+                    {menuItem.title}
+                  </Link>
+                )
+              })}
           </div>
         </div>
       </nav>

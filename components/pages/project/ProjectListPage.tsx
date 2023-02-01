@@ -26,14 +26,14 @@ export function ProjectListPage({
   projectListPage,
   preview,
 }: ProjectListPageProps) {
-  const { title = 'Projects', subtitle = 'Check out my latest projects' } =
+  const { pageTitle = 'Projects', subtitle = 'Check out my latest projects' } =
     projectListPage ?? {}
 
   return (
     <Layout settings={settings} preview={preview}>
       <div className="pb-7 lg:pb-32">
         {/* Header */}
-        <Header centered title={title} subtitle={subtitle} />
+        <Header centered title={pageTitle} subtitle={subtitle} />
         {/* List projects */}
         {projects && projects.length > 0 && (
           <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">

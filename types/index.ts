@@ -62,12 +62,12 @@ export interface HomePagePayload {
 }
 
 export interface PostListPagePayload {
-  title?: string
+  pageTitle?: string
   subtitle?: string
 }
 
 export interface ProjectListPagePayload {
-  title?: string
+  pageTitle?: string
   subtitle?: string
 }
 

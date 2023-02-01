@@ -22,14 +22,14 @@ export function PostListPage({
   postListPage,
   preview,
 }: PostListPageProps) {
-  const { title = 'Blogs', subtitle = 'Check out my latest blogs' } =
+  const { pageTitle = 'Blogs', subtitle = 'Check out my latest blogs' } =
     postListPage ?? {}
 
   return (
     <Layout settings={settings} preview={preview}>
       <div className="pb-7 lg:pb-32">
         {/* Header */}
-        <Header centered title={title} subtitle={subtitle} />
+        <Header centered title={pageTitle} subtitle={subtitle} />
         {/* List posts */}
         {posts && posts.length > 0 && (
           <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">

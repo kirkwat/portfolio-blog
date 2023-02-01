@@ -40,14 +40,14 @@ export const homePageTitleQuery = groq`
 
 export const postListPageQuery = groq`
   *[_type == "postList"][0]{
-    title,
+    pageTitle,
     subtitle,
   }
 `
 
 export const projectListPageQuery = groq`
   *[_type == "projectList"][0]{
-    title,
+    pageTitle,
     subtitle,
   }
 `

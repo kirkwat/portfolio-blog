@@ -10,17 +10,23 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
-      name: 'title',
+      name: 'pageTitle',
       description: 'This field is the title of the blog list page.',
       title: 'Blog List Title',
       type: 'string',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'subtitle',
       description: 'This field is the subtitle of the blog list page.',
       title: 'Blog List Subtitle',
       type: 'string',
+    }),
+    defineField({
+      name: 'title',
+      description: 'This field is the page name for the site header.',
+      title: 'Blog List Header Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
