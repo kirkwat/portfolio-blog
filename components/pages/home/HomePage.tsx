@@ -1,3 +1,4 @@
+import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
@@ -40,12 +41,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <section className="bg-gray-50 pt-6 pb-7 lg:pt-24 lg:pb-32">
           <div className="container mx-auto px-4">
             {/* Showcase posts */}
-            <div className="pb-3 text-center text-4xl font-bold lg:text-5xl">
-              {postTitle}
-            </div>
-            <div className="pb-5 text-center text-xl lg:pb-6 lg:text-2xl">
-              {postSubtitle}
-            </div>
+            <Header centered title={postTitle} subtitle={postSubtitle} />
             {showcasePosts && showcasePosts.length > 0 && (
               <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {showcasePosts.map((post, key) => {
@@ -72,12 +68,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         <section className="pt-6 pb-7 lg:pt-24 lg:pb-32">
           <div className="container mx-auto px-4">
             {/* Showcase projects */}
-            <div className="pb-3 text-center text-4xl font-bold lg:text-5xl">
-              {projectTitle}
-            </div>
-            <div className="pb-5 text-center text-xl lg:pb-6 lg:text-2xl">
-              {projectSubtitle}
-            </div>
+            <Header centered title={projectTitle} subtitle={projectSubtitle} />
             {showcaseProjects && showcaseProjects.length > 0 && (
               <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {showcaseProjects.map((project, key) => {

@@ -5,22 +5,31 @@ import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import type { SettingsPayload, ShowcasePost } from 'types'
+import type { PostListPagePayload, SettingsPayload, ShowcasePost } from 'types'
 
 import { PostListCard } from './PostListCard'
 
 export interface PostListPageProps {
   posts?: ShowcasePost[]
   settings?: SettingsPayload
+  postListPage?: PostListPagePayload
   preview?: boolean
 }
 
-export function PostListPage({ posts, settings, preview }: PostListPageProps) {
+export function PostListPage({
+  posts,
+  settings,
+  postListPage,
+  preview,
+}: PostListPageProps) {
+  const { title = 'Blogs', subtitle = 'Check out my latest blogs' } =
+    postListPage ?? {}
+
   return (
     <Layout settings={settings} preview={preview}>
       <div className="pb-7 lg:pb-32">
         {/* Header */}
-        <Header centered title="Blogs" />
+        <Header centered title={title} subtitle={subtitle} />
         {/* List posts */}
         {posts && posts.length > 0 && (
           <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -41,6 +50,7 @@ export function PostListPage({ posts, settings, preview }: PostListPageProps) {
             })}
           </div>
         )}
+
         {/* Workaround: scroll to top on route change */}
         <ScrollUp />
       </div>

@@ -1,11 +1,12 @@
 import { PostListPage } from 'components/pages/post/PostListPage'
-import { getPosts, getSettings } from 'lib/sanity.client'
+import { getPostListPage, getPosts, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { SettingsPayload, ShowcasePost } from 'types'
+import { PostListPagePayload, SettingsPayload, ShowcasePost } from 'types'
 
 interface PageProps {
   posts: ShowcasePost[]
   settings: SettingsPayload
+  postListPage: PostListPagePayload
   preview: boolean
   token: string | null
 }
@@ -19,9 +20,15 @@ interface PreviewData {
 }
 
 export default function PostsPage(props: PageProps) {
-  const { posts, settings, token } = props
+  const { posts, settings, postListPage, token } = props
 
-  return <PostListPage posts={posts} settings={settings} />
+  return (
+    <PostListPage
+      posts={posts}
+      settings={settings}
+      postListPage={postListPage}
+    />
+  )
 }
 
 export const getStaticProps: GetStaticProps<
@@ -32,15 +39,17 @@ export const getStaticProps: GetStaticProps<
   const { preview = false, previewData = {} } = ctx
 
   const token = previewData.token
-  const [settings, posts = []] = await Promise.all([
+  const [settings, posts = [], postListPage] = await Promise.all([
     getSettings({ token }),
     getPosts({ token }),
+    getPostListPage({ token }),
   ])
 
   return {
     props: {
       posts,
       settings,
+      postListPage,
       preview,
       token: previewData.token ?? null,
     },

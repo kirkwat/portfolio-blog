@@ -38,6 +38,20 @@ export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
 `
 
+export const postListPageQuery = groq`
+  *[_type == "postList"][0]{
+    title,
+    subtitle,
+  }
+`
+
+export const projectListPageQuery = groq`
+  *[_type == "projectList"][0]{
+    title,
+    subtitle,
+  }
+`
+
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,

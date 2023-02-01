@@ -29,6 +29,12 @@ export default defineType({
               type: 'home',
             },
             {
+              type: 'postList',
+            },
+            {
+              type: 'projectList',
+            },
+            {
               type: 'page',
             },
             {
@@ -145,7 +151,7 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: 'Menu Items',
+        title: 'Settings',
       }
     },
   },

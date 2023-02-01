@@ -61,6 +61,16 @@ export interface HomePagePayload {
   projectSubtitle?: string
 }
 
+export interface PostListPagePayload {
+  title?: string
+  subtitle?: string
+}
+
+export interface ProjectListPagePayload {
+  title?: string
+  subtitle?: string
+}
+
 export interface PagePayload {
   body?: PortableTextBlock[]
   name?: string
