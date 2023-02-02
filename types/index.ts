@@ -104,7 +104,6 @@ export interface ProjectPayload {
   title?: string
 }
 
-//TODO add support for resume file
 export interface SettingsPayload {
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
@@ -116,4 +115,5 @@ export interface SettingsPayload {
   youtube?: string
   tiktok?: string
   twitter?: string
+  resume?: string
 }
