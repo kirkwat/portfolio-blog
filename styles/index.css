@@ -65,3 +65,19 @@ ol {
 .portableText a:hover {
   @apply text-blue-800;
 }
+
+.portableText ul li {
+  @apply list-disc;
+}
+
+.portableText ol li {
+  @apply list-decimal;
+}
+
+.portableText code {
+  @apply bg-gray-100 px-1 text-lg text-gray-800;
+}
+
+.portableText blockquote {
+  @apply border-l-4 border-gray-200 pl-4;
+}
