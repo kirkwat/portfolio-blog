@@ -18,7 +18,7 @@ export function Footer({ settings }: { settings: SettingsPayload }) {
           href="https://github.com/kirkwat/portfolio-blog"
           className="w-5 duration-100 hover:scale-125"
         >
-          <FaGithub size="auto" color="white" />
+          <FaGithub size={34} color="white" />
         </a>
       </div>
     </footer>

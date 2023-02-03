@@ -50,14 +50,17 @@ export function HomeHeader({ page, settings }: HeaderProps) {
         </div>
         <div className="col-span-6 place-self-end pt-3 pb-0 text-xl lg:col-span-4 lg:pl-4 lg:text-2xl xl:place-self-center">
           <div className="pb-3 text-4xl font-bold lg:text-5xl">About Me</div>
-          <CustomPortableText value={overview} />
+          <CustomPortableText
+            value={overview}
+            paragraphClasses="font-serif text-gray-600"
+          />
         </div>
         {interests && interests.length > 0 && (
           <div className="col-span-6 py-4 md:col-span-3 lg:col-span-2 lg:pr-3 lg:pl-4">
             <div className="pb-2 text-2xl font-bold lg:pb-3 lg:text-3xl">
               Interests
             </div>
-            <ul className="list-inside list-disc text-xl lg:text-2xl">
+            <ul className="list-inside list-disc font-serif text-xl text-gray-600 marker:text-black lg:text-2xl">
               {interests.map((interest, key) => {
                 return <li key={key}>{interest}</li>
               })}
@@ -67,7 +70,7 @@ export function HomeHeader({ page, settings }: HeaderProps) {
         {degrees && degrees.length > 0 && (
           <div className="col-span-6 py-4 md:col-span-3 lg:col-span-2 lg:pl-3 lg:pr-0">
             <div className="text-2xl font-bold lg:text-3xl">Education</div>
-            <ul className="text-xl lg:text-2xl">
+            <ul className="font-serif text-xl text-gray-600 marker:text-black lg:text-2xl">
               {degrees.map((degree, key) => {
                 return (
                   <li key={key}>

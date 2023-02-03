@@ -1,4 +1,3 @@
-import { toPlainText } from '@portabletext/react'
 import { SiteMeta } from 'components/global/SiteMeta'
 import { PostPayload } from 'types'
 
