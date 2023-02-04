@@ -24,8 +24,8 @@ export function Socials({ settings, footer = false }: SocialsProps) {
       <IconContext.Provider
         value={
           footer
-            ? { size: 'auto', color: 'white' }
-            : { size: 'auto', color: 'rgb(37 99 235)' }
+            ? { size: '34', color: 'white' }
+            : { size: '41', color: 'rgb(37 99 235)' }
         }
       >
         {linkedin && linkedin.length > 0 && (

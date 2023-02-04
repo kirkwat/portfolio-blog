@@ -2,13 +2,15 @@ import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { MenuItem } from 'types'
+import { SettingsPayload } from 'types'
 
 interface NavbarProps {
-  menuItems?: MenuItem[]
+  settings: SettingsPayload
 }
 
-export function Navbar({ menuItems }: NavbarProps) {
+export function Navbar({ settings }: NavbarProps) {
+  const { menuItems, resume } = settings ?? {}
+
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = () => {
@@ -77,6 +79,16 @@ export function Navbar({ menuItems }: NavbarProps) {
                   </Link>
                 )
               })}
+            {resume && (
+              <Link
+                className={
+                  'text-md mt-4 mb-2 mr-4 block uppercase text-white hover:opacity-80 md:mt-0 md:mb-0 md:inline-block md:text-lg'
+                }
+                href="/uploads/resume.pdf"
+              >
+                CV
+              </Link>
+            )}
           </div>
         </div>
       </nav>

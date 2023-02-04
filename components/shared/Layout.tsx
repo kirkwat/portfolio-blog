@@ -24,7 +24,7 @@ export default function Layout({
   return (
     <div className="flex h-screen flex-col justify-between bg-white text-black">
       {preview && <PreviewBanner />}
-      <Navbar menuItems={settings?.menuItems} />
+      <Navbar settings={settings} />
       <main
         className={
           home

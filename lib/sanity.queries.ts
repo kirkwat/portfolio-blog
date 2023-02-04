@@ -122,7 +122,6 @@ export const pagePaths = groq`
   *[_type == "page" && slug.current != null].slug.current
 `
 
-//TODO add support for resume file
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
@@ -138,6 +137,7 @@ export const settingsQuery = groq`
     pinterest,
     youtube,
     tiktok,
-    twitter
+    twitter,
+    "resume": resume.asset->url
   }
 `

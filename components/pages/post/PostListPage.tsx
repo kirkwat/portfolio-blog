@@ -1,5 +1,4 @@
-//TODO add page head
-
+import { SiteMeta } from 'components/global/SiteMeta'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -12,6 +11,7 @@ import { PostListCard } from './PostListCard'
 export interface PostListPageProps {
   posts?: ShowcasePost[]
   settings?: SettingsPayload
+  homePageTitle?: string
   postListPage?: PostListPagePayload
   preview?: boolean
 }
@@ -19,6 +19,7 @@ export interface PostListPageProps {
 export function PostListPage({
   posts,
   settings,
+  homePageTitle,
   postListPage,
   preview,
 }: PostListPageProps) {
@@ -26,34 +27,43 @@ export function PostListPage({
     postListPage ?? {}
 
   return (
-    <Layout settings={settings} preview={preview}>
-      <div className="pb-7 lg:pb-32">
-        {/* Header */}
-        <Header centered title={pageTitle} subtitle={subtitle} />
-        {/* List posts */}
-        {posts && posts.length > 0 && (
-          <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post, key) => {
-              const href = resolveHref(post._type, post.slug)
-              if (!href) {
-                return null
-              }
-              return (
-                <Link
-                  key={key}
-                  href={href}
-                  className={posts.length === 1 ? 'lg:col-start-2' : ''}
-                >
-                  <PostListCard post={post} />
-                </Link>
-              )
-            })}
-          </div>
-        )}
+    <>
+      <SiteMeta
+        baseTitle={homePageTitle}
+        description={subtitle ? subtitle : 'hello'}
+        image={settings?.ogImage}
+        title={pageTitle}
+      />
 
-        {/* Workaround: scroll to top on route change */}
-        <ScrollUp />
-      </div>
-    </Layout>
+      <Layout settings={settings} preview={preview}>
+        <div className="pb-7 lg:pb-32">
+          {/* Header */}
+          <Header centered title={pageTitle} subtitle={subtitle} />
+          {/* List posts */}
+          {posts && posts.length > 0 && (
+            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post, key) => {
+                const href = resolveHref(post._type, post.slug)
+                if (!href) {
+                  return null
+                }
+                return (
+                  <Link
+                    key={key}
+                    href={href}
+                    className={posts.length === 1 ? 'lg:col-start-2' : ''}
+                  >
+                    <PostListCard post={post} />
+                  </Link>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Workaround: scroll to top on route change */}
+          <ScrollUp />
+        </div>
+      </Layout>
+    </>
   )
 }

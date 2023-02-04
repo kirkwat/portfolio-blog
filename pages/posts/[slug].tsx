@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps<
     props: {
       post,
       settings,
-      title: homePageTitle,
+      homePageTitle,
       preview,
       token: previewData.token ?? null,
     },
