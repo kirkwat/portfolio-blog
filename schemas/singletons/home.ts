@@ -104,8 +104,8 @@ export default defineType({
       of: [
         defineArrayMember({
           title: 'Degree',
-          type: 'reference',
-          to: [{ type: 'degree' }],
+          name: 'degree',
+          type: 'degree',
         }),
       ],
     }),
