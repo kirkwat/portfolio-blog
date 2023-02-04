@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { ProjectPayload, SettingsPayload } from 'types'
@@ -44,9 +43,7 @@ export default function ProjectPage({
 
   return (
     <>
-      <Head>
-        <ProjectPageHead project={project} title={homePageTitle} />
-      </Head>
+      <ProjectPageHead project={project} title={homePageTitle} />
 
       <Layout settings={settings} preview={preview}>
         <article className="portableText mx-auto  mb-6 max-w-3xl">

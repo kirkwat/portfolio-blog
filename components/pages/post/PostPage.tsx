@@ -1,5 +1,4 @@
 import ScrollUp from 'components/shared/ScrollUp'
-import Head from 'next/head'
 import { notFound } from 'next/navigation'
 import type { PostPayload, SettingsPayload } from 'types'
 
@@ -29,9 +28,7 @@ export default function PostPage({
 
   return (
     <>
-      <Head>
-        <PostPageHead post={post} title={homePageTitle} />
-      </Head>
+      <PostPageHead post={post} title={homePageTitle} />
 
       <Layout settings={settings} preview={preview}>
         <article className="mx-auto mb-6  max-w-3xl">

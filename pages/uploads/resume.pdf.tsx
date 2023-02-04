@@ -1,9 +1,11 @@
-import { getSettings } from 'lib/sanity.client'
+import { SiteMeta } from 'components/global/SiteMeta'
+import { getHomePageTitle, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { HomePagePayload, SettingsPayload } from 'types'
+import { SettingsPayload } from 'types'
 
 interface PageProps {
   settings: SettingsPayload
+  homePageTitle: string
   preview: boolean
   token: string | null
 }
@@ -17,12 +19,20 @@ interface PreviewData {
 }
 
 export default function ResumePage(props: PageProps) {
-  const { settings } = props
+  const { settings, homePageTitle } = props
 
   return (
-    <div className="h-screen w-full">
-      <iframe src={settings.resume} className="h-full w-full" />
-    </div>
+    <>
+      <SiteMeta
+        baseTitle={homePageTitle}
+        image={settings?.ogImage}
+        title="Resume"
+      />
+
+      <div className="h-screen w-full">
+        <iframe src={settings.resume} className="h-full w-full" />
+      </div>
+    </>
   )
 }
 
@@ -34,11 +44,15 @@ export const getStaticProps: GetStaticProps<
   const { preview = false, previewData = {} } = ctx
 
   const token = previewData.token
-  const [settings] = await Promise.all([getSettings({ token })])
+  const [settings, homePageTitle] = await Promise.all([
+    getSettings({ token }),
+    getHomePageTitle({ token }),
+  ])
 
   return {
     props: {
       settings,
+      homePageTitle,
       preview,
       token: previewData.token ?? null,
     },
