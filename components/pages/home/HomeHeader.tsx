@@ -1,7 +1,8 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import ImageBox from 'components/shared/ImageBox'
 import { Socials } from 'components/shared/Socials'
-import { DegreeItem, HomePagePayload, SettingsPayload } from 'types'
+import { FaGraduationCap } from 'react-icons/fa'
+import { HomePagePayload, SettingsPayload } from 'types'
 
 interface HeaderProps {
   page?: HomePagePayload
@@ -26,8 +27,8 @@ export function HomeHeader({ page, settings }: HeaderProps) {
 
   return (
     <>
-      <div className="mx-auto grid max-w-screen-xl grid-cols-6 px-5 pt-3 pb-5 lg:pb-32 xl:px-10">
-        <div className="col-span-6 py-4 lg:col-span-2 lg:row-span-2 lg:pr-4 lg:pl-0">
+      <div className="mx-auto grid max-w-screen-xl grid-cols-12 px-5 pt-3 pb-5 lg:pb-32 xl:px-10">
+        <div className="col-span-12 py-4 lg:col-span-4 lg:row-span-4 lg:pr-4 lg:pl-0">
           <ImageBox
             image={avatar}
             alt={title}
@@ -48,15 +49,15 @@ export function HomeHeader({ page, settings }: HeaderProps) {
             <Socials settings={settings} />
           </div>
         </div>
-        <div className="col-span-6 place-self-end pt-3 pb-0 text-xl lg:col-span-4 lg:pl-4 lg:text-2xl xl:place-self-center">
-          <div className="pb-3 text-4xl font-bold lg:text-5xl">About Me</div>
+        <div className="col-span-12 place-self-end pt-3 pb-0 text-xl lg:col-span-8 lg:pl-4 lg:text-2xl xl:place-self-center">
+          <div className="pb-3 text-3xl font-bold lg:text-4xl">About Me</div>
           <CustomPortableText
             value={overview}
             paragraphClasses="font-serif text-gray-600"
           />
         </div>
         {interests && interests.length > 0 && (
-          <div className="col-span-6 py-4 md:col-span-3 lg:col-span-2 lg:pr-3 lg:pl-4">
+          <div className="col-span-12 py-4 md:col-span-5 lg:col-span-3 lg:pr-3 lg:pl-4">
             <div className="pb-2 text-2xl font-bold lg:pb-3 lg:text-3xl">
               Interests
             </div>
@@ -68,13 +69,25 @@ export function HomeHeader({ page, settings }: HeaderProps) {
           </div>
         )}
         {degrees && degrees.length > 0 && (
-          <div className="col-span-6 py-4 md:col-span-3 lg:col-span-2 lg:pl-3 lg:pr-0">
-            <div className="text-2xl font-bold lg:text-3xl">Education</div>
-            <ul className="font-serif text-xl text-gray-600 marker:text-black lg:text-2xl">
+          <div className="col-span-12 py-4 md:col-span-7 lg:col-span-5 lg:pl-0 lg:pr-0">
+            <div className="pb-2 text-2xl font-bold lg:pb-3 lg:text-3xl">
+              Education
+            </div>
+            <ul>
               {degrees.map((degree, key) => {
                 return (
-                  <li key={key}>
-                    {degree.major}, {degree.year}
+                  <li key={key} className="flex flex-row">
+                    <span className="inline-block bg-center bg-no-repeat align-middle">
+                      <FaGraduationCap size={29} />
+                    </span>
+                    <div className="flex flex-col pl-3">
+                      <span className="text-xl lg:text-2xl">
+                        {degree.major}, {degree.year}
+                      </span>
+                      <span className="text-md font-serif text-gray-600 lg:text-lg">
+                        {degree.college}
+                      </span>
+                    </div>
                   </li>
                 )
               })}

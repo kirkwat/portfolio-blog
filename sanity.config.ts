@@ -13,7 +13,6 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import page from 'schemas/documents/page'
 import post from 'schemas/documents/post'
 import project from 'schemas/documents/project'
-import degree from 'schemas/objects/degree'
 import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
 import timeline from 'schemas/objects/timeline'
@@ -45,14 +44,13 @@ export default defineConfig({
       postList,
       projectList,
       // Documents
-      duration,
-      page,
-      project,
       post,
+      project,
+      page,
       // Objects
+      duration,
       milestone,
       timeline,
-      degree,
     ],
   },
   plugins: [

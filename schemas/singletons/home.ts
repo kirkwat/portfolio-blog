@@ -99,13 +99,43 @@ export default defineType({
       name: 'degrees',
       title: 'Degrees',
       description:
-        'These are your degrees that you have completed or are working towards.',
+        'List any degrees that you have completed or are working towards.',
       type: 'array',
       of: [
         defineArrayMember({
-          title: 'Degree',
           name: 'degree',
-          type: 'degree',
+          title: 'Degree',
+          type: 'object',
+          fields: [
+            defineField({
+              type: 'string',
+              name: 'major',
+              title: 'Major',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              type: 'string',
+              name: 'college',
+              title: 'College',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              type: 'number',
+              name: 'year',
+              title: 'Year',
+              description: 'Year you will graduate.',
+              validation: (rule) => rule.required().min(1980).max(2050),
+            }),
+          ],
+          preview: {
+            select: {
+              major: 'major',
+              college: 'college',
+            },
+            prepare({ major, college }) {
+              return { title: major, subtitle: college }
+            },
+          },
         }),
       ],
     }),

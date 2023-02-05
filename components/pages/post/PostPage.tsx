@@ -31,7 +31,7 @@ export default function PostPage({
       <PostPageHead post={post} title={homePageTitle} />
 
       <Layout settings={settings} preview={preview}>
-        <article className="mx-auto mb-6  max-w-3xl">
+        <article className="mx-auto mb-6 max-w-3xl">
           <PostHeader
             title={title}
             coverImage={coverImage}
