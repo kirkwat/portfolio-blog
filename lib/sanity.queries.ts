@@ -135,6 +135,7 @@ export const settingsQuery = groq`
     instagram,
     facebook,
     pinterest,
+    vsco,
     youtube,
     tiktok,
     twitter,

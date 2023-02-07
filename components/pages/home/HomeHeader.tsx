@@ -1,6 +1,8 @@
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import ImageBox from 'components/shared/ImageBox'
 import { Socials } from 'components/shared/Socials'
+import { urlForImage } from 'lib/sanity.image'
+import Image from 'next/image'
 import { FaGraduationCap } from 'react-icons/fa'
 import { HomePagePayload, SettingsPayload } from 'types'
 
@@ -29,13 +31,19 @@ export function HomeHeader({ page, settings }: HeaderProps) {
     <>
       <div className="mx-auto grid max-w-screen-xl grid-cols-12 px-5 pt-3 pb-5 lg:pb-32 xl:px-10">
         <div className="col-span-12 py-4 lg:col-span-4 lg:row-span-4 lg:pr-4 lg:pl-0">
-          <ImageBox
-            image={avatar}
-            alt={title}
-            height={1500}
-            width={1500}
-            classesWrapper="w-52 h-52 md:w-64 md:h-64 overflow-hidden rounded-full mx-auto"
-          />
+          <div className="mx-auto h-52 w-52 overflow-hidden rounded-full md:h-64 md:w-64">
+            <Image
+              src={urlForImage(avatar)
+                ?.height(1500)
+                .width(1500)
+                .fit('crop')
+                .url()}
+              width={1500}
+              height={1500}
+              sizes={'100vw'}
+              alt={title}
+            />
+          </div>
           <h1 className="pt-3 text-center text-3xl lg:text-4xl">{title}</h1>
           <h2 className="text-center text-xl lg:text-2xl">
             <div className="pt-3 text-gray-500">{role}</div>
@@ -61,7 +69,7 @@ export function HomeHeader({ page, settings }: HeaderProps) {
             <div className="pb-2 text-2xl font-bold lg:pb-3 lg:text-3xl">
               Interests
             </div>
-            <ul className="list-inside list-disc font-serif text-xl text-gray-600 marker:text-black lg:text-2xl">
+            <ul className="list-inside list-disc font-serif text-lg text-gray-600 marker:text-black lg:text-xl">
               {interests.map((interest, key) => {
                 return <li key={key}>{interest}</li>
               })}

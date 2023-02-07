@@ -112,6 +112,15 @@ export default defineType({
         }),
     }),
     defineField({
+      name: 'vsco',
+      title: 'VSCO URL',
+      type: 'url',
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+    }),
+    defineField({
       name: 'twitter',
       title: 'Twitter URL',
       type: 'url',

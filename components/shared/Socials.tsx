@@ -8,6 +8,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa'
+import { SiVsco } from 'react-icons/si'
 import { SettingsPayload } from 'types'
 
 interface SocialsProps {
@@ -16,8 +17,16 @@ interface SocialsProps {
 }
 
 export function Socials({ settings, footer = false }: SocialsProps) {
-  const { facebook, instagram, linkedin, pinterest, tiktok, youtube, twitter } =
-    settings ?? {}
+  const {
+    facebook,
+    instagram,
+    linkedin,
+    pinterest,
+    vsco,
+    tiktok,
+    youtube,
+    twitter,
+  } = settings ?? {}
 
   return (
     <div className="icons flex justify-center">
@@ -50,7 +59,7 @@ export function Socials({ settings, footer = false }: SocialsProps) {
         )}
         {tiktok && tiktok.length > 0 && (
           <a
-            href={instagram}
+            href={tiktok}
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
@@ -60,7 +69,7 @@ export function Socials({ settings, footer = false }: SocialsProps) {
         )}
         {pinterest && pinterest.length > 0 && (
           <a
-            href={instagram}
+            href={pinterest}
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
@@ -68,9 +77,19 @@ export function Socials({ settings, footer = false }: SocialsProps) {
             <FaPinterest />
           </a>
         )}
+        {vsco && vsco.length > 0 && (
+          <a
+            href={vsco}
+            className={`duration-100 hover:scale-125 ${
+              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
+            }`}
+          >
+            <SiVsco />
+          </a>
+        )}
         {twitter && twitter.length > 0 && (
           <a
-            href={instagram}
+            href={twitter}
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
@@ -80,7 +99,7 @@ export function Socials({ settings, footer = false }: SocialsProps) {
         )}
         {youtube && youtube.length > 0 && (
           <a
-            href={instagram}
+            href={youtube}
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
@@ -90,7 +109,7 @@ export function Socials({ settings, footer = false }: SocialsProps) {
         )}
         {facebook && facebook.length > 0 && (
           <a
-            href={instagram}
+            href={facebook}
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}

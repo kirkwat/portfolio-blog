@@ -112,6 +112,7 @@ export interface SettingsPayload {
   instagram?: string
   facebook?: string
   pinterest?: string
+  vsco?: string
   youtube?: string
   tiktok?: string
   twitter?: string

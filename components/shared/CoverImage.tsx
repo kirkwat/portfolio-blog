@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 interface CoverImageProps {
   title: string
@@ -12,20 +13,29 @@ interface CoverImageProps {
 
 export default function CoverImage(props: CoverImageProps) {
   const { title, slug, image: source, priority } = props
+
+  const [aspectRatio, setAspectRatio] = useState(1)
+
+  const handleImageLoad = (event) => {
+    setAspectRatio(event.target.naturalWidth / event.target.naturalHeight)
+  }
+
   const image = source?.asset?._ref ? (
     <div
-      className={cn('shadow-small', {
+      className={cn('shadow-small relative', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
+      style={{
+        paddingBottom: `${100 / aspectRatio}%`,
+      }}
     >
       <Image
-        className="h-auto w-full"
-        width={3500}
-        height={2000}
         alt={`Cover Image for ${title}`}
-        src={urlForImage(source).height(2000).width(3500).url()}
-        sizes="100vw"
+        src={urlForImage(source).url()}
         priority={priority}
+        className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-cover"
+        fill
+        onLoad={handleImageLoad}
       />
     </div>
   ) : (

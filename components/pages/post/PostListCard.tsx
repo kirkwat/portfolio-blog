@@ -16,7 +16,7 @@ export function PostListCard(props: PostCardProps) {
         <ImageBox
           image={post.coverImage}
           alt={`Cover image from ${post.title}`}
-          classesWrapper="relative aspect-[16/9]"
+          classesWrapper="aspect-[16/9]"
         />
       </div>
       <div className="relative mt-1 flex w-full flex-col justify-between p-3 xl:mt-0">
