@@ -66,6 +66,8 @@ export default defineType({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
+      description:
+        'Copy an excerpt from above or write a small overview of the blog post. Used both for the <meta> description tag for SEO and post list cards.',
     }),
     defineField({
       name: 'coverImage',
@@ -76,6 +78,13 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'datetime',
+      description: 'This date shows when the blog was posted.',
+      initialValue: () => new Date().toISOString(),
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -83,12 +92,6 @@ export default defineType({
       options: {
         layout: 'tags',
       },
-    }),
-    defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'datetime',
-      initialValue: () => new Date().toISOString(),
     }),
   ],
   preview: {

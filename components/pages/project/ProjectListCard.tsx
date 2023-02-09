@@ -1,3 +1,4 @@
+import { format, parseISO } from 'date-fns'
 import type { ProjectPayload, ShowcaseProject } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
@@ -16,14 +17,21 @@ export function ProjectListCard(props: ProjectCardProps) {
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="relative aspect-[16/9]"
+          classesWrapper="aspect-[16/9]"
+          card
         />
       </div>
       <div className="relative mt-1 flex w-full flex-col justify-between p-3 xl:mt-0">
-        <div className="mb-2 flex flex-row justify-between">
+        <div className="mb-2 flex flex-row justify-between gap-3">
           {/* Title */}
-          <div className=" text-xl font-extrabold tracking-tight md:text-2xl">
+          <div className="text-xl font-extrabold tracking-tight md:text-2xl">
             {project.title}
+          </div>
+          {/* Date */}
+          <div className="text-center text-lg md:text-right">
+            <time dateTime={project?.date}>
+              {format(parseISO(project?.date), 'LLLL	d, yyyy')}
+            </time>
           </div>
         </div>
         {/* Overview  */}

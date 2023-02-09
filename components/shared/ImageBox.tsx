@@ -8,6 +8,7 @@ interface ImageBoxProps {
   width?: number
   height?: number
   size?: string
+  card?: boolean
   classesWrapper?: string
 }
 
@@ -15,6 +16,7 @@ export default function ImageBox({
   image,
   alt = 'Cover image',
   classesWrapper,
+  card = false,
 }: ImageBoxProps) {
   const imageUrl = image && urlForImage(image)?.url()
 
@@ -27,9 +29,13 @@ export default function ImageBox({
   return (
     <div
       className={`relative ${classesWrapper}`}
-      style={{
-        paddingBottom: `${100 / aspectRatio}%`,
-      }}
+      style={
+        card
+          ? {}
+          : {
+              paddingBottom: `${100 / aspectRatio}%`,
+            }
+      }
     >
       {imageUrl && (
         <Image

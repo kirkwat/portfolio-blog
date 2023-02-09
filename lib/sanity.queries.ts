@@ -18,6 +18,7 @@ export const homePageQuery = groq`
       coverImage,
       overview,
       "slug": slug.current,
+      date,
       tags,
       title,
     },
@@ -90,6 +91,7 @@ export const projectsQuery = groq`
     _type,
     coverImage,
     overview,
+    date,
     "slug": slug.current,
     tags,
     title,
@@ -107,6 +109,7 @@ export const projectBySlugQuery = groq`
     "slug": slug.current,
     tags,
     title,
+    date,
   }
 `
 
