@@ -39,6 +39,7 @@ export interface ShowcaseProject {
   overview?: PortableTextBlock[]
   slug?: string
   tags?: string[]
+  date?: string
   title?: string
 }
 
@@ -99,9 +100,10 @@ export interface ProjectPayload {
   }
   overview?: PortableTextBlock[]
   site?: string
-  slug: string
+  slug?: string
   tags?: string[]
   title?: string
+  date?: string
 }
 
 export interface SettingsPayload {

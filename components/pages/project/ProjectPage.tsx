@@ -1,12 +1,10 @@
-import Link from 'next/link'
+import ScrollUp from 'components/shared/ScrollUp'
 import { notFound } from 'next/navigation'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
-import { Header } from '../../shared/Header'
-import ImageBox from '../../shared/ImageBox'
 import Layout from '../../shared/Layout'
-import ScrollUp from '../../shared/ScrollUp'
+import ProjectHeader from './ProjectHeader'
 import ProjectPageHead from './ProjectPageHead'
 
 export interface ProjectPageProps {
@@ -23,19 +21,8 @@ export default function ProjectPage({
   preview,
 }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    tags,
-    title,
-  } = project || {}
-
-  const startYear = new Date(duration?.start).getFullYear()
-  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
+  const { client, coverImage, description, duration, site, tags, date, title } =
+    project || {}
 
   if (!project?.slug && !preview) {
     notFound()
@@ -46,67 +33,19 @@ export default function ProjectPage({
       <ProjectPageHead project={project} title={homePageTitle} />
 
       <Layout settings={settings} preview={preview}>
-        <article className="portableText mx-auto  mb-6 max-w-3xl">
-          {/* Header */}
-          <Header centered title={title} description={overview} />
-
-          <div className="mb-5 rounded-md border md:mb-6">
-            {/* Image  */}
-            <ImageBox
-              image={coverImage}
-              alt={`Cover image for ${title}`}
-              classesWrapper="relative aspect-[16/9]"
-            />
-
-            <div className="divide-inherit grid grid-cols-1 divide-y lg:grid-cols-4 lg:divide-y-0 lg:divide-x">
-              {/* Duration */}
-              {!!(startYear && endYear) && (
-                <div className="p-3 lg:p-4">
-                  <div className="text-xs md:text-sm">Duration</div>
-                  <div className="text-md md:text-lg">{`${startYear} -  ${endYear}`}</div>
-                </div>
-              )}
-
-              {/* Client */}
-              {client && (
-                <div className="p-3 lg:p-4">
-                  <div className="text-xs md:text-sm">Client</div>
-                  <div className="text-md md:text-lg">{client}</div>
-                </div>
-              )}
-
-              {/* Site */}
-              {site && (
-                <div className="p-3 lg:p-4">
-                  <div className="text-xs md:text-sm">Site</div>
-                  {site && (
-                    <Link
-                      target="_blank"
-                      className="text-md break-words md:text-lg"
-                      href={site}
-                    >
-                      {site}
-                    </Link>
-                  )}
-                </div>
-              )}
-
-              {/* Tags */}
-              <div className="p-3 lg:p-4">
-                <div className="text-xs md:text-sm">Tags</div>
-                <div className="text-md flex flex-row flex-wrap md:text-lg">
-                  {tags?.map((tag, key) => (
-                    <div key={key} className="mr-1 break-words ">
-                      #{tag}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+        <article className="mx-auto mb-6 max-w-3xl">
+          <ProjectHeader
+            title={title}
+            coverImage={coverImage}
+            date={date}
+            tags={tags}
+            site={site}
+            client={client}
+            duration={duration}
+          />
+          <div className="portableText">
+            <CustomPortableText value={description} />
           </div>
-
-          {/* Description */}
-          {description && <CustomPortableText value={description} />}
           {/* Workaround: scroll to top on route change */}
           <ScrollUp />
         </article>

@@ -29,7 +29,9 @@ export function Socials({ settings, footer = false }: SocialsProps) {
   } = settings ?? {}
 
   return (
-    <div className="icons flex justify-center">
+    <div
+      className={`icons flex justify-center ${footer ? '' : 'gap-2 lg:gap-0'}`}
+    >
       <IconContext.Provider
         value={
           footer

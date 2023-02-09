@@ -1,4 +1,5 @@
 import { ImageIcon, PresentationIcon } from '@sanity/icons'
+import { format, parseISO } from 'date-fns'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
@@ -152,5 +153,25 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'datetime',
+      initialValue: () => new Date().toISOString(),
+    }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      date: 'date',
+      media: 'coverImage',
+    },
+    prepare({ title, media, date }) {
+      const subtitles = [
+        date && `Published on ${format(parseISO(date), 'LLL d, yyyy')}`,
+      ].filter(Boolean)
+
+      return { title, media, subtitle: subtitles.join(' ') }
+    },
+  },
 })

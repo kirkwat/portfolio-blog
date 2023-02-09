@@ -16,9 +16,9 @@ export default function PostHeader(
         <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
       </div>
 
-      <div className="mb-4 flex flex-row flex-wrap place-content-center text-xl md:mb-6 md:place-content-start">
+      <div className="mb-5 flex flex-row flex-wrap place-content-center text-xl md:place-content-start">
         {tags?.map((tag, key) => (
-          <div key={key} className="mr-1 break-words ">
+          <div key={key} className="mr-1 break-words">
             #{tag}
           </div>
         ))}
