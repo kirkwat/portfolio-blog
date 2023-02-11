@@ -33,10 +33,14 @@ export function CustomPortableText({
       image: ({
         value,
       }: {
-        value: Image & { alt?: string; caption?: string }
+        value: Image & { alt?: string; caption?: string; fullSize?: boolean }
       }) => {
         return (
-          <div className="my-5 space-y-2">
+          <div
+            className={`my-5 space-y-2 ${
+              value.fullSize ? '' : 'mx-auto w-1/2'
+            }`}
+          >
             <ImageBox image={value} alt={value.alt} />
             {value?.caption && (
               <div className="font-serif text-sm text-gray-600">

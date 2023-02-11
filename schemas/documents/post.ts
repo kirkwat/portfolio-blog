@@ -47,6 +47,12 @@ export default defineType({
           },
           fields: [
             defineField({
+              title: 'Full size',
+              name: 'fullSize',
+              type: 'boolean',
+              description: 'If false, the image will be half width',
+            }),
+            defineField({
               title: 'Caption',
               name: 'caption',
               type: 'string',

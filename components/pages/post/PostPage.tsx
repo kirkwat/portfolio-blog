@@ -26,6 +26,8 @@ export default function PostPage({
     notFound()
   }
 
+  console.log(content)
+
   return (
     <>
       <PostPageHead post={post} title={homePageTitle} />

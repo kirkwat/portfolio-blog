@@ -12,15 +12,15 @@ export function PostListCard(props: PostCardProps) {
 
   return (
     <div className="relative h-full overflow-hidden rounded bg-white shadow-md duration-100 ease-in hover:shadow-xl md:h-96">
-      <div className="w-full">
+      <div className="h-[10.625rem] overflow-hidden">
         <ImageBox
           image={post.coverImage}
           alt={`Cover image from ${post.title}`}
-          classesWrapper="aspect-[16/9]"
+          classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
           card
         />
       </div>
-      <div className="relative mt-1 flex w-full flex-col justify-between p-3 xl:mt-0">
+      <div className="relative flex w-full flex-col justify-between p-3 xl:mt-0">
         <div className="mb-2 flex flex-row justify-between gap-3">
           {/* Title */}
           <div className="text-xl font-extrabold tracking-tight md:text-2xl">

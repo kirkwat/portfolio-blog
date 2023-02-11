@@ -21,7 +21,7 @@ export function ProjectListCard(props: ProjectCardProps) {
           card
         />
       </div>
-      <div className="relative mt-1 flex w-full flex-col justify-between p-3 xl:mt-0">
+      <div className="relative flex w-full flex-col justify-between p-3 xl:mt-0">
         <div className="mb-2 flex flex-row justify-between gap-3">
           {/* Title */}
           <div className="text-xl font-extrabold tracking-tight md:text-2xl">
