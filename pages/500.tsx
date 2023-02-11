@@ -1,4 +1,4 @@
-import { NotFound } from 'components/pages/NotFound'
+import { ServerError } from 'components/pages/ServerError'
 import { getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
 import { SettingsPayload } from 'types'
@@ -17,10 +17,10 @@ interface PreviewData {
   token?: string
 }
 
-export default function NotFoundPage(props: PageProps) {
+export default function ServerErrorPage(props: PageProps) {
   const { settings, preview, token } = props
 
-  return <NotFound settings={settings} />
+  return <ServerError settings={settings} />
 }
 
 export const getStaticProps: GetStaticProps<

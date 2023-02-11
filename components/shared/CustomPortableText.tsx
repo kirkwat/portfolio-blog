@@ -38,7 +38,7 @@ export function CustomPortableText({
         return (
           <div
             className={`my-5 space-y-2 ${
-              value.fullSize ? '' : 'mx-auto w-1/2'
+              value.fullSize ? '' : 'mx-auto w-2/3 sm:w-1/2'
             }`}
           >
             <ImageBox image={value} alt={value.alt} />
