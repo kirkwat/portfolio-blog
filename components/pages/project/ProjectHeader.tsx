@@ -63,9 +63,10 @@ export default function ProjectHeader(
           {`${startYear} -  ${endYear}`}
         </div>
       )}
-      <div className="mb-12">
+
+      {/*<div className="mb-12">
         <CoverImage title={title} image={coverImage} priority slug={slug} />
-      </div>
+      </div>*/}
     </>
   )
 }

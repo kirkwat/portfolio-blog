@@ -29,19 +29,13 @@ export default function ImageBox({
   return (
     <div
       className={`relative ${classesWrapper}`}
-      style={
-        card
-          ? {}
-          : {
-              paddingBottom: `${100 / aspectRatio}%`,
-            }
-      }
+      style={{ paddingBottom: `${100 / aspectRatio}%` }}
     >
       {imageUrl && (
         <Image
           alt={alt}
           src={imageUrl}
-          className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-cover"
+          className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-contain"
           fill
           onLoad={handleImageLoad}
         />

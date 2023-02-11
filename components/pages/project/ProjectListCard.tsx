@@ -13,11 +13,11 @@ export function ProjectListCard(props: ProjectCardProps) {
 
   return (
     <div className="relative h-full overflow-hidden rounded bg-white shadow-md duration-100 ease-in hover:shadow-xl md:h-96">
-      <div className="w-full">
+      <div className="h-[10.625rem] overflow-hidden">
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="aspect-[16/9]"
+          classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
           card
         />
       </div>
