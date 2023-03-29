@@ -107,6 +107,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths: paths?.map((slug) => resolveHref('project', slug)) || [],
-    fallback: false,
+    fallback: 'blocking',
   }
 }
