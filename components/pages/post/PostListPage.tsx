@@ -41,7 +41,7 @@ export function PostListPage({
           <Header centered title={pageTitle} subtitle={subtitle} />
           {/* List posts */}
           {posts && posts.length > 0 && (
-            <div className="grid justify-center gap-10 sm:gap-5">
+            <div className="grid justify-center gap-4">
               {posts.map((post, key) => {
                 const href = resolveHref(post._type, post.slug)
                 if (!href) {

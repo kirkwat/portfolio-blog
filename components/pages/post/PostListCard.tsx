@@ -22,17 +22,17 @@ export function PostListCard(props: PostCardProps) {
       </div>
       <div className="px-2 sm:w-1/2 sm:pl-3 sm:pr-0">
         {/* Title */}
-        <div className="text-2xl font-extrabold tracking-tight sm:mb-1 md:text-3xl">
+        <div className="text-xl font-extrabold tracking-tight sm:mb-1 md:text-3xl">
           {post.title}
         </div>
+        {/* Excerpt  */}
+        <p className="font-serif text-gray-500 md:text-lg">{post.excerpt}</p>
         {/* Date */}
-        <div className="text-lg">
+        <div className="md:text-lg">
           <time dateTime={post?.date}>
             {format(parseISO(post?.date), 'LLLL	d, yyyy')}
           </time>
         </div>
-        {/* Excerpt  */}
-        <p className="font-serif text-lg text-gray-500">{post.excerpt}</p>
       </div>
       {/* Tags */}
       <div className="absolute top-0 mx-4 mt-4 flex flex-row flex-wrap gap-2">

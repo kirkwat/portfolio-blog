@@ -45,7 +45,7 @@ export function ProjectListPage({
           <Header centered title={pageTitle} subtitle={subtitle} />
           {/* List projects */}
           {projects && projects.length > 0 && (
-            <div className="grid justify-center gap-10 sm:gap-5">
+            <div className="grid justify-center gap-4">
               {projects.map((project, key) => {
                 const href = resolveHref(project._type, project.slug)
                 if (!href) {
