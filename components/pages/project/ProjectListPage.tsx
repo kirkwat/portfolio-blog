@@ -45,18 +45,14 @@ export function ProjectListPage({
           <Header centered title={pageTitle} subtitle={subtitle} />
           {/* List projects */}
           {projects && projects.length > 0 && (
-            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid justify-center gap-10 sm:gap-5">
               {projects.map((project, key) => {
                 const href = resolveHref(project._type, project.slug)
                 if (!href) {
                   return null
                 }
                 return (
-                  <Link
-                    key={key}
-                    href={href}
-                    className={projects.length === 1 ? 'lg:col-start-2' : ''}
-                  >
+                  <Link key={key} href={href}>
                     <ProjectListCard project={project} />
                   </Link>
                 )

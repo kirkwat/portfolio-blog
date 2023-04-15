@@ -41,18 +41,14 @@ export function PostListPage({
           <Header centered title={pageTitle} subtitle={subtitle} />
           {/* List posts */}
           {posts && posts.length > 0 && (
-            <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid justify-center gap-10 sm:gap-5">
               {posts.map((post, key) => {
                 const href = resolveHref(post._type, post.slug)
                 if (!href) {
                   return null
                 }
                 return (
-                  <Link
-                    key={key}
-                    href={href}
-                    className={posts.length === 1 ? 'lg:col-start-2' : ''}
-                  >
+                  <Link key={key} href={href}>
                     <PostListCard post={post} />
                   </Link>
                 )

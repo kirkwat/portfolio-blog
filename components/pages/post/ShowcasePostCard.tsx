@@ -7,12 +7,12 @@ interface PostCardProps {
   post: PostPayload | ShowcasePost
 }
 
-export function PostListCard(props: PostCardProps) {
+export function ShowcasePostCard(props: PostCardProps) {
   const { post } = props
 
   return (
-    <div className="relative overflow-hidden rounded-lg bg-white p-2 hover:bg-gray-50 sm:flex sm:flex-row">
-      <div className="h-64 overflow-hidden rounded-lg border bg-white sm:w-1/2">
+    <div className="relative h-full overflow-hidden rounded border bg-white shadow-md duration-100 ease-in hover:shadow-xl md:h-96">
+      <div className="h-[10.625rem] overflow-hidden border-b">
         <ImageBox
           image={post.coverImage}
           alt={`Cover image from ${post.title}`}
@@ -20,9 +20,9 @@ export function PostListCard(props: PostCardProps) {
           card
         />
       </div>
-      <div className="px-2 sm:w-1/2 sm:pl-3 sm:pr-0">
+      <div className="relative flex w-full flex-col justify-between p-3 xl:mt-0">
         {/* Title */}
-        <div className="text-2xl font-extrabold tracking-tight sm:mb-1 md:text-3xl">
+        <div className="text-xl font-extrabold tracking-tight md:text-2xl">
           {post.title}
         </div>
         {/* Date */}
@@ -32,13 +32,15 @@ export function PostListCard(props: PostCardProps) {
           </time>
         </div>
         {/* Excerpt  */}
-        <p className="font-serif text-lg text-gray-500">{post.excerpt}</p>
+        <p className="font-serif text-gray-500 line-clamp-5 lg:line-clamp-6 xl:line-clamp-4 2xl:line-clamp-2">
+          {post.excerpt}
+        </p>
       </div>
       {/* Tags */}
       <div className="absolute top-0 mx-4 mt-4 flex flex-row flex-wrap gap-2">
         {post.tags?.map((tag, key) => (
           <div
-            className="text-md rounded-full bg-white px-3 py-0.5 font-medium lowercase opacity-70 md:text-lg"
+            className="rounded-full bg-white px-3 py-0.5 text-sm font-medium lowercase opacity-70 md:text-lg"
             key={key}
           >
             #{tag}

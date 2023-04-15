@@ -6,8 +6,8 @@ import Link from 'next/link'
 import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
-import { PostListCard } from '../post/PostListCard'
-import { ProjectListCard } from '../project/ProjectListCard'
+import { ShowcasePostCard } from '../post/ShowcasePostCard'
+import { ShowcaseCard } from '../project/ShowcaseCard'
 import { HomeHeader } from './HomeHeader'
 import HomePageHead from './HomePageHead'
 
@@ -54,7 +54,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                         showcasePosts.length === 1 ? 'lg:col-start-2' : ''
                       }
                     >
-                      <PostListCard post={post} />
+                      <ShowcasePostCard post={post} />
                     </Link>
                   )
                 })}
@@ -81,7 +81,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                         showcaseProjects.length === 1 ? 'lg:col-start-2' : ''
                       }
                     >
-                      <ProjectListCard project={project} />
+                      <ShowcaseCard project={project} />
                     </Link>
                   )
                 })}
