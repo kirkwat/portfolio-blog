@@ -6,8 +6,8 @@ import Link from 'next/link'
 import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
-import { ShowcasePostCard } from '../post/ShowcasePostCard'
-import { ShowcaseCard } from '../project/ShowcaseCard'
+import { PostListCard } from '../post/PostListCard'
+import { ProjectListCard } from '../project/ProjectListCard'
 import { HomeHeader } from './HomeHeader'
 import HomePageHead from './HomePageHead'
 
@@ -40,7 +40,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
             {/* Showcase posts */}
             <Header centered title={postTitle} subtitle={postSubtitle} />
             {showcasePosts && showcasePosts.length > 0 && (
-              <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid justify-center gap-4">
                 {showcasePosts.map((post, key) => {
                   const href = resolveHref(post._type, post.slug)
                   if (!href) {
@@ -54,7 +54,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                         showcasePosts.length === 1 ? 'lg:col-start-2' : ''
                       }
                     >
-                      <ShowcasePostCard post={post} />
+                      <PostListCard post={post} secondaryBackground />
                     </Link>
                   )
                 })}
@@ -67,7 +67,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
             {/* Showcase projects */}
             <Header centered title={projectTitle} subtitle={projectSubtitle} />
             {showcaseProjects && showcaseProjects.length > 0 && (
-              <div className="grid h-max gap-10 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid justify-center gap-4">
                 {showcaseProjects.map((project, key) => {
                   const href = resolveHref(project._type, project.slug)
                   if (!href) {
@@ -81,7 +81,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                         showcaseProjects.length === 1 ? 'lg:col-start-2' : ''
                       }
                     >
-                      <ShowcaseCard project={project} />
+                      <ProjectListCard project={project} />
                     </Link>
                   )
                 })}

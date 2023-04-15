@@ -5,13 +5,18 @@ import ImageBox from '../../shared/ImageBox'
 
 interface PostCardProps {
   post: PostPayload | ShowcasePost
+  secondaryBackground?: boolean
 }
 
 export function PostListCard(props: PostCardProps) {
-  const { post } = props
+  const { post, secondaryBackground } = props
 
   return (
-    <div className="relative overflow-hidden rounded-lg bg-white p-2 hover:bg-gray-50 sm:flex sm:flex-row">
+    <div
+      className={`relative overflow-hidden rounded-lg p-2 sm:flex sm:flex-row ${
+        secondaryBackground ? 'hover:bg-gray-100' : 'hover:bg-gray-50'
+      }`}
+    >
       <div className="h-64 overflow-hidden rounded-lg border bg-white sm:w-1/2">
         <ImageBox
           image={post.coverImage}
