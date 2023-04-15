@@ -24,13 +24,13 @@ export default function ProjectHeader(
 
   return (
     <>
-      <h1 className="mb-2 text-center text-5xl font-bold leading-tight tracking-tighter md:text-left md:text-6xl md:leading-none">
+      <h1 className="mb-2 text-center text-5xl font-bold leading-tight tracking-tighter md:text-6xl md:leading-none">
         {title}
       </h1>
-      <div className="mb-3 text-center text-lg md:text-left">
+      <div className="mb-3 text-center text-lg">
         <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
       </div>
-      <div className="mb-3 flex flex-row flex-wrap place-content-center text-xl md:place-content-start">
+      <div className="mb-3 flex flex-row flex-wrap place-content-center text-xl">
         {tags?.map((tag, key) => (
           <div key={key} className="mr-1 break-words">
             #{tag}
@@ -39,7 +39,7 @@ export default function ProjectHeader(
       </div>
       {client && (
         <div
-          className={`mb-3 text-center text-xl md:text-left ${
+          className={`mb-3 text-center text-xl ${
             site || startYear ? '' : 'mb-5'
           }`}
         >
@@ -48,17 +48,13 @@ export default function ProjectHeader(
         </div>
       )}
       {site && (
-        <div
-          className={`mb-3 text-center text-xl md:text-left ${
-            startYear ? '' : 'mb-5'
-          }`}
-        >
+        <div className={`mb-3 text-center text-xl ${startYear ? '' : 'mb-5'}`}>
           <span className="font-bold">Site: </span>
           <Link href={site}>{site}</Link>
         </div>
       )}
       {!!(startYear && endYear) && (
-        <div className="mb-5 text-center text-xl md:text-left">
+        <div className="mb-5 text-center text-xl">
           <span className="font-bold">Duration: </span>
           {`${startYear} -  ${endYear}`}
         </div>
