@@ -33,31 +33,7 @@ export default defineType({
       description: 'This is where you describe what you did for the project.',
       type: 'array',
       of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-          styles: [],
-        }),
-        // Custom blocks
-        defineArrayMember({
-          name: 'timeline',
-          type: 'timeline',
-        }),
+        defineArrayMember({ type: 'block' }),
         defineField({
           type: 'image',
           icon: ImageIcon,
@@ -92,6 +68,10 @@ export default defineType({
                 'Alternative text for screenreaders. Falls back on caption if not set',
             }),
           ],
+        }),
+        defineArrayMember({
+          name: 'timeline',
+          type: 'timeline',
         }),
       ],
     }),
