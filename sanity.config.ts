@@ -15,6 +15,7 @@ import post from 'schemas/documents/post'
 import project from 'schemas/documents/project'
 import duration from 'schemas/objects/duration'
 import milestone from 'schemas/objects/milestone'
+import multipleImages from 'schemas/objects/multipleImages'
 import timeline from 'schemas/objects/timeline'
 import home from 'schemas/singletons/home'
 import postList from 'schemas/singletons/postList'
@@ -48,6 +49,7 @@ export default defineConfig({
       project,
       page,
       // Objects
+      multipleImages,
       duration,
       milestone,
       timeline,

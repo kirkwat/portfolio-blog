@@ -47,13 +47,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                     return null
                   }
                   return (
-                    <Link
-                      key={key}
-                      href={href}
-                      className={
-                        showcasePosts.length === 1 ? 'lg:col-start-2' : ''
-                      }
-                    >
+                    <Link key={key} href={href}>
                       <PostListCard post={post} secondaryBackground />
                     </Link>
                   )
@@ -74,13 +68,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                     return null
                   }
                   return (
-                    <Link
-                      key={key}
-                      href={href}
-                      className={
-                        showcaseProjects.length === 1 ? 'lg:col-start-2' : ''
-                      }
-                    >
+                    <Link key={key} href={href}>
                       <ProjectListCard project={project} />
                     </Link>
                   )

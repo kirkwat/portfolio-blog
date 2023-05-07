@@ -5,10 +5,6 @@ import { useState } from 'react'
 interface ImageBoxProps {
   image?: { asset?: any }
   alt?: string
-  width?: number
-  height?: number
-  size?: string
-  card?: boolean
   classesWrapper?: string
 }
 
@@ -16,7 +12,6 @@ export default function ImageBox({
   image,
   alt = 'Cover image',
   classesWrapper,
-  card = false,
 }: ImageBoxProps) {
   const imageUrl = image && urlForImage(image)?.url()
 
@@ -35,8 +30,9 @@ export default function ImageBox({
         <Image
           alt={alt}
           src={imageUrl}
-          className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-contain"
+          className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-cover"
           fill
+          sizes="(max-width: 640px) 100vw, 640px"
           onLoad={handleImageLoad}
         />
       )}

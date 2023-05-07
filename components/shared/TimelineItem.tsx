@@ -22,13 +22,7 @@ export function TimelineItem({
           className="relative overflow-hidden rounded-md bg-black"
           style={{ width: '65px', height: '65px' }}
         >
-          <ImageBox
-            image={image}
-            alt={title || 'Timeline item icon'}
-            size="10vw"
-            width={65}
-            height={65}
-          />
+          <ImageBox image={image} alt={title || 'Timeline item icon'}/>
         </div>
         {/* Vertical line */}
         {!isLast && <div className="mt-2 w-px grow self-center bg-gray-200" />}

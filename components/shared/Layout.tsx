@@ -22,7 +22,7 @@ export default function Layout({
   home = false,
 }: LayoutProps) {
   return (
-    <div className="flex h-screen flex-col justify-between bg-white text-black">
+    <div className="flex min-h-screen flex-col justify-between bg-white text-black">
       {preview && <PreviewBanner />}
       <Navbar settings={settings} />
       <main

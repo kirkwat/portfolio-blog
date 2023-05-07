@@ -50,7 +50,9 @@ export default function ProjectHeader(
       {site && (
         <div className={`mb-3 text-center text-xl ${startYear ? '' : 'mb-5'}`}>
           <span className="font-bold">Site: </span>
-          <Link href={site}>{site}</Link>
+          <Link href={site} target="_blank" rel="noopener noreferrer">
+            {site}
+          </Link>
         </div>
       )}
       {!!(startYear && endYear) && (

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { IconContext } from 'react-icons'
 import {
   FaFacebook,
@@ -40,84 +41,100 @@ export function Socials({ settings, footer = false }: SocialsProps) {
         }
       >
         {linkedin && linkedin.length > 0 && (
-          <a
+          <Link
             href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaLinkedin className="heart-icon" />
-          </a>
+          </Link>
         )}
         {instagram && instagram.length > 0 && (
-          <a
+          <Link
             href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaInstagram />
-          </a>
+          </Link>
         )}
         {tiktok && tiktok.length > 0 && (
-          <a
+          <Link
             href={tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaTiktok />
-          </a>
+          </Link>
         )}
         {pinterest && pinterest.length > 0 && (
-          <a
+          <Link
             href={pinterest}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaPinterest />
-          </a>
+          </Link>
         )}
         {vsco && vsco.length > 0 && (
-          <a
+          <Link
             href={vsco}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <SiVsco />
-          </a>
+          </Link>
         )}
         {twitter && twitter.length > 0 && (
-          <a
+          <Link
             href={twitter}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaTwitter />
-          </a>
+          </Link>
         )}
         {youtube && youtube.length > 0 && (
-          <a
+          <Link
             href={youtube}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaYoutube />
-          </a>
+          </Link>
         )}
         {facebook && facebook.length > 0 && (
-          <a
+          <Link
             href={facebook}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`duration-100 hover:scale-125 ${
               footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
             }`}
           >
             <FaFacebook />
-          </a>
+          </Link>
         )}
       </IconContext.Provider>
     </div>

@@ -23,7 +23,6 @@ export function ProjectListCard(props: ProjectCardProps) {
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
           classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
-          card
         />
       </div>
       <div className="px-2 sm:w-1/2 sm:pl-3 sm:pr-0">
