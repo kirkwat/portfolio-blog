@@ -61,11 +61,17 @@ export default defineType({
               type: 'string',
             }),
             defineField({
+              title: 'Link',
+              name: 'link',
+              type: 'string',
+              description: 'Optional: Caption becomes a hyperlink to this URL',
+            }),
+            defineField({
               name: 'alt',
               type: 'string',
               title: 'Alt text',
               description:
-                'Alternative text for screenreaders. Falls back on caption if not set',
+                'Optional: Alternative text for screenreaders. Falls back on caption if not set',
             }),
           ],
         }),

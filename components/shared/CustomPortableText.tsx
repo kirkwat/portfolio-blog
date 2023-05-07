@@ -1,6 +1,7 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import ImageBox from 'components/shared/ImageBox'
 import { TimelineSection } from 'components/shared/TimelineSection'
+import Link from 'next/link'
 import { Image, PortableTextBlock } from 'sanity'
 
 export function CustomPortableText({
@@ -19,13 +20,11 @@ export function CustomPortableText({
     marks: {
       link: ({ children, value }) => {
         return (
-          <a
-            className="underline transition hover:opacity-50"
-            href={value?.href}
-            rel="noreferrer noopener"
-          >
-            {children}
-          </a>
+          <Link href={value?.href} target="_blank" rel="noopener noreferrer">
+            <div className="text-gray-600 underline decoration-gray-600 transition hover:opacity-50">
+              {children}
+            </div>
+          </Link>
         )
       },
     },
@@ -33,7 +32,12 @@ export function CustomPortableText({
       image: ({
         value,
       }: {
-        value: Image & { alt?: string; caption?: string; fullSize?: boolean }
+        value: Image & {
+          alt?: string
+          caption?: string
+          link?: string
+          fullSize?: boolean
+        }
       }) => {
         return (
           <div
@@ -41,12 +45,23 @@ export function CustomPortableText({
               value.fullSize ? '' : 'mx-auto w-2/3 sm:w-1/2'
             }`}
           >
-            <ImageBox image={value} alt={value.alt} />
-            {value?.caption && (
-              <div className="font-serif text-sm text-gray-600">
-                {value.caption}
-              </div>
-            )}
+            <ImageBox image={value} alt={value.alt || value.caption} />
+            {value?.caption &&
+              (value?.link ? (
+                <Link
+                  href={value.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="font-serif text-sm text-gray-600 underline decoration-gray-600 transition hover:opacity-50">
+                    {value.caption}
+                  </div>
+                </Link>
+              ) : (
+                <div className="font-serif text-sm text-gray-600">
+                  {value.caption}
+                </div>
+              ))}
           </div>
         )
       },

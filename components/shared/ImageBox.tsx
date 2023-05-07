@@ -5,10 +5,6 @@ import { useState } from 'react'
 interface ImageBoxProps {
   image?: { asset?: any }
   alt?: string
-  width?: number
-  height?: number
-  size?: string
-  card?: boolean
   classesWrapper?: string
 }
 
@@ -16,7 +12,6 @@ export default function ImageBox({
   image,
   alt = 'Cover image',
   classesWrapper,
-  card = false,
 }: ImageBoxProps) {
   const imageUrl = image && urlForImage(image)?.url()
 

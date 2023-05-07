@@ -3,6 +3,7 @@ import ImageBox from 'components/shared/ImageBox'
 import { Socials } from 'components/shared/Socials'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FaGraduationCap } from 'react-icons/fa'
 import { HomePagePayload, SettingsPayload } from 'types'
 
@@ -48,9 +49,14 @@ export function HomeHeader({ page, settings }: HeaderProps) {
           <h2 className="text-center text-xl lg:text-2xl">
             <div className="pt-3 text-gray-500">{role}</div>
             <div className="pt-2">
-              <a href={school_link} className="text-blue-600 hover:underline">
+              <Link
+                href={school_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
                 {school}
-              </a>
+              </Link>
             </div>
           </h2>
           <div className="pt-4 pb-4 lg:pb-0">
