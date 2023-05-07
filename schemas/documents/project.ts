@@ -76,6 +76,11 @@ export default defineType({
           ],
         }),
         defineArrayMember({
+          name: 'multipleImages',
+          type: 'multipleImages',
+          title: 'Multiple Images',
+        }),
+        defineArrayMember({
           name: 'timeline',
           type: 'timeline',
         }),
