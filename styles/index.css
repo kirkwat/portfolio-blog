@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "portabletext.css";
+
 html,
 body,
 #__next {
@@ -26,54 +28,4 @@ ul {
 
 ol {
   list-style-type: disc;
-}
-
-.portableText {
-  @apply text-xl leading-relaxed;
-}
-
-.portableText p,
-.portableText ul,
-.portableText ol,
-.portableText blockquote {
-  @apply mb-5;
-}
-
-.portableText h1 {
-  @apply mb-4 text-5xl leading-snug;
-}
-
-.portableText h2 {
-  @apply mb-4 text-4xl leading-snug;
-}
-
-.portableText h3 {
-  @apply mb-4 text-3xl leading-snug;
-}
-
-.portableText h4 {
-  @apply mb-4 text-2xl leading-snug;
-}
-
-.portableText a {
-  @apply text-blue-500 underline;
-}
-.portableText a:hover {
-  @apply text-blue-800;
-}
-
-.portableText ul li {
-  @apply list-disc;
-}
-
-.portableText ol li {
-  @apply list-decimal;
-}
-
-.portableText code {
-  @apply bg-gray-100 px-1 text-lg text-gray-800;
-}
-
-.portableText blockquote {
-  @apply border-l-4 border-gray-200 pl-4;
 }
