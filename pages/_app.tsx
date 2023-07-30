@@ -1,6 +1,6 @@
 import 'styles/index.css'
 
-import { EB_Garamond, IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
+import { EB_Garamond, IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 import { AppProps } from 'next/app'
 
 const mono = IBM_Plex_Mono({
