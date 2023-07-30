@@ -1,6 +1,7 @@
+import ContentNavigation from 'components/shared/ContentNavigation'
 import ScrollUp from 'components/shared/ScrollUp'
 import { notFound } from 'next/navigation'
-import type { PostPayload, SettingsPayload } from 'types'
+import type { PostPayload, SettingsPayload, ShowcasePost } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
@@ -11,6 +12,7 @@ export interface PostPageProps {
   post: PostPayload | undefined
   settings: SettingsPayload | undefined
   homePageTitle: string | undefined
+  posts: ShowcasePost[]
   preview?: boolean
 }
 
@@ -18,6 +20,7 @@ export default function PostPage({
   post,
   settings,
   homePageTitle,
+  posts,
   preview,
 }: PostPageProps) {
   const { coverImage, content, tags, date, title } = post || {}
@@ -41,6 +44,11 @@ export default function PostPage({
           <div className="portableText">
             <CustomPortableText value={content} />
           </div>
+          <ContentNavigation
+            content={posts}
+            slug={post.slug}
+            contentType="post"
+          />
           {/* Workaround: scroll to top on route change */}
           <ScrollUp />
         </article>

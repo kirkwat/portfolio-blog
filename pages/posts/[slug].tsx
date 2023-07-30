@@ -4,12 +4,13 @@ import {
   getHomePageTitle,
   getPostBySlug,
   getPostPaths,
+  getPosts,
   getSettings,
 } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { PostPayload, SettingsPayload } from 'types'
+import { PostPayload, SettingsPayload, ShowcasePost } from 'types'
 
 const PreviewPostPage = lazy(() => import('components/pages/post/PostPreview'))
 
@@ -17,6 +18,7 @@ interface PageProps {
   post: PostPayload
   settings?: SettingsPayload
   homePageTitle?: string
+  posts: ShowcasePost[]
   preview: boolean
   token: string | null
 }
@@ -30,7 +32,7 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { homePageTitle, settings, post, preview, token } = props
+  const { homePageTitle, settings, post, posts, preview, token } = props
 
   if (preview) {
     return (
@@ -41,6 +43,7 @@ export default function ProjectSlugRoute(props: PageProps) {
             preview={preview}
             settings={settings}
             post={post}
+            posts={posts}
           />
         }
       >
@@ -49,6 +52,7 @@ export default function ProjectSlugRoute(props: PageProps) {
           post={post}
           settings={settings}
           homePageTitle={homePageTitle}
+          posts={posts}
         />
       </PreviewSuspense>
     )
@@ -60,6 +64,7 @@ export default function ProjectSlugRoute(props: PageProps) {
       preview={preview}
       settings={settings}
       post={post}
+      posts={posts}
     />
   )
 }
@@ -73,10 +78,11 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, post, homePageTitle] = await Promise.all([
+  const [settings, post, homePageTitle, posts = []] = await Promise.all([
     getSettings({ token }),
     getPostBySlug({ token, slug: params.slug }),
     getHomePageTitle({ token }),
+    getPosts({ token }),
   ])
 
   if (!post) {
@@ -90,6 +96,7 @@ export const getStaticProps: GetStaticProps<
       post,
       settings,
       homePageTitle,
+      posts,
       preview,
       token: previewData.token ?? null,
     },

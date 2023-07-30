@@ -9,14 +9,14 @@ export default function PostHeader(
   const { title, coverImage, date, tags, slug } = props
   return (
     <>
-      <h1 className="mb-2 text-center text-5xl leading-tight tracking-tighter md:text-6xl md:leading-none">
+      <h1 className="mb-4 text-center text-5xl tracking-tighter md:text-6xl">
         {title}
       </h1>
-      <div className="mb-3 text-center text-lg italic text-gray-600 decoration-gray-600">
+      <div className="mb-4 text-center text-lg italic opacity-70">
         <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
       </div>
 
-      <div className="mb-5 flex flex-row flex-wrap place-content-center text-xl uppercase tracking-tighter text-gray-600 decoration-gray-600">
+      <div className="mb-6 flex flex-row flex-wrap place-content-center font-serif text-lg uppercase tracking-tight opacity-70">
         {tags?.map((tag, key) => (
           <div key={key} className="mr-1 break-words">
             #{tag}

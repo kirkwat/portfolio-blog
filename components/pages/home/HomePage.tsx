@@ -35,7 +35,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       <Layout settings={settings} preview={preview} home>
         {/* Header */}
         <HomeHeader page={page} settings={settings} />
-        <section className="bg-gray-50 pt-6 pb-7 lg:pt-24 lg:pb-32">
+        <section className="bg-gray-50 pb-7 pt-6 lg:pb-32 lg:pt-24">
           <div className="container mx-auto px-4">
             {/* Showcase posts */}
             <Header centered title={postTitle} subtitle={postSubtitle} />
@@ -56,7 +56,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
             )}
           </div>
         </section>
-        <section className="pt-6 pb-7 lg:pt-24 lg:pb-32">
+        <section className="pb-7 pt-6 lg:pb-32 lg:pt-24">
           <div className="container mx-auto px-4">
             {/* Showcase projects */}
             <Header centered title={projectTitle} subtitle={projectSubtitle} />

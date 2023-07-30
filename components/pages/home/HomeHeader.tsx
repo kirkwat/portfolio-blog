@@ -30,8 +30,8 @@ export function HomeHeader({ page, settings }: HeaderProps) {
 
   return (
     <>
-      <div className="mx-auto grid max-w-screen-xl grid-cols-12 px-5 pt-3 pb-5 lg:pb-32 xl:px-10">
-        <div className="col-span-12 py-4 lg:col-span-4 lg:row-span-4 lg:pr-4 lg:pl-0">
+      <div className="mx-auto grid max-w-screen-xl grid-cols-12 px-5 pb-5 pt-3 lg:pb-32 xl:px-10">
+        <div className="col-span-12 py-4 lg:col-span-4 lg:row-span-4 lg:pl-0 lg:pr-4">
           <div className="mx-auto h-52 w-52 overflow-hidden rounded-full md:h-64 md:w-64">
             <Image
               src={urlForImage(avatar)
@@ -59,11 +59,11 @@ export function HomeHeader({ page, settings }: HeaderProps) {
               </Link>
             </div>
           </h2>
-          <div className="pt-4 pb-4 lg:pb-0">
+          <div className="pb-4 pt-4 lg:pb-0">
             <Socials settings={settings} />
           </div>
         </div>
-        <div className="col-span-12 place-self-end pt-3 pb-0 text-xl lg:col-span-8 lg:pl-4 lg:text-2xl xl:place-self-center">
+        <div className="col-span-12 place-self-end pb-0 pt-3 text-xl lg:col-span-8 lg:pl-4 lg:text-2xl xl:place-self-center">
           <div className="pb-3 text-3xl font-bold lg:text-4xl">About Me</div>
           <CustomPortableText
             value={overview}
@@ -71,7 +71,7 @@ export function HomeHeader({ page, settings }: HeaderProps) {
           />
         </div>
         {interests && interests.length > 0 && (
-          <div className="col-span-12 py-4 md:col-span-5 lg:col-span-3 lg:pr-3 lg:pl-4">
+          <div className="col-span-12 py-4 md:col-span-5 lg:col-span-3 lg:pl-4 lg:pr-3">
             <div className="pb-2 text-2xl font-bold lg:pb-3 lg:text-3xl">
               Interests
             </div>
