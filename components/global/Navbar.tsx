@@ -33,9 +33,7 @@ export function Navbar({ settings }: NavbarProps) {
             return (
               <Link
                 key={key}
-                className={
-                  'text-2xl font-bold text-white hover:opacity-80 md:text-3xl'
-                }
+                className={'text-2xl text-white hover:opacity-80 md:text-3xl'}
                 href={href}
               >
                 {menuItem.title}
