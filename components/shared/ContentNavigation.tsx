@@ -30,7 +30,7 @@ export default function ContentNavigation({
       {prevContent && (
         <a
           href={`/${contentTypeMap[contentType].slug}/${prevContent.slug}`}
-          className={`group flex grow cursor-pointer flex-col overflow-hidden rounded border ${
+          className={`group flex cursor-pointer flex-col overflow-hidden rounded border ${
             nextContent ? 'sm:col-start-1' : 'sm:col-span-2 sm:flex-row-reverse'
           }`}
         >
@@ -48,7 +48,7 @@ export default function ContentNavigation({
                 Previous {contentTypeMap[contentType].title}
               </span>
             </p>
-            <p className="line-clamp-1 text-lg font-medium group-hover:underline">
+            <p className="line-clamp-1 text-ellipsis text-lg font-medium group-hover:underline">
               {prevContent.title}
             </p>
           </div>
@@ -57,7 +57,7 @@ export default function ContentNavigation({
       {nextContent && (
         <a
           href={`/${contentTypeMap[contentType].slug}/${nextContent.slug}`}
-          className={`group flex grow cursor-pointer flex-col overflow-hidden rounded-md border text-right ${
+          className={`group flex cursor-pointer flex-col overflow-hidden rounded-md border ${
             prevContent ? 'sm:col-start-2' : 'sm:col-span-2 sm:flex-row'
           }`}
         >
@@ -68,14 +68,14 @@ export default function ContentNavigation({
               classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
             />
           </div>
-          <div className="grow p-4">
-            <p className="mb-1 opacity-70">
+          <div className="flex grow flex-col p-4">
+            <p className="mb-1 ml-auto opacity-70">
               <span className="font-serif text-sm group-hover:underline">
                 Next {contentTypeMap[contentType].title}
               </span>
               <span> &rarr;</span>
             </p>
-            <p className="line-clamp-1 text-lg font-medium group-hover:underline">
+            <p className="ml-auto line-clamp-1 text-lg font-medium group-hover:underline">
               {nextContent.title}
             </p>
           </div>

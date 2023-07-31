@@ -25,8 +25,12 @@
   @apply mb-4 text-2xl font-bold leading-tight;
 }
 
-.portableText a {
-  @apply text-blue-500 underline hover:text-blue-800;
+.portableText h5 {
+  @apply mb-3 text-xl font-bold leading-tight;
+}
+
+.portableText h6 {
+  @apply mb-2 text-lg leading-tight;
 }
 
 .portableText ul li {
