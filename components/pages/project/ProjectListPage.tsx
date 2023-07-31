@@ -1,4 +1,5 @@
 import { SiteMeta } from 'components/global/SiteMeta'
+import { ContentListCard } from 'components/shared/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -9,8 +10,6 @@ import type {
   SettingsPayload,
   ShowcaseProject,
 } from 'types'
-
-import { ProjectListCard } from './ProjectListCard'
 
 export interface ProjectListPageProps {
   projects?: ShowcaseProject[]
@@ -53,7 +52,7 @@ export function ProjectListPage({
                 }
                 return (
                   <Link key={key} href={href}>
-                    <ProjectListCard project={project} />
+                    <ContentListCard content={project} />
                   </Link>
                 )
               })}

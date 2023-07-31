@@ -1,15 +1,20 @@
 import { format, parseISO } from 'date-fns'
-import type { PostPayload, ShowcasePost } from 'types'
+import type {
+  PostPayload,
+  ProjectPayload,
+  ShowcasePost,
+  ShowcaseProject,
+} from 'types'
 
-import ImageBox from '../../shared/ImageBox'
+import ImageBox from '../ImageBox'
 
-interface PostCardProps {
-  post: PostPayload | ShowcasePost
+interface ContentListCardProps {
+  content: PostPayload | ShowcasePost | ProjectPayload | ShowcaseProject
   secondaryBackground?: boolean
 }
 
-export function PostListCard(props: PostCardProps) {
-  const { post, secondaryBackground } = props
+export function ContentListCard(props: ContentListCardProps) {
+  const { content, secondaryBackground } = props
 
   return (
     <div
@@ -19,28 +24,24 @@ export function PostListCard(props: PostCardProps) {
     >
       <div className="aspect-video overflow-hidden rounded-lg border bg-white sm:w-1/2">
         <ImageBox
-          image={post.coverImage}
-          alt={`Cover image from ${post.title}`}
+          image={content.coverImage}
+          alt={`Cover image from ${content.title}`}
           classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
         />
       </div>
       <div className="px-2 sm:w-1/2 sm:pl-3 sm:pr-0">
-        {/* Title */}
-        <div className="text-xl font-extrabold tracking-tight sm:mb-1 md:text-3xl">
-          {post.title}
+        <div className="text-xl tracking-tighter sm:mb-1 md:text-3xl">
+          {content.title}
         </div>
-        {/* Excerpt  */}
-        <p className="font-serif text-gray-500 md:text-lg">{post.excerpt}</p>
-        {/* Date */}
-        <div className="md:text-lg">
-          <time dateTime={post?.date}>
-            {format(parseISO(post?.date), 'LLLL	d, yyyy')}
+        <p className="font-serif opacity-80 md:text-lg">{content.excerpt}</p>
+        <div className="italic opacity-80 md:text-lg">
+          <time dateTime={content?.date}>
+            {format(parseISO(content?.date), 'LLLL	d, yyyy')}
           </time>
         </div>
       </div>
-      {/* Tags */}
       <div className="absolute top-0 mx-4 mt-4 flex flex-row flex-wrap gap-2">
-        {post.tags?.map((tag, key) => (
+        {content.tags?.map((tag, key) => (
           <div
             className="text-md rounded-full bg-white px-3 py-0.5 font-medium lowercase opacity-70 md:text-lg"
             key={key}

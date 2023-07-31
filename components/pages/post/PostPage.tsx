@@ -1,4 +1,4 @@
-import ContentNavigation from 'components/shared/ContentNavigation'
+import ContentNavigation from 'components/shared/content/ContentNavigation'
 import ScrollUp from 'components/shared/ScrollUp'
 import { notFound } from 'next/navigation'
 import type { PostPayload, SettingsPayload, ShowcasePost } from 'types'

@@ -1,3 +1,4 @@
+import { ContentListCard } from 'components/shared/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
@@ -6,8 +7,6 @@ import Link from 'next/link'
 import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
-import { PostListCard } from '../post/PostListCard'
-import { ProjectListCard } from '../project/ProjectListCard'
 import { HomeHeader } from './HomeHeader'
 import HomePageHead from './HomePageHead'
 
@@ -48,7 +47,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                   }
                   return (
                     <Link key={key} href={href}>
-                      <PostListCard post={post} secondaryBackground />
+                      <ContentListCard content={post} secondaryBackground />
                     </Link>
                   )
                 })}
@@ -69,7 +68,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
                   }
                   return (
                     <Link key={key} href={href}>
-                      <ProjectListCard project={project} />
+                      <ContentListCard content={project} />
                     </Link>
                   )
                 })}

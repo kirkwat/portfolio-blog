@@ -1,12 +1,11 @@
 import { SiteMeta } from 'components/global/SiteMeta'
+import { ContentListCard } from 'components/shared/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import type { PostListPagePayload, SettingsPayload, ShowcasePost } from 'types'
-
-import { PostListCard } from './PostListCard'
 
 export interface PostListPageProps {
   posts?: ShowcasePost[]
@@ -49,7 +48,7 @@ export function PostListPage({
                 }
                 return (
                   <Link key={key} href={href}>
-                    <PostListCard post={post} />
+                    <ContentListCard content={post} />
                   </Link>
                 )
               })}

@@ -36,7 +36,7 @@ export interface ShowcasePost {
 export interface ShowcaseProject {
   _type: string
   coverImage?: Image
-  overview?: PortableTextBlock[]
+  excerpt?: string
   slug?: string
   tags?: string[]
   date?: string
@@ -98,7 +98,7 @@ export interface ProjectPayload {
     start?: string
     end?: string
   }
-  overview?: PortableTextBlock[]
+  excerpt?: string
   site?: string
   slug?: string
   tags?: string[]

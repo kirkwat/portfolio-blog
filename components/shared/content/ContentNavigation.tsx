@@ -1,6 +1,6 @@
 import { ShowcasePost, ShowcaseProject } from 'types'
 
-import ImageBox from './ImageBox'
+import ImageBox from '../ImageBox'
 
 interface ContentNavigationProps {
   content: ShowcasePost[] | ShowcaseProject[]

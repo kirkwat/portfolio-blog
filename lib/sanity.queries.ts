@@ -16,7 +16,7 @@ export const homePageQuery = groq`
     showcaseProjects[]->{
       _type,
       coverImage,
-      overview,
+      excerpt,
       "slug": slug.current,
       date,
       tags,
@@ -90,7 +90,7 @@ export const projectsQuery = groq`
   *[_type == "project"] | order(_createdAt desc) {
     _type,
     coverImage,
-    overview,
+    excerpt,
     date,
     "slug": slug.current,
     tags,
@@ -104,7 +104,7 @@ export const projectBySlugQuery = groq`
     coverImage,
     description,
     duration,
-    overview,
+    exc,
     site,
     "slug": slug.current,
     tags,
