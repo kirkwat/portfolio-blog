@@ -10,6 +10,7 @@ export default function PostPreview({
   settings,
   post,
   homePageTitle,
+  posts,
 }: {
   token: null | string
 } & PostPageProps) {
@@ -22,6 +23,7 @@ export default function PostPreview({
       post={postPreview}
       settings={settings}
       homePageTitle={homePageTitle}
+      posts={posts}
       preview={true}
     />
   )

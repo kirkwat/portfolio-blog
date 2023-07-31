@@ -1,7 +1,7 @@
 import 'styles/index.css'
 
-import { EB_Garamond, IBM_Plex_Mono, Inter, PT_Serif } from '@next/font/google'
 import { AppProps } from 'next/app'
+import { EB_Garamond, IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 
 const mono = IBM_Plex_Mono({
   variable: '--font-mono',
@@ -11,8 +11,9 @@ const mono = IBM_Plex_Mono({
 
 const sans = EB_Garamond({
   variable: '--font-sans',
+  style: ['normal', 'italic'],
   subsets: ['latin'],
-  weight: ['500', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 const serif = PT_Serif({

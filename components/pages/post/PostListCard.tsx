@@ -17,7 +17,7 @@ export function PostListCard(props: PostCardProps) {
         secondaryBackground ? 'hover:bg-gray-100' : 'hover:bg-gray-50'
       }`}
     >
-      <div className="h-64 overflow-hidden rounded-lg border bg-white sm:w-1/2">
+      <div className="aspect-video overflow-hidden rounded-lg border bg-white sm:w-1/2">
         <ImageBox
           image={post.coverImage}
           alt={`Cover image from ${post.title}`}

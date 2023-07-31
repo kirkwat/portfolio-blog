@@ -21,7 +21,7 @@ export function CustomPortableText({
       link: ({ children, value }) => {
         return (
           <Link href={value?.href} target="_blank" rel="noopener noreferrer">
-            <div className="text-gray-600 underline decoration-gray-600 transition hover:opacity-50">
+            <div className="underline opacity-70 transition hover:opacity-50">
               {children}
             </div>
           </Link>
@@ -51,12 +51,12 @@ export function CustomPortableText({
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <div className="font-serif text-sm text-gray-600 underline decoration-gray-600 transition hover:opacity-50">
+                  <div className="whitespace-normal break-words font-serif text-sm underline opacity-70  transition hover:opacity-50">
                     {value.caption}
                   </div>
                 </Link>
               ) : (
-                <div className="font-serif text-sm text-gray-600">
+                <div className="whitespace-normal break-words font-serif text-sm opacity-70">
                   {value.caption}
                 </div>
               ))}
@@ -112,12 +112,12 @@ export function CustomPortableText({
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className="font-serif text-sm text-gray-600 underline decoration-gray-600 transition hover:opacity-50">
+                        <div className="whitespace-normal break-words font-serif text-sm underline  opacity-70 transition hover:opacity-50">
                           {image.caption}
                         </div>
                       </Link>
                     ) : (
-                      <div className="font-serif text-sm text-gray-600">
+                      <div className="whitespace-normal break-words font-serif text-sm opacity-70">
                         {image.caption}
                       </div>
                     ))}

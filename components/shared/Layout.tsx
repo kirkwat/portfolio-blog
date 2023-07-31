@@ -29,7 +29,7 @@ export default function Layout({
         className={
           home
             ? 'mb-auto mt-24 md:mt-32'
-            : 'container mx-auto mb-auto mt-28 px-4 md:mt-40'
+            : 'container mx-auto mb-auto mt-28 px-8 md:mt-32'
         }
       >
         {children}

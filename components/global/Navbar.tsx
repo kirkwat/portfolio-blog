@@ -22,7 +22,7 @@ export function Navbar({ settings }: NavbarProps) {
 
   return (
     <>
-      <nav className="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 bg-black py-3 px-4 shadow-lg md:justify-start md:py-4 md:px-12">
+      <nav className="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 bg-black px-4 py-3 shadow-lg md:justify-start md:px-12 md:py-4">
         {home &&
           home.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
@@ -33,9 +33,7 @@ export function Navbar({ settings }: NavbarProps) {
             return (
               <Link
                 key={key}
-                className={
-                  'text-2xl font-bold text-white hover:opacity-80 md:text-3xl'
-                }
+                className={'text-2xl text-white hover:opacity-80 md:text-3xl'}
                 href={href}
               >
                 {menuItem.title}
@@ -71,7 +69,7 @@ export function Navbar({ settings }: NavbarProps) {
                   <Link
                     key={key}
                     className={
-                      'text-md mt-4 mb-2 mr-4 block uppercase text-white hover:opacity-80 md:mt-0 md:mb-0 md:inline-block md:text-lg'
+                      'text-md mb-2 mr-4 mt-4 block uppercase text-white hover:opacity-80 md:mb-0 md:mt-0 md:inline-block md:text-lg'
                     }
                     href={href}
                   >
@@ -82,7 +80,7 @@ export function Navbar({ settings }: NavbarProps) {
             {resume && (
               <Link
                 className={
-                  'text-md mt-4 mb-2 mr-4 block uppercase text-white hover:opacity-80 md:mt-0 md:mb-0 md:inline-block md:text-lg'
+                  'text-md mb-2 mr-4 mt-4 block uppercase text-white hover:opacity-80 md:mb-0 md:mt-0 md:inline-block md:text-lg'
                 }
                 href="/uploads/resume.pdf"
               >
