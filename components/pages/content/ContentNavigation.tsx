@@ -1,3 +1,5 @@
+import { resolveHref } from 'lib/sanity.links'
+import Link from 'next/link'
 import { ShowcasePost, ShowcaseProject } from 'types'
 
 import ImageBox from '../../shared/ImageBox'
@@ -5,33 +7,40 @@ import ImageBox from '../../shared/ImageBox'
 interface ContentNavigationProps {
   content: ShowcasePost[] | ShowcaseProject[]
   slug: string
-  contentType: 'post' | 'project'
 }
 
 const contentTypeMap = {
-  post: { title: 'Post', slug: 'posts' },
-  project: { title: 'Project', slug: 'projects' },
+  post: 'Post',
+  project: 'Project',
 }
 
 export default function ContentNavigation({
   content,
   slug,
-  contentType,
 }: ContentNavigationProps) {
   const currentContentIndex = content.findIndex(
     (content: ShowcasePost | ShowcaseProject) => content.slug === slug
   )
 
   const nextContent = content[currentContentIndex + 1]
+  const nextContentHref = nextContent
+    ? resolveHref(nextContent._type, nextContent.slug)
+    : ''
+
   const prevContent = content[currentContentIndex - 1]
+  const prevContentHref = prevContent
+    ? resolveHref(prevContent._type, prevContent.slug)
+    : ''
 
   return (
     <div className="mb-16 mt-12 grid w-full gap-4 sm:grid-cols-2 sm:gap-6">
-      {prevContent && (
-        <a
-          href={`/${contentTypeMap[contentType].slug}/${prevContent.slug}`}
+      {prevContentHref && (
+        <Link
+          href={prevContentHref}
           className={`group flex cursor-pointer flex-col overflow-hidden rounded border ${
-            nextContent ? 'sm:col-start-1' : 'sm:col-span-2 sm:flex-row-reverse'
+            nextContentHref
+              ? 'sm:col-start-1'
+              : 'sm:col-span-2 sm:flex-row-reverse'
           }`}
         >
           <div className="aspect-video overflow-hidden bg-white">
@@ -45,20 +54,20 @@ export default function ContentNavigation({
             <p className="mb-1 opacity-70">
               <span>&larr; </span>
               <span className="font-serif text-sm group-hover:underline">
-                Previous {contentTypeMap[contentType].title}
+                Previous {contentTypeMap[prevContent._type]}
               </span>
             </p>
             <p className="line-clamp-1 text-ellipsis text-lg font-medium group-hover:underline">
               {prevContent.title}
             </p>
           </div>
-        </a>
+        </Link>
       )}
-      {nextContent && (
-        <a
-          href={`/${contentTypeMap[contentType].slug}/${nextContent.slug}`}
+      {nextContentHref && (
+        <Link
+          href={nextContentHref}
           className={`group flex cursor-pointer flex-col overflow-hidden rounded-md border ${
-            prevContent ? 'sm:col-start-2' : 'sm:col-span-2 sm:flex-row'
+            prevContentHref ? 'sm:col-start-2' : 'sm:col-span-2 sm:flex-row'
           }`}
         >
           <div className="aspect-video overflow-hidden bg-white">
@@ -71,7 +80,7 @@ export default function ContentNavigation({
           <div className="flex grow flex-col p-4">
             <p className="mb-1 ml-auto opacity-70">
               <span className="font-serif text-sm group-hover:underline">
-                Next {contentTypeMap[contentType].title}
+                Next {contentTypeMap[prevContent._type]}
               </span>
               <span> &rarr;</span>
             </p>
@@ -79,7 +88,7 @@ export default function ContentNavigation({
               {nextContent.title}
             </p>
           </div>
-        </a>
+        </Link>
       )}
     </div>
   )

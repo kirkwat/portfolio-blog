@@ -1,4 +1,3 @@
-import ScrollUp from 'components/shared/ScrollUp'
 import { notFound } from 'next/navigation'
 import type { ProjectPayload, SettingsPayload } from 'types'
 
@@ -46,8 +45,6 @@ export default function ProjectPage({
           <div className="portableText">
             <CustomPortableText value={description} />
           </div>
-          {/* Workaround: scroll to top on route change */}
-          <ScrollUp />
         </article>
       </Layout>
     </>

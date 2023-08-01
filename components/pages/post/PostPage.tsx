@@ -1,5 +1,4 @@
 import ContentNavigation from 'components/pages/content/ContentNavigation'
-import ScrollUp from 'components/shared/ScrollUp'
 import { notFound } from 'next/navigation'
 import type { PostPayload, SettingsPayload, ShowcasePost } from 'types'
 
@@ -44,13 +43,7 @@ export default function PostPage({
           <div className="portableText">
             <CustomPortableText value={content} />
           </div>
-          <ContentNavigation
-            content={posts}
-            slug={post.slug}
-            contentType="post"
-          />
-          {/* Workaround: scroll to top on route change */}
-          <ScrollUp />
+          <ContentNavigation content={posts} slug={post.slug} />
         </article>
       </Layout>
     </>

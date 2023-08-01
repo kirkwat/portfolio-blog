@@ -1,7 +1,6 @@
 import { ContentListCard } from 'components/pages/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
-import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import type { HomePagePayload } from 'types'
@@ -76,9 +75,6 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
             )}
           </div>
         </section>
-
-        {/* Workaround: scroll to top on route change */}
-        <ScrollUp />
       </Layout>
     </>
   )
