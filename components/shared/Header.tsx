@@ -15,19 +15,19 @@ export function Header(props: HeaderProps) {
     <div className={`${centered ? 'text-center' : ''}`}>
       {/* Title */}
       {title && (
-        <div className="mb-2 text-4xl font-bold leading-tight tracking-tighter md:mb-4 md:leading-none lg:text-5xl">
+        <div className="mb-2 text-4xl font-medium leading-tight tracking-tighter md:mb-4 md:leading-none lg:text-5xl">
           {title}
         </div>
       )}
       {/* Description */}
       {description && (
-        <div className="mb-4 font-serif text-lg text-gray-600 sm:text-xl md:mb-6 md:text-2xl">
+        <div className="mb-4 font-serif text-lg opacity-80 sm:text-xl md:mb-6 md:text-2xl">
           <CustomPortableText value={description} />
         </div>
       )}
       {/* Subtitle */}
       {subtitle && (
-        <div className="mb-4 font-serif text-lg text-gray-600 sm:text-xl md:mb-6 md:text-2xl">
+        <div className="mb-4 font-serif text-lg opacity-80 sm:text-xl md:mb-6 md:text-2xl">
           {subtitle}
         </div>
       )}

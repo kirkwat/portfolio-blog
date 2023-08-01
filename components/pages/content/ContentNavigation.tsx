@@ -1,11 +1,11 @@
 import { ShowcasePost, ShowcaseProject } from 'types'
 
-import ImageBox from '../ImageBox'
+import ImageBox from '../../shared/ImageBox'
 
 interface ContentNavigationProps {
   content: ShowcasePost[] | ShowcaseProject[]
   slug: string
-  contentType?: 'post' | 'project'
+  contentType: 'post' | 'project'
 }
 
 const contentTypeMap = {

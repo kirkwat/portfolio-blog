@@ -1,4 +1,4 @@
-import { ContentListCard } from 'components/shared/content/ContentListCard'
+import { ContentListCard } from 'components/pages/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'

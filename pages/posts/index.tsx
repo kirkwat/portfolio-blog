@@ -1,4 +1,4 @@
-import { PostListPage } from 'components/pages/post/PostListPage'
+import { ContentListPage } from 'components/pages/content/ContentListPage'
 import {
   getHomePageTitle,
   getPostListPage,
@@ -29,11 +29,11 @@ export default function PostsPage(props: PageProps) {
   const { posts, settings, homePageTitle, postListPage, token } = props
 
   return (
-    <PostListPage
-      posts={posts}
+    <ContentListPage
+      contentList={posts}
+      contentListHeader={postListPage}
       settings={settings}
       homePageTitle={homePageTitle}
-      postListPage={postListPage}
     />
   )
 }

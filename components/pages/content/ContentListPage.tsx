@@ -1,58 +1,58 @@
 import { SiteMeta } from 'components/global/SiteMeta'
-import { ContentListCard } from 'components/shared/content/ContentListCard'
+import { ContentListCard } from 'components/pages/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
 import type {
+  PostListPagePayload,
   ProjectListPagePayload,
   SettingsPayload,
+  ShowcasePost,
   ShowcaseProject,
 } from 'types'
 
-export interface ProjectListPageProps {
-  projects?: ShowcaseProject[]
+export interface ContentListPageProps {
+  contentList: ShowcasePost[] | ShowcaseProject[]
+  contentListHeader: PostListPagePayload | ProjectListPagePayload
   settings?: SettingsPayload
   homePageTitle?: string
-  projectListPage?: ProjectListPagePayload
   preview?: boolean
 }
 
-export function ProjectListPage({
-  projects,
+export function ContentListPage({
+  contentList,
+  contentListHeader,
   settings,
   homePageTitle,
-  projectListPage,
   preview,
-}: ProjectListPageProps) {
-  const { pageTitle = 'Projects', subtitle = 'Check out my latest projects' } =
-    projectListPage ?? {}
+}: ContentListPageProps) {
+  const { pageTitle = 'Content', subtitle = 'Check out my content!' } =
+    contentListHeader
 
   return (
     <>
       <SiteMeta
         baseTitle={homePageTitle}
-        description={subtitle ? subtitle : ''}
+        description={subtitle ? subtitle : 'hello'}
         image={settings?.ogImage}
         title={pageTitle}
       />
 
       <Layout settings={settings} preview={preview}>
         <div className="pb-7 lg:pb-32">
-          {/* Header */}
           <Header centered title={pageTitle} subtitle={subtitle} />
-          {/* List projects */}
-          {projects && projects.length > 0 && (
+          {contentList && contentList.length > 0 && (
             <div className="grid justify-center gap-4">
-              {projects.map((project, key) => {
-                const href = resolveHref(project._type, project.slug)
+              {contentList.map((content, key) => {
+                const href = resolveHref(content._type, content.slug)
                 if (!href) {
                   return null
                 }
                 return (
                   <Link key={key} href={href}>
-                    <ContentListCard content={project} />
+                    <ContentListCard content={content} />
                   </Link>
                 )
               })}
