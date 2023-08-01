@@ -43,7 +43,11 @@ export default function ContentNavigation({
               : 'sm:col-span-2 sm:flex-row-reverse'
           }`}
         >
-          <div className="aspect-video overflow-hidden bg-white">
+          <div
+            className={`aspect-video overflow-hidden bg-white ${
+              nextContentHref ? 'border-b' : 'border-l'
+            }`}
+          >
             <ImageBox
               image={prevContent.coverImage}
               alt={`Cover image from ${prevContent.title}`}
@@ -70,7 +74,11 @@ export default function ContentNavigation({
             prevContentHref ? 'sm:col-start-2' : 'sm:col-span-2 sm:flex-row'
           }`}
         >
-          <div className="aspect-video overflow-hidden bg-white">
+          <div
+            className={`aspect-video overflow-hidden bg-white ${
+              prevContentHref ? 'border-b' : 'border-r'
+            }`}
+          >
             <ImageBox
               image={nextContent.coverImage}
               alt={`Cover image from ${nextContent.title}`}
@@ -80,7 +88,7 @@ export default function ContentNavigation({
           <div className="flex grow flex-col p-4">
             <p className="mb-1 ml-auto opacity-70">
               <span className="font-serif text-sm group-hover:underline">
-                Next {contentTypeMap[prevContent._type]}
+                Next {contentTypeMap[nextContent._type]}
               </span>
               <span> &rarr;</span>
             </p>

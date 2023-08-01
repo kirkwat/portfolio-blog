@@ -5,19 +5,21 @@ import {
   getHomePageTitle,
   getProjectBySlug,
   getProjectPaths,
+  getProjects,
   getSettings,
 } from 'lib/sanity.client'
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { ProjectPayload, SettingsPayload } from 'types'
+import { ProjectPayload, SettingsPayload, ShowcaseProject } from 'types'
 
 const ProjectPreview = lazy(
   () => import('components/pages/project/ProjectPreview')
 )
 
 interface PageProps {
-  project?: ProjectPayload
+  project: ProjectPayload
+  projects: ShowcaseProject[]
   settings?: SettingsPayload
   homePageTitle?: string
   preview: boolean
@@ -33,7 +35,7 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { homePageTitle, settings, project, preview, token } = props
+  const { project, projects, settings, homePageTitle, preview, token } = props
 
   if (preview) {
     return (
@@ -41,9 +43,10 @@ export default function ProjectSlugRoute(props: PageProps) {
         fallback={
           <PreviewWrapper>
             <ProjectPage
-              homePageTitle={homePageTitle}
               project={project}
+              projects={projects}
               settings={settings}
+              homePageTitle={homePageTitle}
               preview={preview}
             />
           </PreviewWrapper>
@@ -52,6 +55,7 @@ export default function ProjectSlugRoute(props: PageProps) {
         <ProjectPreview
           token={token}
           project={project}
+          projects={projects}
           settings={settings}
           homePageTitle={homePageTitle}
         />
@@ -61,9 +65,10 @@ export default function ProjectSlugRoute(props: PageProps) {
 
   return (
     <ProjectPage
-      homePageTitle={homePageTitle}
       project={project}
+      projects={projects}
       settings={settings}
+      homePageTitle={homePageTitle}
       preview={preview}
     />
   )
@@ -78,9 +83,10 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, project, homePageTitle] = await Promise.all([
-    getSettings({ token }),
+  const [project, projects = [], settings, homePageTitle] = await Promise.all([
     getProjectBySlug({ token, slug: params.slug }),
+    getProjects({ token }),
+    getSettings({ token }),
     getHomePageTitle({ token }),
   ])
 
@@ -93,6 +99,7 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       project,
+      projects,
       settings,
       homePageTitle,
       preview,

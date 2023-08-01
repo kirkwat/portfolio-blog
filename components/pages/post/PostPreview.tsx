@@ -7,10 +7,10 @@ import { PostPageProps } from './PostPage'
 
 export default function PostPreview({
   token,
-  settings,
   post,
-  homePageTitle,
   posts,
+  settings,
+  homePageTitle,
 }: {
   token: null | string
 } & PostPageProps) {
@@ -21,9 +21,9 @@ export default function PostPreview({
   return (
     <PostPage
       post={postPreview}
+      posts={posts}
       settings={settings}
       homePageTitle={homePageTitle}
-      posts={posts}
       preview={true}
     />
   )
