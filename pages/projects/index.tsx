@@ -1,4 +1,4 @@
-import { ProjectListPage } from 'components/pages/project/ProjectListPage'
+import { ContentListPage } from 'components/pages/content/ContentListPage'
 import {
   getHomePageTitle,
   getProjectListPage,
@@ -6,10 +6,10 @@ import {
   getSettings,
 } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { ProjectListPagePayload, SettingsPayload, ShowcaseProject } from 'types'
+import { ProjectListPagePayload, SettingsPayload, ShowcaseContent } from 'types'
 
 interface PageProps {
-  projects: ShowcaseProject[]
+  projects: ShowcaseContent[]
   settings: SettingsPayload
   homePageTitle?: string
   projectListPage: ProjectListPagePayload
@@ -29,11 +29,11 @@ export default function ProjectsPage(props: PageProps) {
   const { projects, settings, homePageTitle, projectListPage, token } = props
 
   return (
-    <ProjectListPage
-      projects={projects}
+    <ContentListPage
+      contentList={projects}
+      contentListHeader={projectListPage}
       settings={settings}
       homePageTitle={homePageTitle}
-      projectListPage={projectListPage}
     />
   )
 }

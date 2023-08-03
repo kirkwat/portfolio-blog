@@ -1,30 +1,33 @@
 import { SiteMeta } from 'components/global/SiteMeta'
+import { ContentListCard } from 'components/pages/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
-import ScrollUp from 'components/shared/ScrollUp'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import type { PostListPagePayload, SettingsPayload, ShowcasePost } from 'types'
+import type {
+  PostListPagePayload,
+  ProjectListPagePayload,
+  SettingsPayload,
+  ShowcaseContent,
+} from 'types'
 
-import { PostListCard } from './PostListCard'
-
-export interface PostListPageProps {
-  posts?: ShowcasePost[]
+export interface ContentListPageProps {
+  contentList: ShowcaseContent[]
+  contentListHeader: PostListPagePayload | ProjectListPagePayload
   settings?: SettingsPayload
   homePageTitle?: string
-  postListPage?: PostListPagePayload
   preview?: boolean
 }
 
-export function PostListPage({
-  posts,
+export function ContentListPage({
+  contentList,
+  contentListHeader,
   settings,
   homePageTitle,
-  postListPage,
   preview,
-}: PostListPageProps) {
-  const { pageTitle = 'Blogs', subtitle = 'Check out my latest blogs' } =
-    postListPage ?? {}
+}: ContentListPageProps) {
+  const { pageTitle = 'Content', subtitle = 'Check out my content!' } =
+    contentListHeader
 
   return (
     <>
@@ -36,28 +39,23 @@ export function PostListPage({
       />
 
       <Layout settings={settings} preview={preview}>
-        <div className="pb-7 lg:pb-32">
-          {/* Header */}
+        <div className="mx-auto mb-7 max-w-5xl lg:mb-32">
           <Header centered title={pageTitle} subtitle={subtitle} />
-          {/* List posts */}
-          {posts && posts.length > 0 && (
+          {contentList && contentList.length > 0 && (
             <div className="grid justify-center gap-4">
-              {posts.map((post, key) => {
-                const href = resolveHref(post._type, post.slug)
+              {contentList.map((content, key) => {
+                const href = resolveHref(content._type, content.slug)
                 if (!href) {
                   return null
                 }
                 return (
                   <Link key={key} href={href}>
-                    <PostListCard post={post} />
+                    <ContentListCard content={content} />
                   </Link>
                 )
               })}
             </div>
           )}
-
-          {/* Workaround: scroll to top on route change */}
-          <ScrollUp />
         </div>
       </Layout>
     </>

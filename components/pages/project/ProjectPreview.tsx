@@ -7,8 +7,9 @@ import { ProjectPageProps } from './ProjectPage'
 
 export default function ProjectPreview({
   token,
-  settings,
   project,
+  projects,
+  settings,
   homePageTitle,
 }: {
   token: null | string
@@ -20,6 +21,7 @@ export default function ProjectPreview({
   return (
     <ProjectPage
       project={projectPreview}
+      projects={projects}
       settings={settings}
       homePageTitle={homePageTitle}
       preview={true}

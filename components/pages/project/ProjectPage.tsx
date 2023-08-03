@@ -1,14 +1,15 @@
-import ScrollUp from 'components/shared/ScrollUp'
 import { notFound } from 'next/navigation'
-import type { ProjectPayload, SettingsPayload } from 'types'
+import type { ProjectPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
-import ProjectHeader from './ProjectHeader'
-import ProjectPageHead from './ProjectPageHead'
+import ContentHeader from '../content/ContentHeader'
+import ContentNavigation from '../content/ContentNavigation'
+import ContentPageHead from '../content/ContentPageHead'
 
 export interface ProjectPageProps {
   project: ProjectPayload | undefined
+  projects: ShowcaseContent[]
   settings: SettingsPayload | undefined
   homePageTitle: string | undefined
   preview?: boolean
@@ -16,11 +17,11 @@ export interface ProjectPageProps {
 
 export default function ProjectPage({
   project,
+  projects,
   settings,
   homePageTitle,
   preview,
 }: ProjectPageProps) {
-  // Default to an empty object to allow previews on non-existent documents
   const { client, coverImage, description, duration, site, tags, date, title } =
     project || {}
 
@@ -30,24 +31,15 @@ export default function ProjectPage({
 
   return (
     <>
-      <ProjectPageHead project={project} title={homePageTitle} />
+      <ContentPageHead content={project} title={homePageTitle} />
 
       <Layout settings={settings} preview={preview}>
         <article className="mx-auto mb-6 max-w-3xl">
-          <ProjectHeader
-            title={title}
-            coverImage={coverImage}
-            date={date}
-            tags={tags}
-            site={site}
-            client={client}
-            duration={duration}
-          />
+          <ContentHeader title={title} date={date} tags={tags} />
           <div className="portableText">
             <CustomPortableText value={description} />
           </div>
-          {/* Workaround: scroll to top on route change */}
-          <ScrollUp />
+          <ContentNavigation content={projects} slug={project.slug} />
         </article>
       </Layout>
     </>

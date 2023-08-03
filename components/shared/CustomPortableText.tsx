@@ -20,10 +20,13 @@ export function CustomPortableText({
     marks: {
       link: ({ children, value }) => {
         return (
-          <Link href={value?.href} target="_blank" rel="noopener noreferrer">
-            <div className="underline opacity-70 transition hover:opacity-50">
-              {children}
-            </div>
+          <Link
+            href={value?.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline opacity-70 transition hover:opacity-50"
+          >
+            {children}
           </Link>
         )
       },
@@ -50,15 +53,14 @@ export function CustomPortableText({
                   href={value.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="whitespace-normal break-words font-serif text-sm underline opacity-70  transition hover:opacity-50"
                 >
-                  <div className="whitespace-normal break-words font-serif text-sm underline opacity-70  transition hover:opacity-50">
-                    {value.caption}
-                  </div>
+                  {value.caption}
                 </Link>
               ) : (
-                <div className="whitespace-normal break-words font-serif text-sm opacity-70">
+                <p className="whitespace-normal break-words font-serif text-sm opacity-70">
                   {value.caption}
-                </div>
+                </p>
               ))}
           </div>
         )
@@ -111,15 +113,14 @@ export function CustomPortableText({
                         href={image.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="whitespace-normal break-words font-serif text-sm underline  opacity-70 transition hover:opacity-50"
                       >
-                        <div className="whitespace-normal break-words font-serif text-sm underline  opacity-70 transition hover:opacity-50">
-                          {image.caption}
-                        </div>
+                        {image.caption}
                       </Link>
                     ) : (
-                      <div className="whitespace-normal break-words font-serif text-sm opacity-70">
+                      <p className="whitespace-normal break-words font-serif text-sm opacity-70">
                         {image.caption}
-                      </div>
+                      </p>
                     ))}
                 </div>
               ))}

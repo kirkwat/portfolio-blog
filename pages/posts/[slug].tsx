@@ -10,15 +10,15 @@ import {
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { PostPayload, SettingsPayload, ShowcasePost } from 'types'
+import { PostPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 const PreviewPostPage = lazy(() => import('components/pages/post/PostPreview'))
 
 interface PageProps {
   post: PostPayload
+  posts: ShowcaseContent[]
   settings?: SettingsPayload
   homePageTitle?: string
-  posts: ShowcasePost[]
   preview: boolean
   token: string | null
 }
@@ -32,27 +32,27 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { homePageTitle, settings, post, posts, preview, token } = props
+  const { post, posts, settings, homePageTitle, preview, token } = props
 
   if (preview) {
     return (
       <PreviewSuspense
         fallback={
           <PostPage
-            homePageTitle={homePageTitle}
-            preview={preview}
-            settings={settings}
             post={post}
             posts={posts}
+            settings={settings}
+            homePageTitle={homePageTitle}
+            preview={preview}
           />
         }
       >
         <PreviewPostPage
           token={token}
           post={post}
+          posts={posts}
           settings={settings}
           homePageTitle={homePageTitle}
-          posts={posts}
         />
       </PreviewSuspense>
     )
@@ -60,11 +60,11 @@ export default function ProjectSlugRoute(props: PageProps) {
 
   return (
     <PostPage
-      homePageTitle={homePageTitle}
-      preview={preview}
-      settings={settings}
       post={post}
       posts={posts}
+      settings={settings}
+      homePageTitle={homePageTitle}
+      preview={preview}
     />
   )
 }
@@ -78,11 +78,11 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, post, homePageTitle, posts = []] = await Promise.all([
-    getSettings({ token }),
+  const [post, posts = [], settings, homePageTitle] = await Promise.all([
     getPostBySlug({ token, slug: params.slug }),
-    getHomePageTitle({ token }),
     getPosts({ token }),
+    getSettings({ token }),
+    getHomePageTitle({ token }),
   ])
 
   if (!post) {
@@ -94,9 +94,9 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       post,
+      posts,
       settings,
       homePageTitle,
-      posts,
       preview,
       token: previewData.token ?? null,
     },

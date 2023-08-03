@@ -1,4 +1,4 @@
-import { PostListPage } from 'components/pages/post/PostListPage'
+import { ContentListPage } from 'components/pages/content/ContentListPage'
 import {
   getHomePageTitle,
   getPostListPage,
@@ -6,10 +6,10 @@ import {
   getSettings,
 } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { PostListPagePayload, SettingsPayload, ShowcasePost } from 'types'
+import { PostListPagePayload, SettingsPayload, ShowcaseContent } from 'types'
 
 interface PageProps {
-  posts: ShowcasePost[]
+  posts: ShowcaseContent[]
   settings: SettingsPayload
   homePageTitle?: string
   postListPage: PostListPagePayload
@@ -29,11 +29,11 @@ export default function PostsPage(props: PageProps) {
   const { posts, settings, homePageTitle, postListPage, token } = props
 
   return (
-    <PostListPage
-      posts={posts}
+    <ContentListPage
+      contentList={posts}
+      contentListHeader={postListPage}
       settings={settings}
       homePageTitle={homePageTitle}
-      postListPage={postListPage}
     />
   )
 }
