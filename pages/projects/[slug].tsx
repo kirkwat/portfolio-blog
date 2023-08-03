@@ -11,7 +11,7 @@ import {
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { ProjectPayload, SettingsPayload, ShowcaseProject } from 'types'
+import { ProjectPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 const ProjectPreview = lazy(
   () => import('components/pages/project/ProjectPreview')
@@ -19,7 +19,7 @@ const ProjectPreview = lazy(
 
 interface PageProps {
   project: ProjectPayload
-  projects: ShowcaseProject[]
+  projects: ShowcaseContent[]
   settings?: SettingsPayload
   homePageTitle?: string
   preview: boolean

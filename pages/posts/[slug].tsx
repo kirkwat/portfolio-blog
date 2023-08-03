@@ -10,13 +10,13 @@ import {
 import { resolveHref } from 'lib/sanity.links'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
-import { PostPayload, SettingsPayload, ShowcasePost } from 'types'
+import { PostPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 const PreviewPostPage = lazy(() => import('components/pages/post/PostPreview'))
 
 interface PageProps {
   post: PostPayload
-  posts: ShowcasePost[]
+  posts: ShowcaseContent[]
   settings?: SettingsPayload
   homePageTitle?: string
   preview: boolean

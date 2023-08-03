@@ -1,6 +1,6 @@
 import ContentNavigation from 'components/pages/content/ContentNavigation'
 import { notFound } from 'next/navigation'
-import type { PostPayload, SettingsPayload, ShowcasePost } from 'types'
+import type { PostPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
@@ -9,7 +9,7 @@ import ContentPageHead from '../content/ContentPageHead'
 
 export interface PostPageProps {
   post: PostPayload | undefined
-  posts: ShowcasePost[]
+  posts: ShowcaseContent[]
   settings: SettingsPayload | undefined
   homePageTitle: string | undefined
   preview?: boolean

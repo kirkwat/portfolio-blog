@@ -1,15 +1,10 @@
 import { format, parseISO } from 'date-fns'
-import type {
-  PostPayload,
-  ProjectPayload,
-  ShowcasePost,
-  ShowcaseProject,
-} from 'types'
+import type { PostPayload, ProjectPayload, ShowcaseContent } from 'types'
 
 import ImageBox from '../../shared/ImageBox'
 
 interface ContentListCardProps {
-  content: PostPayload | ShowcasePost | ProjectPayload | ShowcaseProject
+  content: PostPayload | ProjectPayload | ShowcaseContent
   secondaryBackground?: boolean
 }
 

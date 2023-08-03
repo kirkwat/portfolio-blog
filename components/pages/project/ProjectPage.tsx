@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import type { ProjectPayload, SettingsPayload, ShowcaseProject } from 'types'
+import type { ProjectPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
@@ -9,7 +9,7 @@ import ContentPageHead from '../content/ContentPageHead'
 
 export interface ProjectPageProps {
   project: ProjectPayload | undefined
-  projects: ShowcaseProject[]
+  projects: ShowcaseContent[]
   settings: SettingsPayload | undefined
   homePageTitle: string | undefined
   preview?: boolean

@@ -23,8 +23,7 @@ import type {
   ProjectListPagePayload,
   ProjectPayload,
   SettingsPayload,
-  ShowcasePost,
-  ShowcaseProject,
+  ShowcaseContent,
 } from 'types'
 
 /**
@@ -102,7 +101,7 @@ export async function getPosts({
   token,
 }: {
   token?: string
-}): Promise<ShowcasePost[] | undefined> {
+}): Promise<ShowcaseContent[] | undefined> {
   return await sanityClient(token)?.fetch(postsQuery)
 }
 
@@ -110,7 +109,7 @@ export async function getProjects({
   token,
 }: {
   token?: string
-}): Promise<ShowcaseProject[] | undefined> {
+}): Promise<ShowcaseContent[] | undefined> {
   return await sanityClient(token)?.fetch(projectsQuery)
 }
 

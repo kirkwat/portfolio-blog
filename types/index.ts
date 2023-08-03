@@ -23,17 +23,7 @@ export interface DegreeItem {
   year?: number
 }
 
-export interface ShowcasePost {
-  _type: string
-  coverImage?: Image
-  excerpt?: string
-  slug?: string
-  tags?: string[]
-  date?: string
-  title?: string
-}
-
-export interface ShowcaseProject {
+export interface ShowcaseContent {
   _type: string
   coverImage?: Image
   excerpt?: string
@@ -48,8 +38,8 @@ export interface ShowcaseProject {
 export interface HomePagePayload {
   avatar?: Image
   overview?: PortableTextBlock[]
-  showcasePosts?: ShowcasePost[]
-  showcaseProjects?: ShowcaseProject[]
+  showcasePosts?: ShowcaseContent[]
+  showcaseProjects?: ShowcaseContent[]
   title?: string
   role?: string
   school?: string

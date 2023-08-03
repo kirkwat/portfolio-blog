@@ -1,11 +1,11 @@
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import { ShowcasePost, ShowcaseProject } from 'types'
+import { ShowcaseContent } from 'types'
 
 import ImageBox from '../../shared/ImageBox'
 
 interface ContentNavigationProps {
-  content: ShowcasePost[] | ShowcaseProject[]
+  content: ShowcaseContent[]
   slug: string
 }
 
@@ -19,7 +19,7 @@ export default function ContentNavigation({
   slug,
 }: ContentNavigationProps) {
   const currentContentIndex = content.findIndex(
-    (content: ShowcasePost | ShowcaseProject) => content.slug === slug
+    (content: ShowcaseContent) => content.slug === slug
   )
 
   const nextContent = content[currentContentIndex + 1]
@@ -51,7 +51,7 @@ export default function ContentNavigation({
             <ImageBox
               image={prevContent.coverImage}
               alt={`Cover image from ${prevContent.title}`}
-              classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
+              classesWrapper="transition-all duration-200 group-hover:scale-105 absolute top-0 left-0 right-0 bottom-0 h-full w-full"
             />
           </div>
           <div className="grow p-4">
@@ -82,7 +82,7 @@ export default function ContentNavigation({
             <ImageBox
               image={nextContent.coverImage}
               alt={`Cover image from ${nextContent.title}`}
-              classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
+              classesWrapper="transition-all duration-200 group-hover:scale-105 absolute top-0 left-0 right-0 bottom-0 h-full w-full"
             />
           </div>
           <div className="flex grow flex-col p-4">
