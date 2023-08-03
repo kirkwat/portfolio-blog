@@ -1,3 +1,5 @@
+import { toPlainText } from '@portabletext/react'
+import { SiteMeta } from 'components/global/SiteMeta'
 import { ContentListCard } from 'components/pages/content/ContentListCard'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
@@ -7,7 +9,6 @@ import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
 import { HomeHeader } from './HomeHeader'
-import HomePageHead from './HomePageHead'
 
 export interface HomePageProps {
   settings?: SettingsPayload
@@ -20,6 +21,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
     showcasePosts,
     showcaseProjects,
     title = 'Personal website',
+    overview,
     postTitle = 'Blogs',
     postSubtitle = 'My latest blogs',
     projectTitle = 'Projects',
@@ -28,7 +30,11 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
 
   return (
     <>
-      <HomePageHead page={page} settings={settings} />
+      <SiteMeta
+        description={overview ? toPlainText(overview) : ''}
+        image={settings?.ogImage}
+        title={title || ''}
+      />
 
       <Layout settings={settings} preview={preview} home>
         {/* Header */}

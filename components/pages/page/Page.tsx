@@ -1,9 +1,9 @@
+import { toPlainText } from '@portabletext/react'
+import { SiteMeta } from 'components/global/SiteMeta'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import Layout from 'components/shared/Layout'
 import type { PagePayload, SettingsPayload } from 'types'
-
-import PageHead from './PageHead'
 
 export interface PageProps {
   page: PagePayload | undefined
@@ -18,7 +18,12 @@ export function Page({ page, settings, homePageTitle, preview }: PageProps) {
 
   return (
     <>
-      <PageHead page={page} settings={settings} title={homePageTitle} />
+      <SiteMeta
+        baseTitle={homePageTitle}
+        description={overview ? toPlainText(overview) : ''}
+        image={settings?.ogImage}
+        title={title}
+      />
 
       <Layout settings={settings} preview={preview}>
         <div>
