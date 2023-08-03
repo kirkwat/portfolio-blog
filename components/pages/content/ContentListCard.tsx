@@ -30,12 +30,14 @@ export function ContentListCard(props: ContentListCardProps) {
         <div className="text-xl tracking-tighter sm:mb-1 md:text-3xl">
           {content.title}
         </div>
-        <p className="font-serif opacity-80 md:text-lg">{content.excerpt}</p>
         <div className="italic opacity-80 md:text-lg">
           <time dateTime={content?.date}>
             {format(parseISO(content?.date), 'LLLL	d, yyyy')}
           </time>
         </div>
+        <p className="font-serif opacity-80 sm:line-clamp-2 lg:line-clamp-6 lg:text-lg">
+          {content.excerpt}
+        </p>
       </div>
       <div className="absolute top-0 mx-4 mt-4 flex flex-row flex-wrap gap-2">
         {content.tags?.map((tag, key) => (
