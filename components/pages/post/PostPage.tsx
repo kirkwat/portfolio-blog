@@ -1,25 +1,25 @@
 import ContentNavigation from 'components/pages/content/ContentNavigation'
 import { notFound } from 'next/navigation'
-import type { PostPayload, SettingsPayload, ShowcasePost } from 'types'
+import type { PostPayload, SettingsPayload, ShowcaseContent } from 'types'
 
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
-import PostHeader from './PostHeader'
-import PostPageHead from './PostPageHead'
+import ContentHeader from '../content/ContentHeader'
+import ContentPageHead from '../content/ContentPageHead'
 
 export interface PostPageProps {
   post: PostPayload | undefined
+  posts: ShowcaseContent[]
   settings: SettingsPayload | undefined
   homePageTitle: string | undefined
-  posts: ShowcasePost[]
   preview?: boolean
 }
 
 export default function PostPage({
   post,
+  posts,
   settings,
   homePageTitle,
-  posts,
   preview,
 }: PostPageProps) {
   const { coverImage, content, tags, date, title } = post || {}
@@ -30,16 +30,11 @@ export default function PostPage({
 
   return (
     <>
-      <PostPageHead post={post} title={homePageTitle} />
+      <ContentPageHead content={post} title={homePageTitle} />
 
       <Layout settings={settings} preview={preview}>
         <article className="mx-auto mb-6 max-w-3xl">
-          <PostHeader
-            title={title}
-            coverImage={coverImage}
-            date={date}
-            tags={tags}
-          />
+          <ContentHeader title={title} date={date} tags={tags} />
           <div className="portableText">
             <CustomPortableText value={content} />
           </div>

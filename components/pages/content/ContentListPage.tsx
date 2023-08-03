@@ -8,12 +8,11 @@ import type {
   PostListPagePayload,
   ProjectListPagePayload,
   SettingsPayload,
-  ShowcasePost,
-  ShowcaseProject,
+  ShowcaseContent,
 } from 'types'
 
 export interface ContentListPageProps {
-  contentList: ShowcasePost[] | ShowcaseProject[]
+  contentList: ShowcaseContent[]
   contentListHeader: PostListPagePayload | ProjectListPagePayload
   settings?: SettingsPayload
   homePageTitle?: string

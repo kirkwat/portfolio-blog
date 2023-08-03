@@ -6,10 +6,10 @@ import {
   getSettings,
 } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
-import { PostListPagePayload, SettingsPayload, ShowcasePost } from 'types'
+import { PostListPagePayload, SettingsPayload, ShowcaseContent } from 'types'
 
 interface PageProps {
-  posts: ShowcasePost[]
+  posts: ShowcaseContent[]
   settings: SettingsPayload
   homePageTitle?: string
   postListPage: PostListPagePayload

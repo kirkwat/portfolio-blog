@@ -30,7 +30,7 @@ export default function ImageBox({
         <Image
           alt={alt}
           src={imageUrl}
-          className="absolute bottom-0 left-0 right-0 top-0 h-full w-full object-cover"
+          className="absolute bottom-0 left-0 right-0 top-0 h-full w-full object-contain"
           fill
           sizes="(max-width: 640px) 100vw, 640px"
           onLoad={handleImageLoad}
