@@ -1,3 +1,4 @@
+import { SiteMeta } from 'components/global/SiteMeta'
 import ContentNavigation from 'components/pages/content/ContentNavigation'
 import { notFound } from 'next/navigation'
 import type { PostPayload, SettingsPayload, ShowcaseContent } from 'types'
@@ -5,7 +6,6 @@ import type { PostPayload, SettingsPayload, ShowcaseContent } from 'types'
 import { CustomPortableText } from '../../shared/CustomPortableText'
 import Layout from '../../shared/Layout'
 import ContentHeader from '../content/ContentHeader'
-import ContentPageHead from '../content/ContentPageHead'
 
 export interface PostPageProps {
   post: PostPayload | undefined
@@ -22,7 +22,7 @@ export default function PostPage({
   homePageTitle,
   preview,
 }: PostPageProps) {
-  const { coverImage, content, tags, date, title } = post || {}
+  const { coverImage, content, tags, date, title, excerpt } = post || {}
 
   if (!post?.slug && !preview) {
     notFound()
@@ -30,7 +30,12 @@ export default function PostPage({
 
   return (
     <>
-      <ContentPageHead content={post} title={homePageTitle} />
+      <SiteMeta
+        baseTitle={homePageTitle}
+        description={excerpt || ''}
+        image={coverImage}
+        title={title}
+      />
 
       <Layout settings={settings} preview={preview}>
         <article className="mx-auto mb-6 max-w-3xl">

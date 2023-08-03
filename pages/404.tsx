@@ -1,10 +1,11 @@
 import { NotFound } from 'components/pages/NotFound'
-import { getSettings } from 'lib/sanity.client'
+import { getHomePageTitle, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'
 import { SettingsPayload } from 'types'
 
 interface PageProps {
   settings: SettingsPayload
+  homePageTitle?: string
   preview: boolean
   token: string | null
 }
@@ -18,9 +19,9 @@ interface PreviewData {
 }
 
 export default function NotFoundPage(props: PageProps) {
-  const { settings, preview, token } = props
+  const { settings, homePageTitle, preview, token } = props
 
-  return <NotFound settings={settings} />
+  return <NotFound settings={settings} homePageTitle={homePageTitle} />
 }
 
 export const getStaticProps: GetStaticProps<
@@ -31,11 +32,15 @@ export const getStaticProps: GetStaticProps<
   const { preview = false, previewData = {} } = ctx
 
   const token = previewData.token
-  const [settings] = await Promise.all([getSettings({ token })])
+  const [settings, homePageTitle] = await Promise.all([
+    getSettings({ token }),
+    getHomePageTitle({ token }),
+  ])
 
   return {
     props: {
       settings,
+      homePageTitle,
       preview,
       token: previewData.token ?? null,
     },

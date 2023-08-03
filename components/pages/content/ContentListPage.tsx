@@ -33,7 +33,7 @@ export function ContentListPage({
     <>
       <SiteMeta
         baseTitle={homePageTitle}
-        description={subtitle ? subtitle : 'hello'}
+        description={subtitle || ''}
         image={settings?.ogImage}
         title={pageTitle}
       />
