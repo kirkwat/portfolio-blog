@@ -6,7 +6,7 @@ import { SettingsPayload } from 'types'
 
 export function Footer({ settings }: { settings: SettingsPayload }) {
   return (
-    <footer className="bottom-0 grid w-full grid-cols-1 gap-4 bg-black py-5 text-center">
+    <footer className="bottom-0 grid w-full grid-cols-1 gap-5 bg-black py-8 text-center">
       {settings.footer && (
         <CustomPortableText
           paragraphClasses="text-md text-white"
@@ -21,7 +21,7 @@ export function Footer({ settings }: { settings: SettingsPayload }) {
           rel="noopener noreferrer"
           className="w-5 duration-100 hover:scale-125"
         >
-          <FaGithub size={34} color="white" />
+          <FaGithub size={32} color="white" />
         </Link>
       </div>
     </footer>

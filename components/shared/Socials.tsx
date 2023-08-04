@@ -31,13 +31,15 @@ export function Socials({ settings, footer = false }: SocialsProps) {
 
   return (
     <div
-      className={`icons flex justify-center ${footer ? '' : 'gap-2 lg:gap-0'}`}
+      className={`icons flex justify-center ${
+        footer ? 'gap-2' : 'gap-2 lg:gap-0'
+      }`}
     >
       <IconContext.Provider
         value={
           footer
-            ? { size: '34', color: 'white' }
-            : { size: '41', color: 'rgb(37 99 235)' }
+            ? { size: '32', color: 'white' }
+            : { size: '38', color: 'rgb(37 99 235)' }
         }
       >
         {linkedin && linkedin.length > 0 && (

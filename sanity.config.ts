@@ -22,7 +22,9 @@ import postList from 'schemas/singletons/postList'
 import projectList from 'schemas/singletons/projectList'
 import settings from 'schemas/singletons/settings'
 
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Zamira's Website"
+const title =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
+  'Next.js Personal Website with Sanity.io'
 
 export const PREVIEWABLE_DOCUMENT_TYPES: string[] = [
   home.name,
