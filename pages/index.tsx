@@ -1,5 +1,5 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
-import { HomePage } from 'components/pages/home/HomePage'
+import { HomePage } from 'components/pages/home2/HomePage'
 import { PreviewWrapper } from 'components/preview/PreviewWrapper'
 import { getHomePage, getSettings } from 'lib/sanity.client'
 import { GetStaticProps } from 'next'

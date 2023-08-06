@@ -12,26 +12,18 @@ export interface LayoutProps {
   children: React.ReactNode
   settings: SettingsPayload | undefined
   preview?: boolean
-  home?: boolean
 }
 
 export default function Layout({
   children,
   settings = fallbackSettings,
   preview,
-  home = false,
 }: LayoutProps) {
   return (
     <div className="flex min-h-screen flex-col justify-between bg-white text-black">
       {preview && <PreviewBanner />}
       <Navbar settings={settings} />
-      <main
-        className={
-          home
-            ? 'mb-auto mt-24 md:mt-32'
-            : 'container mx-auto mb-auto mt-28 px-8 md:mt-32'
-        }
-      >
+      <main className="container mx-auto mb-auto mt-28 px-8 md:mt-32">
         {children}
       </main>
       {settings && <Footer settings={settings} />}

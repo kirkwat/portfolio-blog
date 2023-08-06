@@ -36,7 +36,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
         title={title || ''}
       />
 
-      <Layout settings={settings} preview={preview} home>
+      <Layout settings={settings} preview={preview}>
         {/* Header */}
         <HomeHeader page={page} settings={settings} />
         <section className="bg-gray-50 pb-7 pt-6 lg:pb-32 lg:pt-24">
