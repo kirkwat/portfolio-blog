@@ -19,6 +19,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
     showcasePosts = [],
     showcaseProjects = [],
     title = 'Personal website',
+    avatar,
     overview,
     postTitle = 'Blogs',
     postSubtitle = 'My latest blogs',
@@ -35,12 +36,15 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       />
 
       <Layout settings={settings} preview={preview}>
-        <LandingSection
-          title={title}
-          overview={overview ? toPlainText(overview) : ''}
-        />
-        <PostSection showcasePosts={showcasePosts} />
-        <ProjectSection showcaseProjects={showcaseProjects} />
+        <div className="mx-auto max-w-5xl">
+          <LandingSection
+            title={title}
+            avatar={avatar}
+            overview={overview ? toPlainText(overview) : ''}
+          />
+          <PostSection showcasePosts={showcasePosts} />
+          <ProjectSection showcaseProjects={showcaseProjects} />
+        </div>
       </Layout>
     </>
   )

@@ -7,7 +7,7 @@ export default function ContentHeader(
   const { title, date, tags } = props
   return (
     <>
-      <h1 className="mb-4 text-center text-5xl tracking-tighter md:text-6xl">
+      <h1 className="mb-4 text-center text-4xl tracking-tighter md:text-5xl">
         {title}
       </h1>
       <div className="mb-4 text-center text-lg italic opacity-70">

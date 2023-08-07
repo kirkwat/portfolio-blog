@@ -5,5 +5,9 @@ export interface PostSectionProps {
 }
 
 export function PostSection({ showcasePosts }: PostSectionProps) {
-  return <section></section>
+  return (
+    <section>
+      <div className="text-5xl text-pink-400">postSection</div>
+    </section>
+  )
 }

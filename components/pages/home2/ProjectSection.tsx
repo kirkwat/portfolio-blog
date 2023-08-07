@@ -5,5 +5,9 @@ export interface ProjectSectionProps {
 }
 
 export function ProjectSection({ showcaseProjects }: ProjectSectionProps) {
-  return <section></section>
+  return (
+    <section>
+      <div className="text-5xl text-pink-400">projectSection</div>
+    </section>
+  )
 }
