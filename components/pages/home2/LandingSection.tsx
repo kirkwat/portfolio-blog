@@ -1,5 +1,3 @@
-//TODO: add hover effect to link
-
 import ImageBox from 'components/shared/ImageBox'
 import Link from 'next/link'
 import type { Image } from 'sanity'
@@ -17,7 +15,7 @@ export function LandingSection({
 }: LandingSectionProps) {
   return (
     <section className="relative overflow-hidden">
-      <div className="aspect-video overflow-hidden rounded bg-white">
+      <div className="overflow-hidden rounded bg-white sm:aspect-square md:aspect-video">
         <ImageBox
           image={avatar}
           alt={`Cover image for ${title}`}
@@ -26,18 +24,15 @@ export function LandingSection({
         <div className="absolute bottom-0 left-0 right-0 top-0 overflow-hidden rounded bg-black opacity-50"></div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-end p-10 text-center text-white">
-        <div className="h-1/2 w-1/2">
-          <h1 className="mb-3 text-3xl font-medium italic">{title}</h1>
+        <div className="h-1/2 sm:w-1/2">
+          <h1 className="mb-3 text-4xl font-medium italic">{title}</h1>
           <p className="mb-5 font-serif text-sm">
             Welcome to my site! Checkout my blogs, projects and learn more about
             me!
           </p>
           <Link
             href="/about"
-            className="rounded-md bg-zinc-200 px-4 py-2 text-sm font-medium text-black"
-            style={{
-              boxShadow: '-2px -2px 0px black',
-            }}
+            className="rounded-md bg-pink-200 px-4 py-2 text-sm font-medium text-black shadow-[-2px_-2px_0px_black] transition-all duration-300 hover:bg-pink-300 hover:shadow-[-3px_-3px_0px_black]"
           >
             Learn more
           </Link>

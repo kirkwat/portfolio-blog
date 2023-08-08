@@ -23,7 +23,7 @@ export default function Layout({
     <div className="flex min-h-screen flex-col justify-between bg-white text-black">
       {preview && <PreviewBanner />}
       <Navbar settings={settings} />
-      <main className="container mx-auto mb-auto mt-24 px-4 md:mt-32 md:px-8">
+      <main className="container mx-auto mb-auto mt-24 px-4 md:mt-32">
         {children}
       </main>
       {settings && <Footer settings={settings} />}

@@ -36,14 +36,14 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       />
 
       <Layout settings={settings} preview={preview}>
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto mb-5 max-w-7xl">
           <LandingSection
             title={title}
             avatar={avatar}
             overview={overview ? toPlainText(overview) : ''}
           />
           <PostSection showcasePosts={showcasePosts} />
-          <ProjectSection showcaseProjects={showcaseProjects} />
+          <ProjectSection avatar={avatar} showcaseProjects={showcaseProjects} />
         </div>
       </Layout>
     </>
