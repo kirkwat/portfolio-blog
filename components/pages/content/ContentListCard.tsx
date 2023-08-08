@@ -15,11 +15,11 @@ export function ContentListCard(props: ContentListCardProps) {
     <div
       className={`group relative overflow-hidden rounded-lg p-2 sm:flex sm:aspect-[32/9] sm:flex-row ${
         secondaryBackground
-          ? 'hover:bg-gray-100 focus:bg-gray-100'
-          : 'hover:bg-gray-50 focus:bg-gray-50'
+          ? 'hover:bg-zinc-100 focus:bg-zinc-100'
+          : 'hover:bg-zinc-50 focus:bg-zinc-50'
       }`}
     >
-      <div className="aspect-video overflow-hidden rounded-lg border bg-white sm:w-1/2">
+      <div className="aspect-video select-none overflow-hidden rounded-lg border bg-white sm:w-1/2">
         <ImageBox
           image={content.coverImage}
           alt={`Cover image for ${content.title}`}
@@ -27,9 +27,9 @@ export function ContentListCard(props: ContentListCardProps) {
         />
       </div>
       <div className="px-2 sm:w-1/2 sm:pl-3 sm:pr-0">
-        <div className="text-xl tracking-tighter sm:mb-1 md:text-3xl">
+        <h3 className="text-xl font-medium italic tracking-tight sm:mb-1 md:text-3xl">
           {content.title}
-        </div>
+        </h3>
         <div className="italic opacity-80 md:text-lg">
           <time dateTime={content?.date}>
             {format(parseISO(content?.date), 'LLLL	d, yyyy')}

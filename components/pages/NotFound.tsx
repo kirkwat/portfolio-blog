@@ -28,7 +28,7 @@ export function NotFound({
         <Header centered title="404 Page Not Found" />
         <div className="mx-auto flex justify-center">
           <Link
-            className="mb-4 font-serif text-lg text-gray-600 underline hover:opacity-80 sm:text-xl md:mb-6 md:text-2xl"
+            className="mb-4 font-serif text-xl underline opacity-80 transition-all duration-300 hover:text-pink-300 hover:opacity-100 md:mb-6"
             href="/"
           >
             Return to Home

@@ -20,7 +20,7 @@ export default function Layout({
   preview,
 }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col justify-between bg-white text-black">
+    <div className="flex min-h-screen flex-col justify-between bg-white text-black selection:bg-pink-200 selection:text-white">
       {preview && <PreviewBanner />}
       <Navbar settings={settings} />
       <main className="mx-auto mb-auto mt-20 px-4">{children}</main>

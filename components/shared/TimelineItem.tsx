@@ -25,13 +25,13 @@ export function TimelineItem({
           <ImageBox image={image} alt={title || 'Timeline item icon'} />
         </div>
         {/* Vertical line */}
-        {!isLast && <div className="mt-2 w-px grow self-center bg-gray-200" />}
+        {!isLast && <div className="mt-2 w-px grow self-center bg-zinc-200" />}
       </div>
       <div className="flex-initial pl-4">
         {/* Title */}
         <div className="font-bold text-black">{title}</div>
         {/* Tags */}
-        <div className="text-sm text-gray-600 ">
+        <div className="text-sm text-zinc-600 ">
           {tags?.map((tag, key) => (
             <span key={key}>
               {tag}
@@ -41,7 +41,7 @@ export function TimelineItem({
           {startYear} - {endYear}
         </div>
         {/* Description */}
-        <div className="pb-5 pt-3 font-serif text-gray-600">{description}</div>
+        <div className="pb-5 pt-3 font-serif text-zinc-600">{description}</div>
       </div>
     </div>
   )

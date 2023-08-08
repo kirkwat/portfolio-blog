@@ -24,7 +24,7 @@ export function CustomPortableText({
             href={value?.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline opacity-80 transition hover:opacity-50"
+            className="underline opacity-80 transition-all duration-300 hover:text-pink-300 hover:opacity-100"
           >
             {children}
           </Link>
@@ -53,7 +53,7 @@ export function CustomPortableText({
                   href={value.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="whitespace-normal break-words font-serif text-sm underline opacity-80  transition hover:opacity-50"
+                  className="whitespace-normal break-words font-serif text-sm underline opacity-80 transition-all duration-300 hover:text-pink-300 hover:opacity-100"
                 >
                   {value.caption}
                 </Link>
@@ -113,7 +113,7 @@ export function CustomPortableText({
                         href={image.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="whitespace-normal break-words font-serif text-sm underline  opacity-80 transition hover:opacity-50"
+                        className="whitespace-normal break-words font-serif text-sm underline  opacity-80 transition-all duration-300 hover:text-pink-300 hover:opacity-100"
                       >
                         {image.caption}
                       </Link>

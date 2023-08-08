@@ -24,7 +24,7 @@ export function PostSection({ showcasePosts }: PostSectionProps) {
                 }`}
               >
                 <div>
-                  <h3 className="line-clamp-3 text-2xl font-medium italic">
+                  <h3 className="line-clamp-3 text-2xl font-medium italic tracking-tight">
                     {post.title}
                   </h3>
                   <p className="line-clamp-3 font-serif text-sm opacity-80">
@@ -41,7 +41,7 @@ export function PostSection({ showcasePosts }: PostSectionProps) {
               </div>
               <Link
                 href={href}
-                className="w-fit rounded bg-black px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-pink-200 hover:text-black hover:shadow-[-2px_-2px_0px_black]"
+                className="w-fit select-none rounded bg-black px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-pink-200 hover:text-black hover:shadow-[-2px_-2px_0px_black]"
               >
                 Read more
               </Link>
