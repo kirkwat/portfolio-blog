@@ -38,7 +38,7 @@ export default function ProjectPage({
       />
 
       <Layout settings={settings} preview={preview}>
-        <article className="mx-auto mb-6 max-w-3xl">
+        <article className="mx-auto max-w-3xl">
           <ContentHeader title={title} date={date} tags={tags} />
           <div className="portableText">
             <CustomPortableText value={description} />

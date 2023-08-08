@@ -6,24 +6,24 @@ export default function ContentHeader(
 ) {
   const { title, date, tags } = props
   return (
-    <>
-      <h1 className="mb-4 text-center text-4xl tracking-tighter md:text-5xl">
+    <div className="mb-5 border-b border-black">
+      <h1 className="mb-4 mt-8 text-center text-4xl font-medium italic tracking-tighter md:text-5xl">
         {title}
       </h1>
-      <div className="mb-4 text-center text-lg italic opacity-70">
+      <div className="mb-3 text-center text-lg italic opacity-80">
         <time dateTime={date}>{format(parseISO(date), 'LLLL	d, yyyy')}</time>
       </div>
 
-      <div className="mb-6 flex flex-row flex-wrap place-content-center">
+      <div className="mb-3 flex flex-row flex-wrap place-content-center">
         {tags?.map((tag, key) => (
           <div
             key={key}
-            className="mr-1 break-words text-lg lowercase  opacity-70"
+            className="mr-1 break-words text-lg lowercase  opacity-80"
           >
             #{tag}
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }

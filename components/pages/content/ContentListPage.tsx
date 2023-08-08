@@ -39,7 +39,7 @@ export function ContentListPage({
       />
 
       <Layout settings={settings} preview={preview}>
-        <div className="mx-auto mb-7 max-w-5xl lg:mb-32">
+        <div className="mx-auto max-w-5xl">
           <Header centered title={pageTitle} subtitle={subtitle} />
           {contentList && contentList.length > 0 && (
             <div className="grid justify-center gap-4">

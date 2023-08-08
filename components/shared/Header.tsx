@@ -12,10 +12,10 @@ export function Header(props: HeaderProps) {
     return null
   }
   return (
-    <div className={`${centered ? 'text-center' : ''}`}>
+    <div className={`mt-8 ${centered ? 'text-center' : ''}`}>
       {/* Title */}
       {title && (
-        <div className="mb-2 text-4xl font-medium leading-tight tracking-tighter md:mb-4 md:leading-none lg:text-5xl">
+        <div className="mb-2 text-4xl font-medium leading-tight tracking-tighter md:mb-4 md:leading-none  lg:text-5xl">
           {title}
         </div>
       )}

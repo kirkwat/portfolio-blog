@@ -23,7 +23,7 @@ export function Navbar({ settings }: NavbarProps) {
   const links = menuItems.filter((item) => item._type !== 'home')
 
   return (
-    <nav className="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 bg-black px-4 py-3 shadow-lg md:justify-start md:px-12 md:py-4">
+    <nav className="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 border-b border-black bg-white px-4 py-3 drop-shadow md:justify-start md:px-12 md:py-4">
       {home &&
         home.map((menuItem, key) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug)
@@ -34,7 +34,7 @@ export function Navbar({ settings }: NavbarProps) {
           return (
             <Link
               key={key}
-              className="text-2xl text-white transition-all duration-200 hover:opacity-80"
+              className="text-2xl transition-all duration-200 hover:text-pink-300"
               href={href}
             >
               {menuItem.title}
@@ -69,7 +69,7 @@ export function Navbar({ settings }: NavbarProps) {
               return (
                 <Link
                   key={key}
-                  className={`text-md mb-2 mr-4 mt-4 block uppercase text-white transition-all duration-200 hover:opacity-80 md:mb-0 md:mt-0 md:inline-block ${
+                  className={`text-md mb-2 mr-4 mt-4 block uppercase transition-all duration-200 hover:opacity-80 md:mb-0 md:mt-0 md:inline-block ${
                     router.pathname === href ? 'font-medium' : ''
                   }`}
                   href={href}

@@ -36,7 +36,7 @@ export function HomePage({ page, settings, preview }: HomePageProps) {
       />
 
       <Layout settings={settings} preview={preview}>
-        <div className="mx-auto mb-5 max-w-7xl">
+        <div className="mx-auto max-w-7xl">
           <LandingSection
             title={title}
             avatar={avatar}
