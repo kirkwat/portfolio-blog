@@ -33,18 +33,18 @@ export default function ContentNavigation({
     : ''
 
   return (
-    <div className="mb-16 mt-12 grid w-full gap-4 sm:grid-cols-2 sm:gap-6">
+    <div className="mb-6 mt-12 grid w-full gap-4 sm:grid-cols-2 sm:gap-6">
       {prevContentHref && (
         <Link
           href={prevContentHref}
-          className={`group flex cursor-pointer flex-col overflow-hidden rounded border ${
+          className={`group flex cursor-pointer flex-col overflow-hidden rounded border hover:border-pink-300 ${
             nextContentHref
               ? 'sm:col-start-1'
               : 'sm:col-span-2 sm:flex-row-reverse'
           }`}
         >
           <div
-            className={`aspect-video overflow-hidden bg-white ${
+            className={`aspect-video overflow-hidden bg-white group-hover:border-pink-300 ${
               nextContentHref ? 'border-b' : 'border-l'
             }`}
           >
@@ -55,13 +55,13 @@ export default function ContentNavigation({
             />
           </div>
           <div className="grow p-4">
-            <p className="mb-1 opacity-70">
+            <p className="mb-1 opacity-80">
               <span>&larr; </span>
-              <span className="font-serif text-sm group-hover:underline">
+              <span className="font-serif text-sm decoration-pink-300 group-hover:underline">
                 Previous {contentTypeMap[prevContent._type]}
               </span>
             </p>
-            <p className="line-clamp-1 text-ellipsis text-lg font-medium group-hover:underline">
+            <p className="line-clamp-1 text-ellipsis text-lg font-medium decoration-pink-300 group-hover:underline">
               {prevContent.title}
             </p>
           </div>
@@ -70,12 +70,12 @@ export default function ContentNavigation({
       {nextContentHref && (
         <Link
           href={nextContentHref}
-          className={`group flex cursor-pointer flex-col overflow-hidden rounded-md border ${
+          className={`group flex cursor-pointer flex-col overflow-hidden rounded-md border hover:border-pink-300 ${
             prevContentHref ? 'sm:col-start-2' : 'sm:col-span-2 sm:flex-row'
           }`}
         >
           <div
-            className={`aspect-video overflow-hidden bg-white ${
+            className={`aspect-video overflow-hidden bg-white group-hover:border-pink-300 ${
               prevContentHref ? 'border-b' : 'border-r'
             }`}
           >
@@ -86,13 +86,13 @@ export default function ContentNavigation({
             />
           </div>
           <div className="flex grow flex-col p-4">
-            <p className="mb-1 ml-auto opacity-70">
-              <span className="font-serif text-sm group-hover:underline">
+            <p className="mb-1 ml-auto opacity-80">
+              <span className="font-serif text-sm decoration-pink-300 group-hover:underline">
                 Next {contentTypeMap[nextContent._type]}
               </span>
               <span> &rarr;</span>
             </p>
-            <p className="ml-auto line-clamp-1 text-lg font-medium group-hover:underline">
+            <p className="ml-auto line-clamp-1 text-lg font-medium decoration-pink-300 group-hover:underline">
               {nextContent.title}
             </p>
           </div>

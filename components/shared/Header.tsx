@@ -12,18 +12,18 @@ export function Header(props: HeaderProps) {
     return null
   }
   return (
-    <div className={`${centered ? 'text-center' : ''}`}>
+    <div className={`my-8 ${centered ? 'text-center' : ''}`}>
       {/* Title */}
       {title && (
-        <div className="mb-2 text-4xl font-medium leading-tight tracking-tighter md:mb-4 md:leading-none lg:text-5xl">
+        <h1 className="mb-2 text-4xl font-medium uppercase italic tracking-tight md:mb-4 lg:text-5xl">
           {title}
-        </div>
+        </h1>
       )}
       {/* Description */}
       {description && (
-        <div className="mb-4 font-serif text-lg opacity-80 sm:text-xl md:mb-8 md:text-2xl">
+        <h2 className="mb-4 font-serif text-lg opacity-80 sm:text-xl md:mb-8 md:text-2xl">
           <CustomPortableText value={description} />
-        </div>
+        </h2>
       )}
       {/* Subtitle */}
       {subtitle && (
@@ -31,6 +31,7 @@ export function Header(props: HeaderProps) {
           {subtitle}
         </div>
       )}
+      <div className="mx-auto mt-8 w-1/2 border-t border-black" />
     </div>
   )
 }

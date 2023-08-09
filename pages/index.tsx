@@ -47,8 +47,22 @@ export default function IndexPage(props: PageProps) {
 
 const fallbackPage: HomePagePayload = {
   title: '',
-  overview: [],
-  showcaseProjects: [],
+  landingSection: {
+    subtitle: '',
+    aboutMeButton: 'About me',
+  },
+  contentSection: {
+    showcaseContent: [],
+    readMoreButton: 'Read more',
+  },
+  showcaseSection: {
+    title: '',
+    subtitle: '',
+    showcaseContent: {
+      _type: 'post',
+    },
+    learnMoreButton: 'Learn more',
+  },
 }
 
 export const getStaticProps: GetStaticProps<

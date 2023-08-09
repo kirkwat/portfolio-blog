@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { IconContext } from 'react-icons'
 import {
   FaFacebook,
   FaInstagram,
@@ -14,10 +13,9 @@ import { SettingsPayload } from 'types'
 
 interface SocialsProps {
   settings?: SettingsPayload
-  footer?: boolean
 }
 
-export function Socials({ settings, footer = false }: SocialsProps) {
+export function Socials({ settings }: SocialsProps) {
   const {
     facebook,
     instagram,
@@ -30,113 +28,87 @@ export function Socials({ settings, footer = false }: SocialsProps) {
   } = settings ?? {}
 
   return (
-    <div
-      className={`icons flex justify-center ${footer ? '' : 'gap-2 lg:gap-0'}`}
-    >
-      <IconContext.Provider
-        value={
-          footer
-            ? { size: '34', color: 'white' }
-            : { size: '41', color: 'rgb(37 99 235)' }
-        }
-      >
-        {linkedin && linkedin.length > 0 && (
-          <Link
-            href={linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaLinkedin className="heart-icon" />
-          </Link>
-        )}
-        {instagram && instagram.length > 0 && (
-          <Link
-            href={instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaInstagram />
-          </Link>
-        )}
-        {tiktok && tiktok.length > 0 && (
-          <Link
-            href={tiktok}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaTiktok />
-          </Link>
-        )}
-        {pinterest && pinterest.length > 0 && (
-          <Link
-            href={pinterest}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaPinterest />
-          </Link>
-        )}
-        {vsco && vsco.length > 0 && (
-          <Link
-            href={vsco}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <SiVsco />
-          </Link>
-        )}
-        {twitter && twitter.length > 0 && (
-          <Link
-            href={twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaTwitter />
-          </Link>
-        )}
-        {youtube && youtube.length > 0 && (
-          <Link
-            href={youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaYoutube />
-          </Link>
-        )}
-        {facebook && facebook.length > 0 && (
-          <Link
-            href={facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`duration-100 hover:scale-125 ${
-              footer ? 'mx-2 w-5' : 'mx-1 w-5 lg:w-10'
-            }`}
-          >
-            <FaFacebook />
-          </Link>
-        )}
-      </IconContext.Provider>
+    <div className="icons flex justify-center gap-2">
+      {linkedin && linkedin.length > 0 && (
+        <Link
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaLinkedin size={32} />
+        </Link>
+      )}
+      {instagram && instagram.length > 0 && (
+        <Link
+          href={instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaInstagram size={32} />
+        </Link>
+      )}
+      {tiktok && tiktok.length > 0 && (
+        <Link
+          href={tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaTiktok size={32} />
+        </Link>
+      )}
+      {pinterest && pinterest.length > 0 && (
+        <Link
+          href={pinterest}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaPinterest size={32} />
+        </Link>
+      )}
+      {vsco && vsco.length > 0 && (
+        <Link
+          href={vsco}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <SiVsco size={32} />
+        </Link>
+      )}
+      {twitter && twitter.length > 0 && (
+        <Link
+          href={twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaTwitter size={32} />
+        </Link>
+      )}
+      {youtube && youtube.length > 0 && (
+        <Link
+          href={youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaYoutube size={32} />
+        </Link>
+      )}
+      {facebook && facebook.length > 0 && (
+        <Link
+          href={facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-2 w-5 transition-colors duration-200 hover:text-pink-300"
+        >
+          <FaFacebook size={32} />
+        </Link>
+      )}
     </div>
   )
 }

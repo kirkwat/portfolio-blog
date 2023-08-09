@@ -42,9 +42,9 @@
 }
 
 .portableText code {
-  @apply rounded-md bg-gray-100 px-2 py-1 text-sm text-gray-800;
+  @apply rounded-md bg-zinc-100 px-2 py-1 text-sm text-zinc-800;
 }
 
 .portableText blockquote {
-  @apply border-l-4 border-gray-300 pl-5 italic text-gray-800;
+  @apply border-l-4 border-zinc-300 pl-5 italic text-zinc-800;
 }
