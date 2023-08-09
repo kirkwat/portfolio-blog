@@ -18,6 +18,7 @@ import milestone from 'schemas/objects/milestone'
 import multipleImages from 'schemas/objects/multipleImages'
 import timeline from 'schemas/objects/timeline'
 import home from 'schemas/singletons/home'
+import home2 from 'schemas/singletons/home2'
 import postList from 'schemas/singletons/postList'
 import projectList from 'schemas/singletons/projectList'
 import settings from 'schemas/singletons/settings'
@@ -43,6 +44,7 @@ export default defineConfig({
     types: [
       // Singletons
       home,
+      home2,
       settings,
       postList,
       projectList,
@@ -59,7 +61,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings, postList, projectList]),
+      structure: pageStructure([home, home2, settings, postList, projectList]),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),

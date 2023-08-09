@@ -21,17 +21,10 @@ export default defineType({
       title: 'Project List Subtitle',
       type: 'string',
     }),
-    defineField({
-      name: 'title',
-      description: 'This field is the page name for the site header.',
-      title: 'Project List Header Title',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'pageTitle',
     },
     prepare({ title }) {
       return {
