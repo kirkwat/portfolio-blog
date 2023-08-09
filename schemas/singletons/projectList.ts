@@ -11,25 +11,32 @@ export default defineType({
   fields: [
     defineField({
       name: 'pageTitle',
-      description: 'This field is the title of the project list page.',
+      description: 'This is the title of the project list page.',
       title: 'Project List Title',
       type: 'string',
     }),
     defineField({
       name: 'subtitle',
-      description: 'This field is the subtitle of the project list page.',
+      description: 'This is the subtitle of the project list page.',
       title: 'Project List Subtitle',
       type: 'string',
+    }),
+    defineField({
+      name: 'title',
+      description: 'This is the page name for the site header/navbar.',
+      title: 'Project List Header/Navbar Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
     select: {
-      title: 'pageTitle',
+      pageTitle: 'pageTitle',
     },
-    prepare({ title }) {
+    prepare({ pageTitle }) {
       return {
-        subtitle: 'Project List Page',
-        title,
+        title: 'Project List Page',
+        subtitle: pageTitle,
       }
     },
   },

@@ -1,18 +1,20 @@
 import ImageBox from 'components/shared/ImageBox'
 import { resolveHref } from 'lib/sanity.links'
 import Link from 'next/link'
-import type { ShowcaseContent } from 'types'
+import type { HomePagePayload } from 'types'
 
 export interface PostSectionProps {
-  showcasePosts?: ShowcaseContent[]
+  contentSection: HomePagePayload['contentSection']
 }
 
-export function PostSection({ showcasePosts }: PostSectionProps) {
+export function ContentSection({ contentSection }: PostSectionProps) {
+  const { showcaseContent, readMoreButton } = contentSection
+
   return (
     <section className="my-2 border-y border-black">
       <div className="grid divide-y divide-black sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-        {showcasePosts?.map((post, key) => {
-          const href = resolveHref(post._type, post.slug)
+        {showcaseContent?.map((content, key) => {
+          const href = resolveHref(content._type, content.slug)
           if (!href) {
             return null
           }
@@ -25,16 +27,16 @@ export function PostSection({ showcasePosts }: PostSectionProps) {
               >
                 <div>
                   <h3 className="line-clamp-3 text-2xl font-medium italic tracking-tight">
-                    {post.title}
+                    {content.title}
                   </h3>
                   <p className="line-clamp-3 font-serif text-sm opacity-80">
-                    {post.excerpt}
+                    {content.excerpt}
                   </p>
                 </div>
                 <div className="aspect-video overflow-hidden rounded bg-white sm:aspect-[16/12]">
                   <ImageBox
-                    image={post.coverImage}
-                    alt={`Cover image for ${post.title}`}
+                    image={content.coverImage}
+                    alt={`Cover image for ${content.title}`}
                     classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
                   />
                 </div>
@@ -43,7 +45,7 @@ export function PostSection({ showcasePosts }: PostSectionProps) {
                 href={href}
                 className="w-fit select-none rounded bg-black px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-pink-200 hover:text-black hover:shadow-[-2px_-2px_0px_black]"
               >
-                Read more
+                {readMoreButton}
               </Link>
             </div>
           )

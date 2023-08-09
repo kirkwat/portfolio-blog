@@ -1,12 +1,11 @@
-import { toPlainText } from '@portabletext/react'
 import { SiteMeta } from 'components/global/SiteMeta'
 import Layout from 'components/shared/Layout'
 import type { HomePagePayload } from 'types'
 import { SettingsPayload } from 'types'
 
+import { ContentSection } from './ContentSection'
 import { LandingSection } from './LandingSection'
-import { PostSection } from './PostSection'
-import { ProjectSection } from './ProjectSection'
+import { ShowcaseSection } from './ShowcaseSection'
 
 export interface HomePageProps {
   settings?: SettingsPayload
@@ -15,35 +14,21 @@ export interface HomePageProps {
 }
 
 export function HomePage({ page, settings, preview }: HomePageProps) {
-  const {
-    showcasePosts = [],
-    showcaseProjects = [],
-    title = 'Personal website',
-    avatar,
-    overview,
-    postTitle = 'Blogs',
-    postSubtitle = 'My latest blogs',
-    projectTitle = 'Projects',
-    projectSubtitle = 'My latest projects',
-  } = page ?? {}
+  const { title, landingSection, contentSection, showcaseSection } = page ?? {}
 
   return (
     <>
       <SiteMeta
-        description={overview ? toPlainText(overview) : ''}
+        description={landingSection.subtitle}
         image={settings?.ogImage}
         title={title}
       />
 
       <Layout settings={settings} preview={preview}>
         <div className="mx-auto max-w-7xl">
-          <LandingSection
-            title={title}
-            avatar={avatar}
-            overview={overview ? toPlainText(overview) : ''}
-          />
-          <PostSection showcasePosts={showcasePosts} />
-          <ProjectSection avatar={avatar} showcaseProjects={showcaseProjects} />
+          <LandingSection title={title} landingSection={landingSection} />
+          <ContentSection contentSection={contentSection} />
+          <ShowcaseSection showcaseSection={showcaseSection} />
         </div>
       </Layout>
     </>

@@ -36,20 +36,27 @@ export interface ShowcaseContent {
 // Page payloads
 
 export interface HomePagePayload {
-  avatar?: Image
-  overview?: PortableTextBlock[]
-  showcasePosts?: ShowcaseContent[]
-  showcaseProjects?: ShowcaseContent[]
-  title?: string
-  role?: string
-  school?: string
-  school_link?: string
-  interests?: string[]
-  degrees?: DegreeItem[]
-  postTitle?: string
-  postSubtitle?: string
-  projectTitle?: string
-  projectSubtitle?: string
+  title: string
+  landingSection: {
+    subtitle: string
+    aboutMeButton: string
+    landingImage?: Image
+  }
+  contentSection: {
+    showcaseContent: ShowcaseContent[]
+    readMoreButton: string
+  }
+  showcaseSection: {
+    title: string
+    subtitle: string
+    showcaseContent: {
+      _type: string
+      slug?: string
+      title?: string
+    }
+    learnMoreButton: string
+    showcaseImage?: Image
+  }
 }
 
 export interface PostListPagePayload {

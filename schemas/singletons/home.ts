@@ -11,184 +11,133 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your personal website.',
-      title: 'Name and Title',
+      description: 'This is the title of your personal website.',
+      title: 'Name/Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'role',
-      description: 'This field is your current role (student, designer, etc).',
-      title: 'Role',
-      type: 'string',
-    }),
-    defineField({
-      name: 'school',
-      description: 'This field is your current school or company.',
-      title: 'School/Company',
-      type: 'string',
-    }),
-    defineField({
-      name: 'school_link',
-      description: 'This field is a link for your current school or company.',
-      title: 'School/Company Link',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+      name: 'landingSection',
+      description: 'This is the first section of your home page.',
+      title: 'Landing Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'subtitle',
+          description: 'This is the subtitle of your personal website.',
+          title: 'Subtitle/Description',
+          type: 'string',
+          validation: (rule) => rule.required(),
         }),
-    }),
-    defineField({
-      name: 'avatar',
-      description: 'This is your avatar for your personal website.',
-      title: 'Avatar',
-      type: 'image',
-      options: { hotspot: true },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'overview',
-      description:
-        'Used both for the <meta> description tag for SEO, and the personal website subheader.',
-      title: 'Description',
-      type: 'array',
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
+        defineField({
+          name: 'aboutMeButton',
+          description:
+            'This is the text for the button that redirects to the About Me page.',
+          title: 'About Me Button',
+          type: 'string',
+          initialValue: 'About Me',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'landingImage',
+          description: 'This image welcomes users to your personal website.',
+          title: 'Landing Section Image',
+          type: 'image',
+          options: { hotspot: true },
+          validation: (rule) => rule.required(),
         }),
       ],
-      validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      title: 'Interests',
-      name: 'interests',
-      description: 'List any career interests you may have.',
-      type: 'array',
-      of: [defineArrayMember({ type: 'string' })],
-    }),
-    defineField({
-      name: 'degrees',
-      title: 'Degrees',
-      description:
-        'List any degrees that you have completed or are working towards.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          name: 'degree',
-          title: 'Degree',
-          type: 'object',
-          fields: [
-            defineField({
-              type: 'string',
-              name: 'major',
-              title: 'Major',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              type: 'string',
-              name: 'college',
-              title: 'College',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              type: 'number',
-              name: 'year',
-              title: 'Year',
-              description: 'Year you will graduate.',
-              validation: (rule) => rule.required().min(1980).max(2050),
+      name: 'contentSection',
+      description: 'In this section, you can show off 3 posts/projects.',
+      title: 'Content Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'showcaseContent',
+          title: 'Showcase Content',
+          type: 'array',
+          validation: (rule) => rule.required().length(3),
+          of: [
+            defineArrayMember({
+              type: 'reference',
+              to: [{ type: 'post' }, { type: 'project' }],
             }),
           ],
-          preview: {
-            select: {
-              major: 'major',
-              college: 'college',
-            },
-            prepare({ major, college }) {
-              return { title: major, subtitle: college }
-            },
-          },
+        }),
+        defineField({
+          name: 'readMoreButton',
+          description:
+            'This is the text for the button that redirects to the content.',
+          title: 'Read More Button',
+          type: 'string',
+          initialValue: 'Read More',
+          validation: (rule) => rule.required(),
         }),
       ],
     }),
     defineField({
-      name: 'postTitle',
-      description: 'This field is the title of the Featured Posts section.',
-      title: 'Post Section Title',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'postSubtitle',
-      description: 'This field is the subtitle of the Featured Posts section.',
-      title: 'Post Section Subtitle',
-      type: 'string',
-    }),
-    defineField({
-      name: 'showcasePosts',
-      title: 'Showcase posts',
+      name: 'showcaseSection',
       description:
-        'These are the posts that will appear first on your landing page.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'post' }],
+        'In this section, you can redirect users to your post or project pages or also a specific post/project.',
+      title: 'Showcase Section',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          description: 'This is the title of your showcase section.',
+          title: 'Showcase Title',
+          type: 'string',
+          validation: (rule) => rule.required(),
         }),
-      ],
-    }),
-    defineField({
-      name: 'projectTitle',
-      description: 'This field is the title of the Featured Projects section.',
-      title: 'Project Section Title',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'projectSubtitle',
-      description:
-        'This field is the subtitle of the Featured Projects section.',
-      title: 'Project Section Subtitle',
-      type: 'string',
-    }),
-    defineField({
-      name: 'showcaseProjects',
-      title: 'Showcase projects',
-      description:
-        'These are the projects that will appear first on your landing page.',
-      type: 'array',
-      of: [
-        defineArrayMember({
+        defineField({
+          name: 'subtitle',
+          description: 'This is the description of your showcase section.',
+          title: 'Subtitle/Description',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'showcaseContent',
+          title: 'Showcase Content',
+          description:
+            'This is the content that will be showcased and what the Learn More Button will redirect to. It can be a specific post/project, or it can be the entire post/project list page.',
           type: 'reference',
-          to: [{ type: 'project' }],
+          to: [
+            {
+              type: 'postList',
+            },
+            {
+              type: 'projectList',
+            },
+            {
+              type: 'page',
+            },
+            {
+              type: 'post',
+            },
+            {
+              type: 'project',
+            },
+          ],
+        }),
+        defineField({
+          name: 'learnMoreButton',
+          description:
+            'This is the text for the button that redirects to what you are showcasing.',
+          title: 'Learn More Button',
+          type: 'string',
+          initialValue: 'Learn More',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: 'showcaseImage',
+          description: 'This image is be used for the showcase section.',
+          title: 'Showcase Section Image',
+          type: 'image',
+          options: { hotspot: true },
+          validation: (rule) => rule.required(),
         }),
       ],
     }),
@@ -200,7 +149,7 @@ export default defineType({
     prepare({ title }) {
       return {
         subtitle: 'Home',
-        title,
+        title: title || 'Home',
       }
     },
   },

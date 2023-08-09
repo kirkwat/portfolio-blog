@@ -2,36 +2,35 @@ import { groq } from 'next-sanity'
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
-    avatar,
-    overview,
-    showcasePosts[]->{
-      _type,
-      coverImage, 
-      excerpt, 
-      "slug": slug.current,
-      date,
-      tags,
-      title, 
-    }, 
-    showcaseProjects[]->{
-      _type,
-      coverImage,
-      excerpt,
-      "slug": slug.current,
-      date,
-      tags,
-      title,
-    },
     title,
-    role,
-    school,
-    school_link,
-    interests,
-    degrees,
-    postTitle,
-    postSubtitle,
-    projectTitle,
-    projectSubtitle,
+    landingSection{
+      subtitle,
+      aboutMeButton,
+      landingImage
+    },
+    contentSection{
+      showcaseContent[]->{
+        _type,
+        excerpt,
+        coverImage,
+        date,
+        "slug": slug.current,
+        tags,
+        title,
+      },
+      readMoreButton
+    },
+    showcaseSection{
+      title,
+      subtitle,
+      showcaseContent->{
+        _type,
+        "slug": slug.current,
+        title,
+      },
+      learnMoreButton,
+      showcaseImage
+    }
   }
 `
 
