@@ -4,8 +4,9 @@ import { PreviewBanner } from 'components/preview/PreviewBanner'
 import { SettingsPayload } from 'types'
 
 const fallbackSettings: SettingsPayload = {
-  menuItems: [],
-  footer: [],
+  header: {},
+  footer: {},
+  socials: {},
 }
 
 export interface LayoutProps {
@@ -22,9 +23,11 @@ export default function Layout({
   return (
     <div className="flex min-h-screen flex-col justify-between bg-white text-black selection:bg-pink-200 selection:text-white">
       {preview && <PreviewBanner />}
-      <Navbar settings={settings} />
+      <Navbar header={settings.header} resume={settings.resume} />
       <main className="mx-auto mb-auto mt-20 px-4">{children}</main>
-      {settings && <Footer settings={settings} />}
+      {settings.footer && (
+        <Footer footer={settings.footer} socials={settings.socials} />
+      )}
     </div>
   )
 }

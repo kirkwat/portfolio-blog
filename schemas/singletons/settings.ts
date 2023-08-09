@@ -16,136 +16,149 @@ export default defineType({
       type: 'file',
     }),
     defineField({
-      name: 'menuItems',
-      title: 'Menu Item list',
-      description: 'Links displayed on the header of your site.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          title: 'Reference',
-          type: 'reference',
-          to: [
-            {
-              type: 'home',
-            },
-            {
-              type: 'postList',
-            },
-            {
-              type: 'projectList',
-            },
-            {
-              type: 'page',
-            },
-            {
-              type: 'post',
-            },
-            {
-              type: 'project',
-            },
+      name: 'header',
+      title: 'Header/Navbar',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'menuItems',
+          title: 'Menu Item list',
+          description: 'Links displayed on the header of your site.',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              title: 'Reference',
+              type: 'reference',
+              to: [
+                {
+                  type: 'home',
+                },
+                {
+                  type: 'postList',
+                },
+                {
+                  type: 'projectList',
+                },
+                {
+                  type: 'page',
+                },
+                {
+                  type: 'post',
+                },
+                {
+                  type: 'project',
+                },
+              ],
+            }),
           ],
+        }),
+        defineField({
+          name: 'blackWhiteHeader',
+          description:
+            'Disabled will make the header black with white text. Enabled will make the header white with black text.',
+          title: 'Black/White Header',
+          type: 'boolean',
         }),
       ],
     }),
     defineField({
       name: 'footer',
-      description:
-        'This is a block of text that will be displayed at the bottom of the page.',
-      title: 'Footer Info',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          marks: {
-            annotations: [
-              {
-                name: 'link',
-                type: 'object',
-                title: 'Link',
-                fields: [
-                  {
-                    name: 'href',
-                    type: 'url',
-                    title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
+      title: 'Footer',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'footerText',
+          description: 'This is text that will appear within the footer.',
+          title: 'Footer Text',
+          type: 'string',
+        }),
+        defineField({
+          name: 'blackWhiteFooter',
+          description:
+            'Disabled will make the footer black with white text. Enabled will make the footer white with black text.',
+          title: 'Black/White Footer',
+          type: 'boolean',
         }),
       ],
     }),
     defineField({
-      name: 'linkedin',
-      title: 'LinkedIn URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+      name: 'socials',
+      title: 'Socials',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'linkedin',
+          title: 'LinkedIn URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'instagram',
-      title: 'Instagram URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'instagram',
+          title: 'Instagram URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'tiktok',
-      title: 'TikTok URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'tiktok',
+          title: 'TikTok URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'pinterest',
-      title: 'Pinterest URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'pinterest',
+          title: 'Pinterest URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'vsco',
-      title: 'VSCO URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'vsco',
+          title: 'VSCO URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'twitter',
-      title: 'Twitter URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'twitter',
+          title: 'Twitter URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'youtube',
-      title: 'Youtube URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'youtube',
+          title: 'Youtube URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
-    }),
-    defineField({
-      name: 'facebook',
-      title: 'Facebook URL',
-      type: 'url',
-      validation: (Rule) =>
-        Rule.uri({
-          scheme: ['http', 'https', 'mailto', 'tel'],
+        defineField({
+          name: 'facebook',
+          title: 'Facebook URL',
+          type: 'url',
+          validation: (Rule) =>
+            Rule.uri({
+              scheme: ['http', 'https', 'mailto', 'tel'],
+            }),
         }),
+      ],
     }),
     defineField({
       name: 'ogImage',

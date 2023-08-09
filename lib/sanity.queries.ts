@@ -126,21 +126,29 @@ export const pagePaths = groq`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
-    footer,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title
+    "resume": resume.asset->url,
+    header{
+      menuItems[]->{
+        _type,
+        "slug": slug.current,
+        title
+      },
+      blackWhiteHeader
+    },
+    footer{
+      footerText,
+      blackWhiteFooter
+    },
+    socials{
+      linkedin,
+      instagram,
+      facebook,
+      pinterest,
+      vsco,
+      youtube,
+      tiktok,
+      twitter,
     },
     ogImage,
-    linkedin,
-    instagram,
-    facebook,
-    pinterest,
-    vsco,
-    youtube,
-    tiktok,
-    twitter,
-    "resume": resume.asset->url
   }
 `

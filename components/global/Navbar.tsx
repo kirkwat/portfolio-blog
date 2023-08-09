@@ -6,14 +6,15 @@ import { FaBars, FaTimes } from 'react-icons/fa'
 import { SettingsPayload } from 'types'
 
 interface NavbarProps {
-  settings: SettingsPayload
+  header: SettingsPayload['header']
+  resume?: SettingsPayload['resume']
 }
 
-export function Navbar({ settings }: NavbarProps) {
+export function Navbar({ header, resume }: NavbarProps) {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
 
-  const { menuItems, resume } = settings ?? {}
+  const { menuItems, blackWhiteHeader } = header
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
@@ -23,7 +24,11 @@ export function Navbar({ settings }: NavbarProps) {
   const links = menuItems.filter((item) => item._type !== 'home')
 
   return (
-    <nav className="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 border-b border-black bg-white px-4 py-3 md:justify-start md:px-12 md:py-4">
+    <nav
+      className={`fixed top-0 z-10 flex w-full flex-wrap items-center justify-between gap-x-5 border-b border-black px-4 py-3 md:justify-start md:px-12 md:py-4 ${
+        blackWhiteHeader ? 'bg-white' : 'bg-black text-white'
+      }`}
+    >
       {home &&
         home.map((menuItem, key) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug)
@@ -34,7 +39,9 @@ export function Navbar({ settings }: NavbarProps) {
           return (
             <Link
               key={key}
-              className="text-2xl font-medium italic transition-all duration-300 hover:text-pink-300"
+              className={`text-2xl font-medium italic transition-all duration-300 ${
+                blackWhiteHeader ? 'hover:text-pink-300' : 'hover:opacity-80'
+              }`}
               href={href}
             >
               {menuItem.title}
@@ -44,7 +51,9 @@ export function Navbar({ settings }: NavbarProps) {
       <div className="block md:hidden">
         <button
           onClick={handleToggle}
-          className="flex items-center rounded px-3 py-2 transition-all duration-300 hover:text-pink-300"
+          className={`flex items-center rounded px-3 py-2 transition-all duration-300 ${
+            blackWhiteHeader ? 'hover:text-pink-300' : 'hover:opacity-80'
+          }`}
         >
           {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
         </button>
@@ -65,8 +74,12 @@ export function Navbar({ settings }: NavbarProps) {
               return (
                 <Link
                   key={key}
-                  className={`text-md mb-2 mr-4 mt-4 block font-medium uppercase transition-all duration-300 hover:text-pink-300 md:mb-0 md:mt-0 md:inline-block ${
+                  className={`text-md mb-2 mr-4 mt-4 block font-medium uppercase transition-all duration-300 md:mb-0 md:mt-0 md:inline-block ${
                     router.pathname === href ? 'font-semibold' : ''
+                  } ${
+                    blackWhiteHeader
+                      ? 'hover:text-pink-300'
+                      : 'hover:opacity-80'
                   }`}
                   href={href}
                 >
@@ -76,9 +89,9 @@ export function Navbar({ settings }: NavbarProps) {
             })}
           {resume && (
             <Link
-              className={
-                'text-md mb-2 mr-4 mt-4 block uppercase text-white transition-all duration-300 hover:text-pink-300 md:mb-0 md:mt-0 md:inline-block'
-              }
+              className={`text-md mb-2 mr-4 mt-4 block font-medium uppercase transition-all duration-300 md:mb-0 md:mt-0 md:inline-block ${
+                blackWhiteHeader ? 'hover:text-pink-300' : 'hover:opacity-80'
+              }`}
               href="/uploads/resume.pdf"
             >
               CV
