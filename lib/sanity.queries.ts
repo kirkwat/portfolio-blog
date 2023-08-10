@@ -38,6 +38,15 @@ export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
 `
 
+export const aboutPageQuery = groq`
+  *[_type == "about"][0]{
+    pageTitle,
+    subtitle,
+    content,
+    excerpt,
+  }
+`
+
 export const postListPageQuery = groq`
   *[_type == "postList"][0]{
     pageTitle,
