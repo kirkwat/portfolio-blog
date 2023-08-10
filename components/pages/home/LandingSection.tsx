@@ -12,10 +12,11 @@ export function LandingSection({ title, landingSection }: LandingSectionProps) {
 
   return (
     <section className="relative select-none overflow-hidden">
-      <div className="overflow-hidden rounded bg-white sm:aspect-square md:aspect-video">
+      <div className="aspect-[4/5] overflow-hidden rounded bg-white md:aspect-video">
         <ImageBox
           image={landingImage}
           alt={`Landing image for ${title}`}
+          cover
           classesWrapper="absolute top-0 left-0 right-0 bottom-0 h-full w-full"
         />
         <div className="absolute bottom-0 left-0 right-0 top-0 overflow-hidden rounded bg-black opacity-50" />
