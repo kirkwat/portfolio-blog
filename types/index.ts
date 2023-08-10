@@ -53,6 +53,13 @@ export interface HomePagePayload {
   }
 }
 
+export interface AboutPagePayload {
+  pageTitle?: string
+  subtitle?: string
+  content?: PortableTextBlock[]
+  excerpt?: string
+}
+
 export interface PostListPagePayload {
   pageTitle?: string
   subtitle?: string

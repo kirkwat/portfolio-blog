@@ -34,6 +34,9 @@ export default defineType({
                   type: 'home',
                 },
                 {
+                  type: 'about',
+                },
+                {
                   type: 'postList',
                 },
                 {

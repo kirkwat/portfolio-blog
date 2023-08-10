@@ -5,6 +5,8 @@ export function resolveHref(
   switch (documentType) {
     case 'home':
       return '/'
+    case 'about':
+      return '/about'
     case 'projectList':
       return '/projects'
     case 'postList':
