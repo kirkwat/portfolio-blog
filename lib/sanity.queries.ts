@@ -38,6 +38,15 @@ export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
 `
 
+export const aboutPageQuery = groq`
+  *[_type == "about"][0]{
+    pageTitle,
+    subtitle,
+    content,
+    excerpt,
+  }
+`
+
 export const postListPageQuery = groq`
   *[_type == "postList"][0]{
     pageTitle,
@@ -126,21 +135,29 @@ export const pagePaths = groq`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
-    footer,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title
+    "resume": resume.asset->url,
+    header{
+      menuItems[]->{
+        _type,
+        "slug": slug.current,
+        title
+      },
+      blackWhiteHeader
+    },
+    footer{
+      footerText,
+      blackWhiteFooter
+    },
+    socials{
+      linkedin,
+      instagram,
+      facebook,
+      pinterest,
+      vsco,
+      youtube,
+      tiktok,
+      twitter,
     },
     ogImage,
-    linkedin,
-    instagram,
-    facebook,
-    pinterest,
-    vsco,
-    youtube,
-    tiktok,
-    twitter,
-    "resume": resume.asset->url
   }
 `

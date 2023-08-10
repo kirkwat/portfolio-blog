@@ -1,5 +1,6 @@
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
+  aboutPageQuery,
   homePageQuery,
   homePageTitleQuery,
   pagePaths,
@@ -16,6 +17,7 @@ import {
 } from 'lib/sanity.queries'
 import { createClient } from 'next-sanity'
 import type {
+  AboutPagePayload,
   HomePagePayload,
   PagePayload,
   PostListPagePayload,
@@ -41,6 +43,14 @@ export async function getHomePage({
   token?: string
 }): Promise<HomePagePayload | undefined> {
   return await sanityClient(token)?.fetch(homePageQuery)
+}
+
+export async function getAboutPage({
+  token,
+}: {
+  token?: string
+}): Promise<AboutPagePayload | undefined> {
+  return await sanityClient(token)?.fetch(aboutPageQuery)
 }
 
 export async function getPostListPage({

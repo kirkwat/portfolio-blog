@@ -1,11 +1,5 @@
 import type { Image, PortableTextBlock } from 'sanity'
 
-export interface MenuItem {
-  _type: string
-  slug?: string
-  title?: string
-}
-
 export interface MilestoneItem {
   description?: string
   duration?: {
@@ -59,6 +53,13 @@ export interface HomePagePayload {
   }
 }
 
+export interface AboutPagePayload {
+  pageTitle?: string
+  subtitle?: string
+  content?: PortableTextBlock[]
+  excerpt?: string
+}
+
 export interface PostListPagePayload {
   pageTitle?: string
   subtitle?: string
@@ -104,16 +105,24 @@ export interface ProjectPayload {
 }
 
 export interface SettingsPayload {
-  footer?: PortableTextBlock[]
-  menuItems?: MenuItem[]
-  ogImage?: Image
-  linkedin?: string
-  instagram?: string
-  facebook?: string
-  pinterest?: string
-  vsco?: string
-  youtube?: string
-  tiktok?: string
-  twitter?: string
   resume?: string
+  header?: {
+    menuItems?: { _type: string; slug?: string; title?: string }[]
+    blackWhiteHeader?: boolean
+  }
+  footer?: {
+    footerText?: string
+    blackWhiteFooter?: boolean
+  }
+  socials?: {
+    linkedin?: string
+    instagram?: string
+    facebook?: string
+    pinterest?: string
+    vsco?: string
+    youtube?: string
+    tiktok?: string
+    twitter?: string
+  }
+  ogImage?: Image
 }

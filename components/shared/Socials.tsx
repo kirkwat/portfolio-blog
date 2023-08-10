@@ -12,10 +12,10 @@ import { SiVsco } from 'react-icons/si'
 import { SettingsPayload } from 'types'
 
 interface SocialsProps {
-  settings?: SettingsPayload
+  socials?: SettingsPayload['socials']
 }
 
-export function Socials({ settings }: SocialsProps) {
+export function Socials({ socials }: SocialsProps) {
   const {
     facebook,
     instagram,
@@ -25,7 +25,7 @@ export function Socials({ settings }: SocialsProps) {
     tiktok,
     youtube,
     twitter,
-  } = settings ?? {}
+  } = socials
 
   return (
     <div className="icons flex justify-center gap-2">
