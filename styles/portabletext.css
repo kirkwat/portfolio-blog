@@ -1,5 +1,9 @@
 .portableText {
   @apply text-xl leading-relaxed;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .portableText p,
