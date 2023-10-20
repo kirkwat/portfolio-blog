@@ -22,7 +22,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
     "intl-segmenter-polyfill": "^0.4.4",
-    "next": "^13.1.1",
+    "next": "^13.5.6",
     "next-google-fonts": "^2.2.0",
     "next-sanity": "^4.0.4",
     "postcss": "^8.4.31",
