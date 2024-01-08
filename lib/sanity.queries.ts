@@ -71,7 +71,7 @@ export const pagesBySlugQuery = groq`
   }
 `
 export const postsQuery = groq`
-  *[_type == "post"] | order(_createdAt desc) {
+  *[_type == "post"] | order(date desc) {
     _type,
     excerpt,
     coverImage,
@@ -95,7 +95,7 @@ export const postBySlugQuery = groq`
 `
 
 export const projectsQuery = groq`
-  *[_type == "project"] | order(_createdAt desc) {
+  *[_type == "project"] | order(date desc) {
     _type,
     coverImage,
     excerpt,
