@@ -29,9 +29,7 @@ export default function ResumePage(props: PageProps) {
         title="Resume"
       />
 
-      <div className="h-screen w-full">
-        <iframe src={settings.resume} className="h-full w-full" />
-      </div>
+      <iframe src={settings.resume} className="h-full w-full" />
     </>
   )
 }

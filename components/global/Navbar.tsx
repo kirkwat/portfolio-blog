@@ -94,7 +94,7 @@ export function Navbar({ header, resume }: NavbarProps) {
               }`}
               href="/uploads/resume.pdf"
             >
-              CV
+              Resume
             </Link>
           )}
         </div>
