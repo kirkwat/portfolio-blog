@@ -1,5 +1,6 @@
 import 'styles/index.css'
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { AppProps } from 'next/app'
 import { EB_Garamond, IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 
@@ -37,6 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </style>
 
       <Component {...pageProps} />
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
     </>
   )
 }
