@@ -1,0 +1,61 @@
+/*
+  Portable text styles ported from the old site (main:styles/portabletext.css).
+  `@reference` makes the Tailwind theme/utilities from the main stylesheet
+  available so `@apply` resolves without duplicating any emitted CSS.
+*/
+@reference '../app/globals.css';
+
+.portableText {
+  @apply text-xl leading-relaxed;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.portableText p,
+.portableText ul,
+.portableText ol,
+.portableText blockquote {
+  @apply mb-6;
+}
+
+.portableText h1 {
+  @apply mb-8 text-5xl leading-tight font-bold;
+}
+
+.portableText h2 {
+  @apply mb-6 text-4xl leading-tight font-bold;
+}
+
+.portableText h3 {
+  @apply mb-5 text-3xl leading-tight font-bold;
+}
+
+.portableText h4 {
+  @apply mb-4 text-2xl leading-tight font-bold;
+}
+
+.portableText h5 {
+  @apply mb-3 text-xl leading-tight font-bold;
+}
+
+.portableText h6 {
+  @apply mb-2 text-lg leading-tight;
+}
+
+.portableText ul li {
+  @apply ml-6 list-disc;
+}
+
+.portableText ol li {
+  @apply ml-6 list-decimal;
+}
+
+.portableText code {
+  @apply rounded-md bg-zinc-100 px-2 py-1 text-sm text-zinc-800;
+}
+
+.portableText blockquote {
+  @apply border-l-4 border-zinc-300 pl-5 text-zinc-800 italic;
+}
