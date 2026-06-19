@@ -1,0 +1,27 @@
+/* Global styles ported from the old site (main:styles/index.css). */
+@import './portabletext.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+ol,
+ul {
+  margin-left: 1rem;
+}
+
+ol {
+  list-style-type: disc;
+}

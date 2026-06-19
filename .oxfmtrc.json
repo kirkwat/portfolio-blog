@@ -1,0 +1,53 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "printWidth": 80,
+  "semi": true,
+  "tabWidth": 2,
+  "useTabs": false,
+  "arrowParens": "always",
+  "sortImports": {
+    "customGroups": [
+      {
+        "groupName": "server-only",
+        "elementNamePattern": ["server-only"]
+      },
+      {
+        "groupName": "react",
+        "elementNamePattern": ["react", "react-dom"]
+      },
+      {
+        "groupName": "next",
+        "elementNamePattern": ["next", "next/**"]
+      },
+      {
+        "groupName": "app",
+        "elementNamePattern": ["@/**"]
+      }
+    ],
+    "groups": [
+      "server-only",
+      "react",
+      "next",
+      "external",
+      "app",
+      ["parent", "sibling", "index"],
+      "style"
+    ],
+    "newlinesBetween": true,
+    "order": "asc"
+  },
+  "sortTailwindcss": {
+    "functions": ["clsx", "cn", "cva"]
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    "next-env.d.ts",
+    "dist",
+    "build",
+    "*.md",
+    "*.html",
+    "src/sanity.types.ts"
+  ]
+}

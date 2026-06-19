@@ -1,0 +1,53 @@
+import {
+  createImageUrlBuilder,
+  type SanityImageSource,
+} from '@sanity/image-url';
+
+import { dataset, projectId } from '@/sanity/lib/api';
+
+const imageBuilder = createImageUrlBuilder({
+  projectId: projectId || '',
+  dataset: dataset || '',
+});
+
+export const urlForImage = (source: SanityImageSource | null | undefined) => {
+  // Ensure that source image contains a valid reference
+  if (
+    typeof source === 'string' ||
+    !source ||
+    ('asset' in source && !source?.asset?._ref)
+  ) {
+    return undefined;
+  }
+
+  return imageBuilder?.image(source).auto('format').fit('max');
+};
+
+export function urlForOpenGraphImage(
+  image: SanityImageSource | null | undefined,
+) {
+  return urlForImage(image)?.width(1200).height(627).fit('crop').url();
+}
+
+export function resolveHref(
+  documentType?: string,
+  slug?: string | null,
+): string | undefined {
+  switch (documentType) {
+    case 'home':
+      return '/';
+    case 'about':
+      return '/about';
+    case 'projectList':
+      return '/projects';
+    case 'postList':
+      return '/posts';
+    case 'project':
+      return slug ? `/projects/${slug}` : undefined;
+    case 'post':
+      return slug ? `/posts/${slug}` : undefined;
+    default:
+      console.warn('Invalid document type:', documentType);
+      return undefined;
+  }
+}
